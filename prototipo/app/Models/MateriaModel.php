@@ -21,6 +21,8 @@ class MateriaModel extends Model
         'calificacionAprobatoria',
         'imagen',
     ];
+
+    
 }
 
 

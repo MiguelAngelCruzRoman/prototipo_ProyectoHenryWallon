@@ -21,8 +21,7 @@ return new class extends Migration
             $table->integer('horasTeoricas');
             $table->integer('calificacionAprobatoria');
             $table->string('imagen');
-            $table->dateTime('updated_at');
-            $table->dateTime('created_at');
+            $table->timestamps();
         });
     }
 

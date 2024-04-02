@@ -11,9 +11,6 @@ class Horario_MateriaModel extends Model
     protected $primaryKey = 'identificador';
 
     protected $table = 'horario_materia';
-    protected $foreignKey = [
-        'identificador_Horario',
-        'identificador_Materia'];
 
     protected $fillable = [
         'identificador_Horario',

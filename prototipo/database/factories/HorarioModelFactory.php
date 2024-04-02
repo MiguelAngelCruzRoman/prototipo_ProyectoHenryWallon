@@ -16,19 +16,18 @@ class HorarioModelFactory extends Factory
      */
     public function definition(): array
     {
-        $creditos =$this->faker->numberBetween(4,10);
-        $horasPracticas = $creditos - ($this->faker->numberBetween(0,$creditos));
-        $horasTeoricas = $creditos- $horasPracticas;
-        
+
+        $diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+        $horaInicioClases = '08:00';
+        $horaFinClases = '13:00';
+
+        $horaInicioAleatoria = $this->faker->dateTimeBetween('T' . $horaInicioClases, 'T' . $horaFinClases)->format('H:i');
+        $horaFinAleatoria = $this->faker->dateTimeBetween('T' . $horaInicioAleatoria, 'T' . $horaFinClases)->format('H:i');
+
         return [
-            'nombre'=>$this->faker->sentence(3),
-            'objetivo'=>$this->faker->text(),
-            'intencionDidactica'=>$this->faker->text(),
-            'creditos'=>$creditos,
-            'horasPracticas'=>$horasPracticas,
-            'horasTeoricas'=>$horasTeoricas,
-            'calificacionAprobatoria'=>$this->faker->numberBetween(80,100),
-            'imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
+            'dia' => $this->faker->randomElement($diasSemana),
+            'horaInicio' => $horaInicioAleatoria,
+            'horaFin' => $horaFinAleatoria,
         ];
     }
 }
