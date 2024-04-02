@@ -18,5 +18,6 @@ class Actividad_UnidadModel extends Model
     protected $fillable = [
         'identificador_Actividad',
         'identificador_Unidad',
+        'porcentajeCalificacionUnidad'
     ];
 }

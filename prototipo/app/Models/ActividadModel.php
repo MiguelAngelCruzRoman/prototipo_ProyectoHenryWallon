@@ -14,6 +14,6 @@ class ActividadModel extends Model
     protected $fillable = [
         'competenciaDesarrollada',
         'tipoActividad',
-        'tipoEvaluación',
+        'tipoEvaluacion',
     ];
 }

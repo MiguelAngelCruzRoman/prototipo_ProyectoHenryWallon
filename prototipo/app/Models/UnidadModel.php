@@ -11,7 +11,6 @@ class UnidadModel extends Model
     protected $primaryKey = 'identificador';
 
     protected $table = 'unidad';
-    protected $foreignKey = 'identificador_Materia';
 
     protected $fillable = [
         'identificador_Materia',
