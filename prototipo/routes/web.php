@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/materia/index',[Materia::class, 'index']);
+Route::get('/materia/index',[Materia::class, 'index'])->name('materia.index');
+
+Route::get('/materia/instrumentacion/ver/{idMateria}/{idDocente}', [Materia::class, 'instrumentacion_ver'])->name('materia.instrumentacion.ver');
+
