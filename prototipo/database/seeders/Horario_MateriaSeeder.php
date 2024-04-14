@@ -12,6 +12,6 @@ class Horario_MateriaSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Horario_MateriaModel::factory(10)->create();
+        \App\Models\Horario_MateriaModel::factory(100)->create();
     }
 }

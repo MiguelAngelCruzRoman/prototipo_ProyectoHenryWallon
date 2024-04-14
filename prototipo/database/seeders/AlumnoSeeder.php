@@ -12,6 +12,6 @@ class AlumnoSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\AlumnoModel::factory(10)->create();
+        \App\Models\AlumnoModel::factory(100)->create();
     }
 }

@@ -12,6 +12,6 @@ class Actividad_UnidadSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Actividad_UnidadModel::factory(10)->create();
+        \App\Models\Actividad_UnidadModel::factory(100)->create();
     }
 }

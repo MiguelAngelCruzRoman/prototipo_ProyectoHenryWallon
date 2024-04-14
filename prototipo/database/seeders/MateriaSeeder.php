@@ -12,6 +12,6 @@ class MateriaSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\MateriaModel::factory(10)->create();
+        \App\Models\MateriaModel::factory(100)->create();
     }
 }

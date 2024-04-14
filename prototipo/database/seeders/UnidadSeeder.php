@@ -12,6 +12,6 @@ class UnidadSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\UnidadModel::factory(10)->create();
+        \App\Models\UnidadModel::factory(100)->create();
     }
 }

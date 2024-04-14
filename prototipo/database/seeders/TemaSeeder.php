@@ -13,6 +13,6 @@ class TemaSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\TemaModel::factory(10)->create();
+        \App\Models\TemaModel::factory(100)->create();
     }
 }

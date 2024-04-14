@@ -12,6 +12,6 @@ class Alumno_Materia_DocenteSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Alumno_Materia_DocenteModel::factory(10)->create();
+        \App\Models\Alumno_Materia_DocenteModel::factory(100)->create();
     }
 }

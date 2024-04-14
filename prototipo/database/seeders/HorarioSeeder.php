@@ -12,6 +12,6 @@ class HorarioSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\HorarioModel::factory(10)->create();
+        \App\Models\HorarioModel::factory(100)->create();
     }
 }
