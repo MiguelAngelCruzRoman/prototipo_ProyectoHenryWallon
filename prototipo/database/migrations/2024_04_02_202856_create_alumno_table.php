@@ -21,9 +21,6 @@ return new class extends Migration
             $table->integer('promedioGeneral');
             $table->dateTime('fechaIngreso');
             $table->dateTime('fechaEgreso');
-            $table->string('foto');
-            $table->string('usuario');
-            $table->string('contrasenia');
             $table->timestamps();
         });
     }

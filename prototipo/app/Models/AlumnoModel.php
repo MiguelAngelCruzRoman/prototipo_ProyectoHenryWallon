@@ -20,8 +20,5 @@ class AlumnoModel extends Model
         'promedioGeneral',
         'fechaIngreso',
         'fechaEgreso',
-        'foto',
-        'usuario',
-        'contrasenia',
     ];
 }

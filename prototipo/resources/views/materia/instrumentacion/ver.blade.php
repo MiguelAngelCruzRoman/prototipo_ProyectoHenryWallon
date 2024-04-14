@@ -22,14 +22,6 @@
         border: 4px solid #000000;
     }
 
-    .custom-button {
-        background-color: #0056b3;
-        color: black;
-    }
-
-    .custom-button:hover {
-        background-color: #007bff;
-    }
 
     .custom-body {
         background-color: #cce5ff;
@@ -103,7 +95,7 @@
                                         <button class="accordion-button custom-button" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}"
                                             aria-expanded="true" aria-controls="collapse{{ $index }}"
-                                            style="border-radius: 20px; border: 1px solid black;">
+                                            style="border-radius: 20px; border: 1px solid black; background-color:#B3C9FF">
                                             Unidad {{ $unidad->numero }} ({{ $unidad->porcentajeCalificacionFinal }}%)
                                         </button>
                                     </h2>

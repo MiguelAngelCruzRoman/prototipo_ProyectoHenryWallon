@@ -17,14 +17,14 @@ class DocenteModelFactory extends Factory
     public function definition(): array
     {
 
+
         return [
             'primerNombre' => $this->faker->firstName(),
             'segundoNombre' => $this->faker->optional()->firstName(),
             'apellidoPaterno' => $this->faker->lastName(),
             'apellidoMaterno' => $this->faker->lastName(),
-            'foto' => $this->faker->imageUrl($width = 640, $height = 480),
-            'usuario' => $this->faker->userName(),
-            'contrasenia' => $this->faker->password(),
+            'fechaIngreso' => $this->faker->dateTimeBetween('-20 years', 'now'),
+            'experiencia' => $this->faker->numberBetween(5, 30),
         ];
     }
 }

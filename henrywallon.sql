@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2024 a las 03:06:14
+-- Tiempo de generación: 14-04-2024 a las 22:41:06
 -- Versión del servidor: 10.4.27-MariaDB-log
 -- Versión de PHP: 8.2.0
 
@@ -1465,7 +1465,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2024_04_02_204400_create_materia_docente_table', 1),
 (33, '2024_04_02_205210_create_alumno_materia_docente_table', 1),
 (34, '2024_04_02_210844_create_clase_table', 1),
-(35, '2024_04_02_211304_create_actividad_clase_table', 1);
+(35, '2024_04_02_211304_create_actividad_clase_table', 1),
+(36, '2024_04_14_172312_create_usuario_table', 2),
+(37, '2024_04_14_173139_create_usuario_docente_table', 3),
+(38, '2024_04_14_173821_create_usuario_alumno_table', 4);
 
 -- --------------------------------------------------------
 
@@ -1778,6 +1781,368 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (10, 'Daniela Cazares', 'ivalles@example.net', '2024-04-03 09:07:55', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'grApi6zbgJ', '2024-04-03 09:07:55', '2024-04-03 09:07:55'),
 (11, 'Test User', 'test@example.com', '2024-04-03 09:07:55', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'lNRav8Sqmu', '2024-04-03 09:07:55', '2024-04-03 09:07:55');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `identificador` int(10) UNSIGNED NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `contrasenia` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `rol` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`identificador`, `usuario`, `contrasenia`, `foto`, `rol`, `created_at`, `updated_at`) VALUES
+(1, 'aaron70', '=jQ8~mo#Wz', 'https://via.placeholder.com/640x480.png/000066?text=eum', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(2, 'fcastro', 'IXu>d3ZEV.8O6}>v*N!', 'https://via.placeholder.com/640x480.png/00bb11?text=corrupti', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(3, 'nora.galvez', '{ZZu/OHcYI{l', 'https://via.placeholder.com/640x480.png/003388?text=assumenda', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(4, 'izan62', '(I-Yi+Hy/b:7IB', 'https://via.placeholder.com/640x480.png/00aaaa?text=similique', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(5, 'mrazo', '|o@gYEA)p%', 'https://via.placeholder.com/640x480.png/0000cc?text=iste', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(6, 'javier67', '#4:JNSI0oiSk@AO1kc', 'https://via.placeholder.com/640x480.png/002255?text=expedita', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(7, 'lucas.hinojosa', '5I-}1Iw:D1?I<', 'https://via.placeholder.com/640x480.png/00bb77?text=veniam', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(8, 'manuel.luque', 'y\'u\'!D_~Eq%rNM+$o{t]', 'https://via.placeholder.com/640x480.png/00ddee?text=voluptas', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(9, 'uparra', 'wePV<d+`17J<$9~', 'https://via.placeholder.com/640x480.png/007799?text=et', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(10, 'velasco.oliver', 'b{231]', 'https://via.placeholder.com/640x480.png/0044bb?text=nemo', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(11, 'luna.gurule', 'l5{kl_7', 'https://via.placeholder.com/640x480.png/00cc99?text=ab', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(12, 'vesquibel', 'f@x5Y\'c*Rw$$mp4', 'https://via.placeholder.com/640x480.png/00bb11?text=quam', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(13, 'hernando.isaac', 'j#!+zM', 'https://via.placeholder.com/640x480.png/007722?text=quisquam', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(14, 'rtrujillo', ']mKJZm|MJQBvz', 'https://via.placeholder.com/640x480.png/00aa77?text=repudiandae', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(15, 'juarez.eric', '1+(x]\'ALV8\\w', 'https://via.placeholder.com/640x480.png/00ddbb?text=vitae', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(16, 'ainara00', 'v)6O{o#rA.Dm', 'https://via.placeholder.com/640x480.png/003355?text=iste', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(17, 'dario.marin', '<\']w+;^|a}]-W', 'https://via.placeholder.com/640x480.png/00bb77?text=quibusdam', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(18, 'rsantos', 'w}oo@\\wm-$C!!Tys\'UJR', 'https://via.placeholder.com/640x480.png/0077bb?text=ratione', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(19, 'bruno55', 'FN~ATd\'', 'https://via.placeholder.com/640x480.png/0022ee?text=velit', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(20, 'daniel40', 'l^jXiEF.sl!@*', 'https://via.placeholder.com/640x480.png/00bbdd?text=aliquid', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(21, 'diego18', 'eORnF>q4Gf%O#Z^1', 'https://via.placeholder.com/640x480.png/000088?text=ut', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(22, 'beatriz07', '\"/ThoayE^%=4U4A%Vc-', 'https://via.placeholder.com/640x480.png/000077?text=amet', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(23, 'itrejo', 'iIby7Oh8wr\'aJ5n%', 'https://via.placeholder.com/640x480.png/0022aa?text=culpa', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(24, 'luis75', 'F=&32FQP7nf\'ABTd=', 'https://via.placeholder.com/640x480.png/00ee77?text=quibusdam', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(25, 'solis.nadia', 'FIs^S#W-`dp-i@Y{_N', 'https://via.placeholder.com/640x480.png/00aa77?text=deleniti', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(26, 'leire.jiminez', 'c-,HJz-pY/^T;5', 'https://via.placeholder.com/640x480.png/00aa33?text=voluptate', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(27, 'olga.raya', 'ad06J<t`T]T]j!A5{', 'https://via.placeholder.com/640x480.png/002233?text=consectetur', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(28, 'krosario', 'lZ;I_)I^<K:|+x`KK#>', 'https://via.placeholder.com/640x480.png/006600?text=cumque', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(29, 'nicolas.mata', 'N2zCGYnZSD+@kl', 'https://via.placeholder.com/640x480.png/00ffbb?text=aut', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(30, 'esoriano', 'i[\"xeY', 'https://via.placeholder.com/640x480.png/0044ee?text=expedita', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(31, 'irene50', 'dMKa&?Y\\<Y,=UT89[*&', 'https://via.placeholder.com/640x480.png/00ee44?text=aspernatur', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(32, 'pmolina', 'QLS8R%y?#sg@\"Ej{Yb\'', 'https://via.placeholder.com/640x480.png/00aa44?text=rerum', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(33, 'espinoza.mariacarmen', 'bB_5WaP<,^49_o[E', 'https://via.placeholder.com/640x480.png/002277?text=voluptatum', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(34, 'malak.fernandez', '$8O?tXNQVYff', 'https://via.placeholder.com/640x480.png/006699?text=rerum', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(35, 'eric.robles', 'o&\'yC?P**', 'https://via.placeholder.com/640x480.png/00ee88?text=laborum', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(36, 'miguel.perales', 'KTA8xRiO5CmW#pc?2xf', 'https://via.placeholder.com/640x480.png/00aa77?text=vel', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(37, 'gnavarro', 'v6\\iK76^(', 'https://via.placeholder.com/640x480.png/00ffcc?text=repudiandae', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(38, 'ocampo.ariadna', 'ce4\\Gc2>H4=*(', 'https://via.placeholder.com/640x480.png/0044ee?text=repudiandae', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(39, 'gabriela17', '/`a5?N;W[xVId:/R9~x', 'https://via.placeholder.com/640x480.png/00cccc?text=voluptates', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(40, 'cesar65', '/x_GmpV*AS?TT6', 'https://via.placeholder.com/640x480.png/00aaee?text=minima', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(41, 'manuela01', '\'-5aC3}G;', 'https://via.placeholder.com/640x480.png/004400?text=accusantium', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(42, 'mariadolores73', 'J2uc9kVYp;0G;(tc)', 'https://via.placeholder.com/640x480.png/00dd33?text=odio', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(43, 'joel00', 'znvN\\:Y', 'https://via.placeholder.com/640x480.png/003322?text=nostrum', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(44, 'inmaculada46', 'L4k8MU=Y7U(J2dCS', 'https://via.placeholder.com/640x480.png/005544?text=sed', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(45, 'gbaca', ')BZfa{7', 'https://via.placeholder.com/640x480.png/007744?text=harum', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(46, 'alberto.rosas', 'crAxHy', 'https://via.placeholder.com/640x480.png/003333?text=ipsa', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(47, 'guajardo.rodrigo', 'UC=1!?OW-P18/GEO{A', 'https://via.placeholder.com/640x480.png/00ffff?text=placeat', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(48, 'aitana50', ',zv?ML}', 'https://via.placeholder.com/640x480.png/0088aa?text=deserunt', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(49, 'naranjo.guillem', 'Sv~MF^UKFB|5CbS)', 'https://via.placeholder.com/640x480.png/009955?text=et', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(50, 'zcaro', 'GU-ka]Doz-ml^4`#8a', 'https://via.placeholder.com/640x480.png/00ffcc?text=doloremque', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(51, 'inmaculada.camarillo', '3@1&_~', 'https://via.placeholder.com/640x480.png/0066ff?text=tempore', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(52, 'maria10', ')HG*BY>oWeS..9zq,$k', 'https://via.placeholder.com/640x480.png/005566?text=velit', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(53, 'quintana.antonio', 'J*\"VFS>2[JxMM', 'https://via.placeholder.com/640x480.png/0088aa?text=voluptatem', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(54, 'ines.valles', 'R`w4C>N', 'https://via.placeholder.com/640x480.png/00ff00?text=ipsa', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(55, 'hernandes.gerard', '_0x<P>YFA1i\\X', 'https://via.placeholder.com/640x480.png/003366?text=minima', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(56, 'inmaculada.zayas', 'i7t$\'|GN_/t', 'https://via.placeholder.com/640x480.png/0099ff?text=illum', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(57, 'aitor.barela', 'N#x.1cEbXZ', 'https://via.placeholder.com/640x480.png/0055aa?text=totam', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(58, 'kgalan', '^$`yST8_y', 'https://via.placeholder.com/640x480.png/002222?text=sint', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(59, 'hugo.carrasquillo', '`g*\\i*dJf$q+', 'https://via.placeholder.com/640x480.png/00aaff?text=sint', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(60, 'berta.armenta', '.1TD4aID#d9\\A^', 'https://via.placeholder.com/640x480.png/00ffcc?text=culpa', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(61, 'jimena.meraz', 'XRGCEb8q{]hbw&OMjxP', 'https://via.placeholder.com/640x480.png/006655?text=ducimus', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(62, 'kmolina', 'tp.EPg!3', 'https://via.placeholder.com/640x480.png/006611?text=sed', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(63, 'nolivas', '3VTVi}', 'https://via.placeholder.com/640x480.png/008811?text=dolorem', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(64, 'celia.hidalgo', 'T*QH4aB3;W}2j}', 'https://via.placeholder.com/640x480.png/00cccc?text=est', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(65, 'alonso00', 'u8rlA2bzq]vx', 'https://via.placeholder.com/640x480.png/00bb00?text=veritatis', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(66, 'xfont', 'Yw@@9$TB', 'https://via.placeholder.com/640x480.png/0044dd?text=nihil', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(67, 'qarmijo', 'd^ylv5$N)`6GI', 'https://via.placeholder.com/640x480.png/001155?text=tempora', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(68, 'beatriz08', '-[|k-z#gE', 'https://via.placeholder.com/640x480.png/00bb88?text=voluptas', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(69, 'jesus.marroquin', '[fJJ<U%\\\\6Y,{H', 'https://via.placeholder.com/640x480.png/00ff88?text=error', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(70, 'sandra.orta', 'NcJeRxiM:dBj94', 'https://via.placeholder.com/640x480.png/00eeaa?text=itaque', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(71, 'angeles.giron', '|lo0XeW=', 'https://via.placeholder.com/640x480.png/0033cc?text=labore', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(72, 'jaramillo.enrique', ',`W^Uc>F', 'https://via.placeholder.com/640x480.png/0055ff?text=ut', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(73, 'blanco.pau', 'I+~WY{yY5', 'https://via.placeholder.com/640x480.png/0022cc?text=rerum', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(74, 'jescobedo', 'T]Q8<M.!$c', 'https://via.placeholder.com/640x480.png/002277?text=omnis', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(75, 'nadia24', 'P%Q%;]ln.LY#c', 'https://via.placeholder.com/640x480.png/001155?text=velit', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(76, 'mireia.preciado', '[4F/\"xJf', 'https://via.placeholder.com/640x480.png/001155?text=qui', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(77, 'laura20', '7_\\KjI;B\\@+', 'https://via.placeholder.com/640x480.png/0077aa?text=in', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(78, 'gcastellano', 'y%Mso`aiz', 'https://via.placeholder.com/640x480.png/00aa44?text=nostrum', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(79, 'lucas51', ':8*$!+PSw/G[', 'https://via.placeholder.com/640x480.png/002266?text=ipsam', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(80, 'xsaucedo', '`\'\"EU5KAo[#j[7_q', 'https://via.placeholder.com/640x480.png/002200?text=fuga', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(81, 'sbermejo', '?1cm%~J', 'https://via.placeholder.com/640x480.png/006699?text=ut', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(82, 'franciscojavier20', '*Q#+]y3:Q7\"%f', 'https://via.placeholder.com/640x480.png/00bbbb?text=molestias', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(83, 'lorena41', '&U2]yZH`LZSA', 'https://via.placeholder.com/640x480.png/009900?text=rerum', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(84, 'clozano', 'HTjkQEqzsGfm}5)Ig\\2', 'https://via.placeholder.com/640x480.png/008855?text=aut', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(85, 'blanca18', '%u;+n-Ls@BKQ>', 'https://via.placeholder.com/640x480.png/007744?text=voluptatum', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(86, 'juarez.eva', '%qp?p(,93IEBcB{.#Pf', 'https://via.placeholder.com/640x480.png/002233?text=adipisci', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(87, 'sanchez.lucas', 'X~!d/h_MT<*WR2/\'o', 'https://via.placeholder.com/640x480.png/00bbee?text=qui', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(88, 'nayara80', 'QSiLL;GR}.st', 'https://via.placeholder.com/640x480.png/0077dd?text=ullam', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(89, 'jimenez.fernando', '\'z!YtLhW', 'https://via.placeholder.com/640x480.png/0066ee?text=quo', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(90, 'qortiz', 'WNe7S7', 'https://via.placeholder.com/640x480.png/00cc44?text=molestiae', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(91, 'lorena35', '!t{?C~\"M2_n%d;DT87', 'https://via.placeholder.com/640x480.png/003311?text=dicta', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(92, 'xluna', '(-#PD~{R60j{', 'https://via.placeholder.com/640x480.png/00dd33?text=et', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(93, 'andrea.granado', 'E!pyJ_N<', 'https://via.placeholder.com/640x480.png/0099bb?text=facilis', 'Miércoles', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(94, 'corral.sergio', '6y<P}z+\"5s6`@n!P', 'https://via.placeholder.com/640x480.png/00ddbb?text=laborum', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(95, 'pedro.perales', ',oY\"\\6<v', 'https://via.placeholder.com/640x480.png/00ff44?text=non', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(96, 'grosario', '\"dSavWgQBi', 'https://via.placeholder.com/640x480.png/000066?text=voluptas', 'Jueves', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(97, 'rocha.victor', 'zaG%A&EfdkQZVX~N', 'https://via.placeholder.com/640x480.png/002244?text=tempora', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(98, 'gamez.antonio', 'U^8}yVl^\\\"x', 'https://via.placeholder.com/640x480.png/00cc33?text=vel', 'Lunes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(99, 'canales.salma', 'TfY/iv', 'https://via.placeholder.com/640x480.png/00ee33?text=et', 'Martes', '2024-04-14 23:28:03', '2024-04-14 23:28:03'),
+(100, 'mario68', '@g_t1g0k)AG', 'https://via.placeholder.com/640x480.png/002211?text=placeat', 'Viernes', '2024-04-14 23:28:03', '2024-04-14 23:28:03');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_alumno`
+--
+
+CREATE TABLE `usuario_alumno` (
+  `identificador` int(10) UNSIGNED NOT NULL,
+  `identificador_Usuario` int(10) UNSIGNED NOT NULL,
+  `identificador_Alumno` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuario_alumno`
+--
+
+INSERT INTO `usuario_alumno` (`identificador`, `identificador_Usuario`, `identificador_Alumno`, `created_at`, `updated_at`) VALUES
+(1, 75, 49, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(2, 79, 45, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(3, 36, 44, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(4, 59, 94, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(5, 23, 36, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(6, 71, 54, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(7, 61, 72, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(8, 80, 56, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(9, 72, 42, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(10, 95, 1, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(11, 82, 29, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(12, 82, 11, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(13, 2, 24, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(14, 60, 27, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(15, 49, 15, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(16, 79, 52, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(17, 14, 98, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(18, 44, 52, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(19, 43, 81, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(20, 7, 24, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(21, 97, 24, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(22, 42, 8, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(23, 92, 95, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(24, 83, 89, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(25, 20, 30, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(26, 57, 92, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(27, 13, 45, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(28, 40, 96, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(29, 40, 91, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(30, 67, 31, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(31, 55, 72, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(32, 28, 7, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(33, 83, 4, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(34, 75, 10, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(35, 72, 24, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(36, 27, 9, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(37, 82, 69, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(38, 16, 66, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(39, 7, 3, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(40, 89, 70, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(41, 91, 32, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(42, 10, 29, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(43, 12, 3, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(44, 31, 23, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(45, 84, 7, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(46, 53, 56, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(47, 20, 14, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(48, 12, 93, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(49, 30, 86, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(50, 78, 41, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(51, 53, 64, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(52, 18, 92, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(53, 66, 39, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(54, 41, 2, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(55, 88, 12, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(56, 73, 7, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(57, 98, 78, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(58, 58, 74, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(59, 9, 12, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(60, 29, 38, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(61, 10, 83, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(62, 97, 1, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(63, 95, 4, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(64, 60, 7, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(65, 55, 62, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(66, 9, 10, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(67, 36, 8, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(68, 56, 41, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(69, 61, 30, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(70, 98, 52, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(71, 58, 21, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(72, 8, 10, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(73, 95, 77, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(74, 41, 64, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(75, 27, 29, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(76, 80, 65, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(77, 66, 9, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(78, 91, 74, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(79, 47, 6, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(80, 12, 77, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(81, 23, 51, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(82, 47, 70, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(83, 29, 83, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(84, 88, 22, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(85, 85, 21, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(86, 87, 78, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(87, 92, 18, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(88, 26, 76, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(89, 39, 87, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(90, 11, 9, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(91, 25, 9, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(92, 34, 24, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(93, 49, 75, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(94, 98, 54, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(95, 38, 56, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(96, 24, 93, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(97, 49, 40, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(98, 47, 75, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(99, 18, 54, '2024-04-14 23:40:49', '2024-04-14 23:40:49'),
+(100, 23, 52, '2024-04-14 23:40:49', '2024-04-14 23:40:49');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_docente`
+--
+
+CREATE TABLE `usuario_docente` (
+  `identificador` int(10) UNSIGNED NOT NULL,
+  `identificador_Usuario` int(10) UNSIGNED NOT NULL,
+  `identificador_Docente` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuario_docente`
+--
+
+INSERT INTO `usuario_docente` (`identificador`, `identificador_Usuario`, `identificador_Docente`, `created_at`, `updated_at`) VALUES
+(1, 33, 40, '2024-04-14 23:37:26', '2024-04-14 23:37:26'),
+(2, 94, 21, '2024-04-14 23:37:26', '2024-04-14 23:37:26'),
+(3, 50, 98, '2024-04-14 23:37:26', '2024-04-14 23:37:26'),
+(4, 26, 53, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(5, 69, 42, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(6, 68, 103, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(7, 34, 90, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(8, 85, 5, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(9, 32, 73, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(10, 89, 9, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(11, 20, 14, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(12, 37, 10, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(13, 69, 40, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(14, 91, 1, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(15, 22, 29, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(16, 92, 71, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(17, 75, 101, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(18, 87, 109, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(19, 98, 19, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(20, 22, 107, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(21, 50, 55, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(22, 85, 1, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(23, 46, 1, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(24, 80, 26, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(25, 92, 107, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(26, 58, 102, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(27, 78, 31, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(28, 24, 2, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(29, 58, 70, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(30, 10, 22, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(31, 16, 3, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(32, 61, 11, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(33, 13, 4, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(34, 48, 35, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(35, 22, 79, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(36, 71, 78, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(37, 80, 20, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(38, 18, 66, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(39, 76, 110, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(40, 30, 19, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(41, 83, 83, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(42, 93, 104, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(43, 99, 15, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(44, 45, 40, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(45, 75, 44, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(46, 79, 1, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(47, 66, 43, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(48, 58, 16, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(49, 99, 42, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(50, 18, 81, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(51, 67, 23, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(52, 75, 27, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(53, 33, 52, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(54, 60, 53, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(55, 67, 61, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(56, 51, 85, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(57, 80, 41, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(58, 93, 105, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(59, 8, 76, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(60, 31, 73, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(61, 37, 33, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(62, 34, 97, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(63, 100, 97, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(64, 51, 56, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(65, 80, 55, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(66, 28, 2, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(67, 86, 84, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(68, 31, 41, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(69, 91, 3, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(70, 5, 62, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(71, 99, 66, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(72, 65, 63, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(73, 50, 32, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(74, 25, 40, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(75, 3, 99, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(76, 68, 107, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(77, 50, 74, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(78, 21, 7, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(79, 83, 34, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(80, 76, 43, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(81, 52, 70, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(82, 62, 70, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(83, 51, 55, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(84, 14, 82, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(85, 43, 69, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(86, 60, 34, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(87, 98, 72, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(88, 28, 91, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(89, 89, 84, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(90, 24, 88, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(91, 63, 54, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(92, 4, 57, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(93, 2, 12, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(94, 4, 73, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(95, 17, 7, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(96, 14, 66, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(97, 16, 60, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(98, 11, 2, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(99, 96, 38, '2024-04-14 23:37:27', '2024-04-14 23:37:27'),
+(100, 16, 74, '2024-04-14 23:37:27', '2024-04-14 23:37:27');
+
 --
 -- Índices para tablas volcadas
 --
@@ -1909,6 +2274,28 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`identificador`);
+
+--
+-- Indices de la tabla `usuario_alumno`
+--
+ALTER TABLE `usuario_alumno`
+  ADD PRIMARY KEY (`identificador`),
+  ADD KEY `usuario_alumno_identificador_usuario_foreign` (`identificador_Usuario`),
+  ADD KEY `usuario_alumno_identificador_alumno_foreign` (`identificador_Alumno`);
+
+--
+-- Indices de la tabla `usuario_docente`
+--
+ALTER TABLE `usuario_docente`
+  ADD PRIMARY KEY (`identificador`),
+  ADD KEY `usuario_docente_identificador_usuario_foreign` (`identificador_Usuario`),
+  ADD KEY `usuario_docente_identificador_docente_foreign` (`identificador_Docente`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -1988,7 +2375,7 @@ ALTER TABLE `materia_docente`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -2013,6 +2400,24 @@ ALTER TABLE `unidad`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `identificador` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario_alumno`
+--
+ALTER TABLE `usuario_alumno`
+  MODIFY `identificador` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario_docente`
+--
+ALTER TABLE `usuario_docente`
+  MODIFY `identificador` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- Restricciones para tablas volcadas
@@ -2071,6 +2476,20 @@ ALTER TABLE `tema`
 --
 ALTER TABLE `unidad`
   ADD CONSTRAINT `unidad_identificador_materia_foreign` FOREIGN KEY (`identificador_Materia`) REFERENCES `materia` (`identificador`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `usuario_alumno`
+--
+ALTER TABLE `usuario_alumno`
+  ADD CONSTRAINT `usuario_alumno_identificador_alumno_foreign` FOREIGN KEY (`identificador_Alumno`) REFERENCES `alumno` (`identificador`) ON DELETE CASCADE,
+  ADD CONSTRAINT `usuario_alumno_identificador_usuario_foreign` FOREIGN KEY (`identificador_Usuario`) REFERENCES `usuario` (`identificador`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `usuario_docente`
+--
+ALTER TABLE `usuario_docente`
+  ADD CONSTRAINT `usuario_docente_identificador_docente_foreign` FOREIGN KEY (`identificador_Docente`) REFERENCES `docente` (`identificador`) ON DELETE CASCADE,
+  ADD CONSTRAINT `usuario_docente_identificador_usuario_foreign` FOREIGN KEY (`identificador_Usuario`) REFERENCES `usuario` (`identificador`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -22,3 +22,5 @@ Route::get('/materia/index',[Materia::class, 'index'])->name('materia.index');
 
 Route::get('/materia/instrumentacion/ver/{idMateria}/{idDocente}', [Materia::class, 'instrumentacion_ver'])->name('materia.instrumentacion.ver');
 
+Route::get('/materia/agregar/datosMateria',[Materia::class, 'agregarDatosMateria'])->name('materia.agregar.datosMateria');
+Route::post('/materia/agregar/datosUnidad/{numeroUnidad}',[Materia::class, 'agregarDatosUnidad'])->name('materia.agregar.datosUnidad');

@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DocenteModel extends Model
+class Usuario_AlumnoModel extends Model
 {
     use HasFactory;
     
     protected $primaryKey = 'identificador';
 
-    protected $table = 'docente';
+    protected $table = 'usuario_alumno';
+
     protected $fillable = [
-        'primerNombre',
-        'segundoNombre',
-        'apellidoPaterno',
-        'apellidoMaterno',
-        'fechaContratacion',
-        'experiencia',
+        'identificador_Usuario',
+        'identificador_Alumno',
     ];
 }

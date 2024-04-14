@@ -29,9 +29,6 @@ class AlumnoModelFactory extends Factory
             'promedioGeneral' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
             'fechaIngreso' => $fechaIngreso,
             'fechaEgreso' => $fechaEgreso,
-            'foto' => $this->faker->imageUrl($width = 640, $height = 480),
-            'usuario' => $this->faker->userName(),
-            'contrasenia' => $this->faker->password(),
         ];
     }
 }
