@@ -39,13 +39,14 @@
                 <h3>- DATOS DE LA MATERIA -</h3>
             </center>
         </div>
-    
+
         <div style="height: 50px;"></div>
 
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosMateria" action="{{ route('materia.agregar.datosUnidad', ['numeroUnidad' => 1]) }}" method="POST">
+                <form id="formularioDatosMateria"
+                    action="{{ route('materia.agregar.datosUnidad', ['numeroUnidad' => 1]) }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -60,15 +61,16 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="intencionDidactica" class="form-label">Intención Didáctica:</label>
-                            <input type="text" class="form-control" id="intencionDidactica" name="intencionDidactica">
+                            <input type="text" class="form-control" id="intencionDidactica"
+                                name="intencionDidactica">
                         </div>
                     </div>
 
-                    
+
                     <div class="row mb-3">
                         <div class="col-md-1">
                         </div>
-                
+
                         <div class="col-md-2">
                             <label for="unidades" class="form-label">Número de unidades:</label>
                             <input type="number" class="form-control" id="unidades" name="unidades">
@@ -87,7 +89,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="calificacionAprobatoria" class="form-label">Calificación aprobatoria:</label>
-                            <input type="number" class="form-control" id="calificacionAprobatoria" name="calificacionAprobatoria">
+                            <input type="number" class="form-control" id="calificacionAprobatoria"
+                                name="calificacionAprobatoria">
                         </div>
                     </div>
                 </form>
@@ -99,23 +102,27 @@
         <div class="row">
             <div class="col-6">
                 <center>
-                    <a href="#" class="btn btn-primary me-2">
-                        <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="40px">
-                        REGRESAR
-                    </a>
+                    <button class="btn btn-primary me-2" onclick="goBack()"
+                        style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
+                        <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
+                            width="40px">
+                        <strong>REGRESAR</strong>
+                    </button>
                 </center>
             </div>
             <div class="col-6">
                 <center>
-                    <button type="button" class="btn btn-primary" onclick="submitForm()">
-                        CONTINUAR
-                        <img src="https://cdn-icons-png.flaticon.com/128/3031/3031716.png" alt="flechaContinuar"  width="40px">
+                    <button type="button" class="btn btn-primary" onclick="submitForm()"
+                        style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
+                        <strong> CONTINUAR</strong>
+                        <img src="https://cdn-icons-png.flaticon.com/128/3031/3031716.png" alt="flechaContinuar"
+                            width="40px">
                     </button>
                 </center>
             </div>
         </div>
     </div>
-    
+
 </body>
 
 <div style="height: 50px;"></div>
@@ -127,4 +134,5 @@
         document.getElementById("formularioDatosMateria").submit();
     }
 </script>
+
 </html>

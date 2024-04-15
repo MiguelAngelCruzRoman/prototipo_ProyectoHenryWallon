@@ -28,20 +28,6 @@
 </head>
 
 <body>
-
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        echo "<div class='card card-style'>";
-        echo "<div class='card-body'>";
-        echo "<h5 class='card-title'>Datos del Formulario</h5>";
-        echo '<p>' . print_r($_POST) . '</p>';
-        echo '</div>';
-        echo '</div>';
-    }
-    ?>
-
-
     @include('general.navbar')
 
 
@@ -69,15 +55,15 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="nombreUnidad_<?php echo $numeroUnidad - 1; ?>" class="form-label">Nombre de la
+                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_nombre" class="form-label">Nombre de la
                                 unidad:</label>
-                            <input type="text" class="form-control" id="nombreUnidad_<?php echo $numeroUnidad - 1; ?>"
-                                name="nombreUnidad_<?php echo $numeroUnidad - 1; ?>">
+                            <input type="text" class="form-control" id="Unidad_<?php echo $numeroUnidad - 1; ?>_nombre"
+                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_nombre">
                         </div>
                         <div class="col-md-6">
-                            <label for="competencia_<?php echo $numeroUnidad - 1; ?>" class="form-label">Competencia:</label>
-                            <input type="text" class="form-control" id="competencia_<?php echo $numeroUnidad - 1; ?>"
-                                name="competencia_<?php echo $numeroUnidad - 1; ?>">
+                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_competencia" class="form-label">Competencia:</label>
+                            <input type="text" class="form-control" id="Unidad_<?php echo $numeroUnidad - 1; ?>_competencia"
+                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_competencia">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -85,26 +71,26 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_porcentajeCalificacionFinal_<?php echo $numeroUnidad - 1; ?>"
+                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_porcentajeCalificacionFinal"
                                 class="form-label">Porcentaje de calificación
                                 final:</label>
                             <input type="number" class="form-control"
-                                id="Unidad_<?php echo $numeroUnidad - 1; ?>_porcentajeCalificacionFinal_<?php echo $numeroUnidad - 1; ?>"
-                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_porcentajeCalificacionFinal_<?php echo $numeroUnidad - 1; ?>">
+                                id="Unidad_<?php echo $numeroUnidad - 1; ?>_porcentajeCalificacionFinal"
+                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_porcentajeCalificacionFinal">
                         </div>
                         <div class="col-md-2">
-                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMaxima_<?php echo $numeroUnidad - 1; ?>"
-                                class="form-label">Calificación máxima:</label>
+                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMaxima" class="form-label">Calificación
+                                máxima:</label>
                             <input type="number" class="form-control"
-                                id="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMaxima_<?php echo $numeroUnidad - 1; ?>"
-                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMaxima_<?php echo $numeroUnidad - 1; ?>">
+                                id="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMaxima"
+                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMaxima">
                         </div>
                         <div class="col-md-2">
-                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMinima_<?php echo $numeroUnidad - 1; ?>"
-                                class="form-label">Calificación mínima:</label>
+                            <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMinima" class="form-label">Calificación
+                                mínima:</label>
                             <input type="number" class="form-control"
-                                id="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMinima_<?php echo $numeroUnidad - 1; ?>"
-                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMinima_<?php echo $numeroUnidad - 1; ?>">
+                                id="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMinima"
+                                name="Unidad_<?php echo $numeroUnidad - 1; ?>_calificacionMinima">
                         </div>
 
                     </div>
@@ -145,11 +131,11 @@
                             <div class="col-md-1">
                             </div>
                             <div class="col-md-10">
-                                <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>"
+                                <label for="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_nombre"
                                     class="form-label">Nombre del tema:</label>
                                 <input type="text" class="form-control"
-                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>"
-                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>">
+                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_nombre"
+                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_nombre">
                             </div>
                         </div>
 
@@ -181,19 +167,19 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <label
-                                                    for="Unidad_<?php echo $numeroUnidad - 1; ?>_subtema_<?php echo $i; ?>_<?php echo $j; ?>"
+                                                    for="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_nombre"
                                                     class="form-label">Nombre del subtema:</label>
                                                 <input type="text" class="form-control"
-                                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_subtema_<?php echo $i; ?>_<?php echo $j; ?>"
-                                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_subtema_<?php echo $i; ?>_<?php echo $j; ?>">
+                                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_nombre"
+                                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_nombre">
                                             </div>
                                             <div class="col-md-2">
                                                 <label
-                                                    for="Unidad_<?php echo $numeroUnidad - 1; ?>_duracion_<?php echo $i; ?>_<?php echo $j; ?>"
+                                                    for="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_duracion"
                                                     class="form-label">Duración: (en horas)</label>
                                                 <input type="number" class="form-control"
-                                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_duracion_<?php echo $i; ?>_<?php echo $j; ?>"
-                                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_duracion_<?php echo $i; ?>_<?php echo $j; ?>">
+                                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_duracion"
+                                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_duracion">
                                             </div>
                                         </div>
 
@@ -202,11 +188,11 @@
                                             </div>
                                             <div class="col-md-10">
                                                 <label
-                                                    for="Unidad_<?php echo $numeroUnidad - 1; ?>_actividad_<?php echo $i; ?>_<?php echo $j; ?>"
+                                                    for="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_actividad"
                                                     class="form-label">Actividad:</label>
                                                 <input type="text" class="form-control"
-                                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_actividad_<?php echo $i; ?>_<?php echo $j; ?>"
-                                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_actividad_<?php echo $i; ?>_<?php echo $j; ?>">
+                                                    id="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_actividad"
+                                                    name="Unidad_<?php echo $numeroUnidad - 1; ?>_tema_<?php echo $i; ?>_subtema_<?php echo $j; ?>_actividad">
                                             </div>
                                         </div>
                                     </div>
@@ -231,17 +217,19 @@
         <div class="row">
             <div class="col-6">
                 <center>
-                    <button class="btn btn-primary me-2" onclick="goBack()">
+                    <button class="btn btn-primary me-2" onclick="goBack()"
+                        style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
                         <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
                             width="40px">
-                        REGRESAR
+                        <strong>REGRESAR</strong>
                     </button>
                 </center>
             </div>
             <div class="col-6">
                 <center>
-                    <button type="button" class="btn btn-primary" onclick="submitForm()">
-                        CONTINUAR
+                    <button type="button" class="btn btn-primary" onclick="submitForm()"
+                        style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
+                        <strong>CONTINUAR</strong>
                         <img src="https://cdn-icons-png.flaticon.com/128/3031/3031716.png" alt="flechaContinuar"
                             width="40px">
                     </button>
