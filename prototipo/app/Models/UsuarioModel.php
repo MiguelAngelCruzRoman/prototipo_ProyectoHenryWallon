@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class UsuarioModel extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'identificador';
+    protected $primaryKey = 'id';
 
     protected $table = 'usuario';
     protected $fillable = [
-        'usuario',
+        'primerNombre',
+        'segundoNombre',
+        'apellidoPaterno',
+        'apellidoMaterno',
+        'nombreUsuario',
         'contrasenia',
-        'foto',
+        'correo',
         'rol',
+        'foto',
+        'estatus',
     ];
 }

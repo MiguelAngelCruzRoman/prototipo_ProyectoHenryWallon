@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DocenteModel extends Model
+class GrupoModel extends Model
 {
     use HasFactory;
-    
     protected $primaryKey = 'id';
 
-    protected $table = 'docente';
-
+    protected $table = 'grupo';
     protected $foreignKey = [
-        'id_Usuario'];
+        'id_Asignatura_Docente',
+        'id_Periodo'];
     protected $fillable = [
-        'id_Usuario',
-        'fechaContratacion',
-        'fechaDimision',
-        'estatus',
+        'id_Asignatura_Docente',
+        'id_Periodo',
+        'semestre',
     ];
 }

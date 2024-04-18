@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UnidadModel extends Model
+class BloqueModel extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'identificador';
+    protected $primaryKey = 'id';
 
-    protected $table = 'unidad';
+    protected $table = 'bloque';
 
     protected $fillable = [
-        'identificador_Materia',
+        'id_Asignatura',
         'numero',
         'competencia',
         'calificacionMaxima',

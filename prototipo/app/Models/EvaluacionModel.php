@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ActividadModel extends Model
+class EvaluacionModel extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'identificador';
+    protected $primaryKey = 'id';
 
-    protected $table = 'actividad';
+    protected $table = 'evaluacion';
     protected $fillable = [
-        'competenciaDesarrollada',
-        'tipoActividad',
         'tipoEvaluacion',
+        'descripcionEvaluacion',
+        'archivoEjemplo',
     ];
 }

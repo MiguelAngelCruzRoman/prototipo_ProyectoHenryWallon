@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class AlumnoModel extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'identificador';
+    protected $primaryKey = 'id';
 
     protected $table = 'alumno';
+    protected $foreignKey = [
+        'id_Usuario'];
     protected $fillable = [
-        'primerNombre',
-        'segundoNombre',
-        'apellidoPaterno',
-        'apellidoMaterno',
+        'id_Usuario',
         'semestre',
-        'promedioGeneral',
         'fechaIngreso',
         'fechaEgreso',
+        'estatus'
     ];
 }

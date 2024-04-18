@@ -15,7 +15,7 @@ use App\Http\Controllers\Materia;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/materia/index',[Materia::class, 'index'])->name('materia.index');
