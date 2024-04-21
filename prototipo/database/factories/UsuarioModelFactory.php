@@ -16,13 +16,18 @@ class UsuarioModelFactory extends Factory
      */
     public function definition(): array
     {
-        $roles = ['alumno','administrador','docente'];
 
         return [
-            'usuario' => $this->faker->userName(),
+            'primerNombre' => $this->faker->firstName,
+            'segundoNombre' =>  $this->faker->randomElement([$this->faker->optional()->firstName, null]),
+            'apellidoPaterno' => $this->faker->lastName,
+            'apellidoMaterno' => $this->faker->lastName,
+            'nombreUsuario' => $this->faker->userName(),
             'contrasenia' => $this->faker->password(),
-            'foto' => $this->faker->imageUrl($width = 640, $height = 480),
-            'rol'=> $this->faker->randomElement($roles)
+            'correo' => $this->faker->unique()->safeEmail(),
+            'rol' => $this->faker->randomElement(['administrador', 'alumno','docente']),
+            'foto' => $this->faker->imageUrl(),
+            'estatus' => $this->faker->randomElement([0,1]),
         ];
     }
 }

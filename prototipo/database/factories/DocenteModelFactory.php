@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\UsuarioModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,15 +17,16 @@ class DocenteModelFactory extends Factory
      */
     public function definition(): array
     {
+        $usuariosDocente = UsuarioModel::where('rol', 'docente')->pluck('id')->toArray();
 
+        $fechaContratacion = $this->faker->dateTimeBetween('-20 years', 'now');        
+        $fechaDimision = $this->faker->dateTimeBetween($fechaContratacion, '+3 years');
 
         return [
-            'primerNombre' => $this->faker->firstName(),
-            'segundoNombre' => $this->faker->optional()->firstName(),
-            'apellidoPaterno' => $this->faker->lastName(),
-            'apellidoMaterno' => $this->faker->lastName(),
-            'fechaIngreso' => $this->faker->dateTimeBetween('-20 years', 'now'),
-            'experiencia' => $this->faker->numberBetween(5, 30),
+            'id_Usuario' => $this->faker->randomElement($usuariosDocente),
+            'fechaContratacion' => $fechaContratacion,
+            'fechaDimision' => $this->faker->randomElement([$fechaDimision, null]),
+            'estatus' => $this->faker->randomElement([0, 1]),
         ];
     }
 }

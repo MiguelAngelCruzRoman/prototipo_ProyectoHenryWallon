@@ -12,8 +12,8 @@ class EvaluacionModel extends Model
 
     protected $table = 'evaluacion';
     protected $fillable = [
+        'actividadAprendizaje',
         'tipoEvaluacion',
-        'descripcionEvaluacion',
         'archivoEjemplo',
     ];
 }

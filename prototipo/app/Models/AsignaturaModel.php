@@ -17,9 +17,10 @@ class AsignaturaModel extends Model
         'intencionDidactica',
         'turno',
         'semestre',
+        'componente',
         'creditos',
-        'horasPracticas',
-        'horasTeoricas',
+        'horasDocente',
+        'horasEstudioIndependiente',
         'calificacionAprobatoria',
         'imagen',
         'estatus'

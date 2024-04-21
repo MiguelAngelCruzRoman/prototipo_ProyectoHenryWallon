@@ -11,11 +11,18 @@ class BloqueModel extends Model
     protected $primaryKey = 'id';
 
     protected $table = 'bloque';
+    protected $foreignKey = [
+        'id_Asignatura'];
 
     protected $fillable = [
         'id_Asignatura',
+        'nombre',
         'numero',
-        'competencia',
+        'proposito',
+        'eje',
+        'componente',
+        'contenidoCentral',
+        'productoIntegrador',
         'calificacionMaxima',
         'calificacionMinima',
         'porcentajeCalificacionFinal',
