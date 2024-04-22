@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Asignatura;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Materia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +18,10 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/materia/index',[Materia::class, 'index'])->name('materia.index');
+Route::get('/asignatura/index',[Asignatura::class, 'index'])->name('asignatura.index');
 
-Route::get('/materia/instrumentacion/ver/{idMateria}/{idDocente}', [Materia::class, 'instrumentacion_ver'])->name('materia.instrumentacion.ver');
+Route::get('/asignatura/planeacion/ver/{idAsignatura}/{idDocente}', [Asignatura::class, 'planeacion_ver'])->name('asignatura.planeacion.ver');
 
-Route::get('/materia/agregar/datosMateria',[Materia::class, 'agregarDatosMateria'])->name('materia.agregar.datosMateria');
-Route::post('/materia/agregar/datosUnidad/{numeroUnidad}',[Materia::class, 'agregarDatosUnidad'])->name('materia.agregar.datosUnidad');
-Route::post('/materia/agregar/insert',[Materia::class, 'insertDatos'])->name('materia.agregar.insert');
+Route::get('/asignatura/agregar/datosAsignatura',[Asignatura::class, 'agregarDatosAsignatura'])->name('asignatura.agregar.datosAsignatura');
+Route::post('/asignatura/agregar/datosBloque/{numeroBloque}',[Asignatura::class, 'agregarDatosBloque'])->name('asignatura.agregar.datosBloque');
+Route::post('/asignatura/agregar/insert',[Asignatura::class, 'insertDatos'])->name('asignatura.agregar.insert');
