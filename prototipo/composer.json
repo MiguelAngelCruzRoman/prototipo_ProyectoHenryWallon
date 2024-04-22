@@ -10,7 +10,8 @@
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "infyomlabs/laravel-ui-stisla": "^2.0"
+        "infyomlabs/laravel-ui-stisla": "^2.0",
+        "laravel/breeze": "^2.0"
             
         
         
