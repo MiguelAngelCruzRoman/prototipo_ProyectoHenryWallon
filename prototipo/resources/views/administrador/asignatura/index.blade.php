@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Materias</title>
+    <title>Asignaturas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
@@ -67,44 +67,44 @@
     <div class="container">
         <div class="row">
             <center>
-                <h1><strong>MATERIAS</strong></h1>
+                <h1><strong>ASIGNATURAS</strong></h1>
                 <h3>- IDENTIFICADOR -</h3>
             </center>
         </div>
 
         <div class="row">
-            @foreach ($materias as $materia)
+            @foreach ($asignaturas as $asignatura)
                 <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
                     <div class="text-center position-relative card-style">
-                        <img src="{{ $materia->imagen }}" alt="" class="img-fluid card-img-rectangular">
+                        <img src="{{ $asignatura->imagen }}" alt="" class="img-fluid card-img-rectangular">
                         <div class="p-4">
 
                             <div class="card-body">
-                                <img src="{{ $materia->foto }}" class="circular-img" alt="...">
+                                <img src="{{ $asignatura->foto }}" class="circular-img" alt="...">
                             </div>
 
-                            <h3><strong>{{ $materia->nombre }} </strong></h3>
+                            <h3><strong>{{ $asignatura->nombre }} </strong></h3>
 
 
                             <div class="card-body">
                                 <h6 class="card-title">
-                                    Docente: {{ $materia->primerNombre }}
-                                    @if ($materia->segundoNombre)
-                                        {{ $materia->segundoNombre }}
+                                    Docente: {{ $asignatura->primerNombre }}
+                                    @if ($asignatura->segundoNombre)
+                                        {{ $asignatura->segundoNombre }}
                                     @endif
-                                    {{ $materia->apellidoPaterno }} {{ $materia->apellidoMaterno }}
+                                    {{ $asignatura->apellidoPaterno }} {{ $asignatura->apellidoMaterno }}
                                 </h6>
                             </div>
 
                             <div class="btn-group">
-                                <a href="{{ route('materia.instrumentacion.ver', ['idMateria' => $materia->identificador_Materia, 'idDocente' => $materia->identificador_Docente]) }}"
+                                <a href="{{ route('asignatura.planeacion.ver', ['idAsignatura' => $asignatura->id_asignatura, 'idDocente' => $asignatura->id_docente]) }}"
                                     class="btn active">
-                                    Instrumentación
+                                    Planeación
                                 </a>
-                                <a href="{{ route('materia.index') }}" class="btn active">
+                                <a href="{{ route('asignatura.index') }}" class="btn active">
                                     Calificaciones
                                 </a>
-                                <a href="{{ route('materia.index') }}" class="btn active">
+                                <a href="{{ route('asignatura.index') }}" class="btn active">
                                     Asistencias
                                 </a>
                             </div>
