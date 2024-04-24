@@ -45,7 +45,7 @@
         <div class="card card-style">
             <div class="card-body">
                 <form id="formularioDatosUnidad"
-                    action="{{ route('materia.agregar.datosUnidad', ['numeroUnidad' => $numeroUnidad]) }}"
+                    action="{{ route('asignatura.agregar.datosBloque', ['numeroUnidad' => $numeroUnidad]) }}"
                     method="POST">
                     @csrf
 

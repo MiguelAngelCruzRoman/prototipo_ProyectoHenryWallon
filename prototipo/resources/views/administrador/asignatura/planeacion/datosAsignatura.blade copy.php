@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregar Datos de Materia</title>
+    <title>Agregar Datos de Asignatura</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
@@ -35,8 +35,8 @@
     <div class="container">
         <div class="row">
             <center>
-                <h1><strong>REGISTRAR INSTRUMENTACIÓN</strong></h1>
-                <h3>- DATOS DE LA MATERIA -</h3>
+                <h1><strong>REGISTRAR PLANEACIÓN</strong></h1>
+                <h3>- DATOS DE LA ASIGNATURA -</h3>
             </center>
         </div>
 
@@ -45,13 +45,13 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosMateria"
-                    action="{{ route('materia.agregar.datosUnidad', ['numeroUnidad' => 1]) }}" method="POST">
+                <form id="formularioDatosAsignatura"
+                    action="{{ route('asignatura.agregar.datosBloque', ['numeroBloque' => 1]) }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="materia" class="form-label">Materia:</label>
-                            <input type="text" class="form-control" id="materia" name="materia">
+                            <label for="nombre" class="form-label">Nombre de asignatura:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
                         </div>
                         <div class="col-md-6">
                             <label for="objetivo" class="form-label">Objetivo:</label>
@@ -68,26 +68,24 @@
 
 
                     <div class="row mb-3">
-                        <div class="col-md-1">
-                        </div>
 
                         <div class="col-md-2">
-                            <label for="unidades" class="form-label">Número de unidades:</label>
-                            <input type="number" class="form-control" id="unidades" name="unidades">
+                            <label for="bloques" class="form-label">Número de bloques:</label>
+                            <input type="number" class="form-control" id="bloques" name="bloques">
                         </div>
                         <div class="col-md-2">
                             <label for="creditos" class="form-label">Créditos:</label>
                             <input type="number" class="form-control" id="creditos" name="creditos">
                         </div>
                         <div class="col-md-2">
-                            <label for="horasPracticas" class="form-label">Horas prácticas:</label>
-                            <input type="number" class="form-control" id="horasPracticas" name="horasPracticas">
+                            <label for="horasDocente" class="form-label">Horas con docente:</label>
+                            <input type="number" class="form-control" id="horasDocente" name="horasDocente">
                         </div>
-                        <div class="col-md-2">
-                            <label for="horasTeoricas" class="form-label">Horas teóricas:</label>
-                            <input type="text" class="form-control" id="horasTeoricas" name="horasTeoricas">
+                        <div class="col-md-3">
+                            <label for="horasAprendizajeAutodidacta" class="form-label">Horas de aprendizaje autodidácta:</label>
+                            <input type="text" class="form-control" id="horasAprendizajeAutodidacta" name="horasAprendizajeAutodidacta">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label for="calificacionAprobatoria" class="form-label">Calificación aprobatoria:</label>
                             <input type="number" class="form-control" id="calificacionAprobatoria"
                                 name="calificacionAprobatoria">
@@ -131,7 +129,7 @@
 
 <script>
     function submitForm() {
-        document.getElementById("formularioDatosMateria").submit();
+        document.getElementById("formularioDatosAsignatura").submit();
     }
 </script>
 

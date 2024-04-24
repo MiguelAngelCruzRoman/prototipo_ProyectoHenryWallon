@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap");
+
+:root {
+  --primary-color: #0b0e1f;
+  --secondary-color: white;
+  --third-color: #e5e5e5;
+  --primary-FZ: 3.2rem;
+  --secondary-FZ: 1.6rem;
+  --third-FZ: 1.2rem;
+  --primary-font-weight: 800;
+  --secondary-font-weight: 600;
+  --third-font-weight: 400;
+  --border-radius: 0.6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login {
+  font-family: "Literata", serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__image-school {
+  background-color: var(--primary-color);
+  background-image: url('/school.svg');
+  background-position: left;
+  background-repeat: no-repeat;
+  flex: 1;
+  height: 100vh;
+}
+
+.login__form-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  padding: 2rem;
+}
+
+.login__form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login__title {
+  font-weight: var(--primary-font-weight);
+  font-size: var(--primary-FZ);
+  text-align: center;
+}
+
+.login__title::after {
+  content: "";
+  display: block;
+  width: 75%;
+  height: 2px;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  margin: 1rem auto;
+}
+
+.login__form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+
+.login__item {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.login__label {
+  font-weight: var(--secondary-font-weight);
+  font-size: var(--secondary-FZ);
+}
+
+.login__input {
+  font-size: var(--third-FZ);
+  font-weight: var(--third-font-weight);
+  padding: 0.8rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  background-color: var(--third-color);
+}
+
+.login__input:focus {
+  background-color: #e2e2e2;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.login__button {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  font-size: var(--secondary-FZ);
+  font-weight: var(--secondary-font-weight);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  border: none;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.login__button:hover {
+  background-color: #303653;
+  cursor: pointer;
+}
+
+.login__button:active {
+  transform: scale(0.9);
+}
+
+.forgot-password-button {
+  padding: 0.5rem 1rem;
+  font-size: var(--secondary-FZ);
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #6c757d;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.forgot-password-button:hover {
+  background-color: #565e64;
+}

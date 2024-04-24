@@ -9,53 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
-        .circular-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid black;
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-        }
 
-        .card-img-rectangular {
-            width: 100%;
-            height: 300px;
-            border-radius: 15px;
-            border-bottom: 4px solid #000000;
-            border-top: 1px solid #000000;
-            object-fit: cover;
-        }
-
-        .card-style {
-            border: 4px solid #000000;
-            background-color: #CDC6C6;
-            border-radius: 20px;
-            height: 550px;
-        }
-
-        .btn-group {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .btn {
-            flex: 1;
-            background-color: #CA5A5A;
-            border: 4px solid #A60303;
-            border-radius: 10px;
-            color: white;
-            padding: 3px;
-            margin: 0 5px;
-        }
     </style>
 </head>
 
@@ -68,50 +22,79 @@
         <div class="row">
             <center>
                 <h1><strong>ASIGNATURAS</strong></h1>
-                <h3>- IDENTIFICADOR -</h3>
             </center>
         </div>
 
-        <div class="row">
-            @foreach ($asignaturas as $asignatura)
-                <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
-                    <div class="text-center position-relative card-style">
-                        <img src="{{ $asignatura->imagen }}" alt="" class="img-fluid card-img-rectangular">
-                        <div class="p-4">
-
-                            <div class="card-body">
-                                <img src="{{ $asignatura->foto }}" class="circular-img" alt="...">
-                            </div>
-
-                            <h3><strong>{{ $asignatura->nombre }} </strong></h3>
-
-
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    Docente: {{ $asignatura->primerNombre }}
-                                    @if ($asignatura->segundoNombre)
-                                        {{ $asignatura->segundoNombre }}
-                                    @endif
-                                    {{ $asignatura->apellidoPaterno }} {{ $asignatura->apellidoMaterno }}
-                                </h6>
-                            </div>
-
-                            <div class="btn-group">
-                                <a href="{{ route('asignatura.planeacion.ver', ['idAsignatura' => $asignatura->id_asignatura, 'idDocente' => $asignatura->id_docente]) }}"
-                                    class="btn active">
-                                    Planeación
-                                </a>
-                                <a href="{{ route('asignatura.index') }}" class="btn active">
-                                    Calificaciones
-                                </a>
-                                <a href="{{ route('asignatura.index') }}" class="btn active">
-                                    Asistencias
-                                </a>
-                            </div>
-                        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form action="{{ route('asignatura.busqueda')}}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar asignatura por nombre, componente o semestre" name="valorBusqueda">
+                        <button class="btn" style="background-color:#336A7B; color:white" type="submit">Buscar</button>
                     </div>
-                </div>
-            @endforeach
+                </form>
+            </div>
+
+            <div class="col-md-4">
+            </div>
+
+            <div class="col-md-2">
+                <button onclick="window.location='{{ route('asignatura.agregar.datosAsignatura') }}'" class="btn btn-success">
+                    <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px"> Agregar
+                </button>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>COMPONENTE</th>
+                        <th>SEMESTRE Y TURNO</th>
+                        <th>HORAS DE ESTUDIO</th>
+                        <th colspan="2">OPERACIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($asignaturas as $asignatura)
+                    <tr>
+                        <th scope="row">{{$asignatura->id}}</th>
+                        <td>{{$asignatura->nombre}}</td>
+                        <td>{{$asignatura->componente}}</td>
+                        <td>{{$asignatura->semestre}} ({{$asignatura->turno}})</td>
+                        <td>
+                            <ul>
+                                <li>Con docente: {{$asignatura->horasDocente}}</li>
+                                <li>Independiente: {{$asignatura->horasEstudioIndependiente}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button onclick="window.location='{{ route('asignatura.ver', ['idAsignatura' => $asignatura->id]) }}'" class="btn btn-primary">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/2874/2874802.png" alt="" height="20px"> Ver
+                                </button>
+                                <button onclick="window.location='{{ route('asignatura.editar.datosAsignatura', ['idAsignatura' => $asignatura->id]) }}'" class="btn btn-warning">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt="" height="20px"> Editar
+                                </button>
+                                <button onclick="window.location='{{ route('asignatura.eliminar', ['idAsignatura' => $asignatura->id]) }}'" class="btn btn-danger">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt="" height="20px"> Eliminar
+                                </button>
+                            </div>                            
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            
+        </div>
+
+        <div class="col-2">
+            @if($asignaturas->total() > 10)
+            {{$asignaturas->links()}}
+            @endif
         </div>
     </div>
 </body>
