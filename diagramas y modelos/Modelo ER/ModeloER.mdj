@@ -38,7 +38,7 @@
 									"font": "Arial;13;1",
 									"left": 328,
 									"top": 357,
-									"width": 242.849609375,
+									"width": 246.912109375,
 									"height": 13,
 									"text": "Alumno"
 								},
@@ -64,7 +64,7 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 380,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										},
 										{
@@ -79,7 +79,7 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 395,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										},
 										{
@@ -94,7 +94,7 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 410,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										},
 										{
@@ -109,7 +109,7 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 425,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										},
 										{
@@ -124,7 +124,7 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 440,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										},
 										{
@@ -139,7 +139,7 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 455,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										},
 										{
@@ -154,21 +154,21 @@
 											"font": "Arial;13;0",
 											"left": 333,
 											"top": 470,
-											"width": 232.849609375,
+											"width": 236.912109375,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 328,
 									"top": 375,
-									"width": 242.849609375,
+									"width": 246.912109375,
 									"height": 113
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 328,
 							"top": 352,
-							"width": 242.849609375,
+							"width": 246.912109375,
 							"height": 136,
 							"nameLabel": {
 								"$ref": "AAAAAAGOm3rRC0YmO2E="
@@ -196,7 +196,7 @@
 									"font": "Arial;13;1",
 									"left": 1488,
 									"top": 365,
-									"width": 306.39599609375,
+									"width": 313.6259765625,
 									"height": 13,
 									"text": "Asignatura"
 								},
@@ -222,7 +222,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 388,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -237,7 +237,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 403,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -252,7 +252,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 418,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -267,7 +267,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 433,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -282,7 +282,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 448,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -297,7 +297,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 463,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -312,7 +312,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 478,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -327,7 +327,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 493,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -342,7 +342,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 508,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -357,7 +357,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 523,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -372,7 +372,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 538,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -387,7 +387,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 553,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										},
 										{
@@ -402,21 +402,21 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 568,
-											"width": 296.39599609375,
+											"width": 303.6259765625,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1488,
 									"top": 383,
-									"width": 306.39599609375,
+									"width": 313.6259765625,
 									"height": 203
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 1488,
 							"top": 360,
-							"width": 306.39599609375,
+							"width": 313.6259765625,
 							"height": 226,
 							"nameLabel": {
 								"$ref": "AAAAAAGOm36PukZx2SQ="
@@ -444,7 +444,7 @@
 									"font": "Arial;13;1",
 									"left": 904,
 									"top": 109,
-									"width": 249.34326171875,
+									"width": 254.38330078125,
 									"height": 13,
 									"text": "Docente"
 								},
@@ -470,7 +470,7 @@
 											"font": "Arial;13;0",
 											"left": 909,
 											"top": 132,
-											"width": 239.34326171875,
+											"width": 244.38330078125,
 											"height": 13
 										},
 										{
@@ -485,7 +485,7 @@
 											"font": "Arial;13;0",
 											"left": 909,
 											"top": 147,
-											"width": 239.34326171875,
+											"width": 244.38330078125,
 											"height": 13
 										},
 										{
@@ -500,7 +500,7 @@
 											"font": "Arial;13;0",
 											"left": 909,
 											"top": 162,
-											"width": 239.34326171875,
+											"width": 244.38330078125,
 											"height": 13
 										},
 										{
@@ -515,7 +515,7 @@
 											"font": "Arial;13;0",
 											"left": 909,
 											"top": 177,
-											"width": 239.34326171875,
+											"width": 244.38330078125,
 											"height": 13
 										},
 										{
@@ -530,21 +530,21 @@
 											"font": "Arial;13;0",
 											"left": 909,
 											"top": 192,
-											"width": 239.34326171875,
+											"width": 244.38330078125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 904,
 									"top": 127,
-									"width": 249.34326171875,
+									"width": 254.38330078125,
 									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 904,
 							"top": 104,
-							"width": 249.34326171875,
+							"width": 254.38330078125,
 							"height": 106,
 							"nameLabel": {
 								"$ref": "AAAAAAGOm4ues0bH7g4="
@@ -880,7 +880,7 @@
 										"$ref": "AAAAAAGOm5r/xkfTU38="
 									},
 									"font": "Arial;13;0",
-									"left": 1177,
+									"left": 1182,
 									"top": 135,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -915,7 +915,7 @@
 								"$ref": "AAAAAAGOm4ues0bGv70="
 							},
 							"lineStyle": 2,
-							"points": "1152:156;1280:156;1280:352;1161:352",
+							"points": "1157:156;1280:156;1280:352;1161:352",
 							"nameLabel": {
 								"$ref": "AAAAAAGOm5r/xkfUdUc="
 							},
@@ -2109,7 +2109,7 @@
 										"$ref": "AAAAAAGO46vggZ6TL3c="
 									},
 									"font": "Arial;13;0",
-									"left": 595,
+									"left": 599,
 									"top": 444,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -2127,7 +2127,7 @@
 								"$ref": "AAAAAAGO3ZcHsMrGIuw="
 							},
 							"lineStyle": 2,
-							"points": "621:321;621:436;570:436",
+							"points": "621:321;621:436;574:436",
 							"nameLabel": {
 								"$ref": "AAAAAAGO46vggZ6Uf/E="
 							},
@@ -2854,7 +2854,7 @@
 									"font": "Arial;13;1",
 									"left": 352,
 									"top": 629,
-									"width": 173.00634765625,
+									"width": 202.376953125,
 									"height": 13,
 									"text": "Grupo_Alumno"
 								},
@@ -2880,7 +2880,7 @@
 											"font": "Arial;13;0",
 											"left": 357,
 											"top": 652,
-											"width": 163.00634765625,
+											"width": 192.376953125,
 											"height": 13
 										},
 										{
@@ -2895,7 +2895,7 @@
 											"font": "Arial;13;0",
 											"left": 357,
 											"top": 667,
-											"width": 163.00634765625,
+											"width": 192.376953125,
 											"height": 13
 										},
 										{
@@ -2910,21 +2910,21 @@
 											"font": "Arial;13;0",
 											"left": 357,
 											"top": 682,
-											"width": 163.00634765625,
+											"width": 192.376953125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 352,
 									"top": 647,
-									"width": 173.00634765625,
+									"width": 202.376953125,
 									"height": 53
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 352,
 							"top": 624,
-							"width": 173.00634765625,
+							"width": 202.376953125,
 							"height": 76,
 							"nameLabel": {
 								"$ref": "AAAAAAGO6bb2u+Sapgk="
@@ -3066,7 +3066,7 @@
 										"$ref": "AAAAAAGO6bfoq+TW+oE="
 									},
 									"font": "Arial;13;0",
-									"left": 549,
+									"left": 578,
 									"top": 664,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -3084,7 +3084,7 @@
 								"$ref": "AAAAAAGOm5IbKUdELVM="
 							},
 							"lineStyle": 2,
-							"points": "704:550;608:550;608:656;524:656",
+							"points": "704:550;608:550;608:656;553:656",
 							"nameLabel": {
 								"$ref": "AAAAAAGO6bfoq+TXKCQ="
 							},
@@ -3826,7 +3826,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOm3rRCkYjVbs="
 							},
-							"name": "id_Usuario_Tutor",
+							"name": "id_UsuarioTutor",
 							"type": "INTEGER",
 							"length": 0,
 							"foreignKey": true
@@ -3962,7 +3962,7 @@
 								"$ref": "AAAAAAGOm36PukZu3CM="
 							},
 							"name": "id",
-							"type": "INETEGER",
+							"type": "INTEGER",
 							"length": 0,
 							"primaryKey": true
 						},
@@ -4073,8 +4073,8 @@
 								"$ref": "AAAAAAGOm36PukZu3CM="
 							},
 							"name": "imagen",
-							"type": "BLOB",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "250"
 						},
 						{
 							"_type": "ERDColumn",
@@ -4083,8 +4083,8 @@
 								"$ref": "AAAAAAGOm36PukZu3CM="
 							},
 							"name": "estatus",
-							"type": "BOOLEAN",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "20"
 						}
 					]
 				},
@@ -4411,8 +4411,8 @@
 								"$ref": "AAAAAAGOm5IbKEdCDRQ="
 							},
 							"name": "id",
-							"type": "INTEGER",
-							"length": 0,
+							"type": "VARCHAR",
+							"length": "10",
 							"primaryKey": true
 						},
 						{
@@ -5248,8 +5248,8 @@
 								"$ref": "AAAAAAGOm9SQfUmNYOw="
 							},
 							"name": "archivoEjemplo",
-							"type": "BLOB",
-							"length": 0,
+							"type": "VARCHAR",
+							"length": "250",
 							"nullable": true
 						}
 					]
@@ -5595,7 +5595,8 @@
 							},
 							"name": "nombreUsuario",
 							"type": "VARCHAR",
-							"length": "50"
+							"length": "50",
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -5635,8 +5636,8 @@
 								"$ref": "AAAAAAGO3ZcHrMrEHdI="
 							},
 							"name": "foto",
-							"type": "BLOB",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "250"
 						},
 						{
 							"_type": "ERDColumn",
@@ -6019,8 +6020,8 @@
 								"$ref": "AAAAAAGO6bb2uuSXhLE="
 							},
 							"name": "id_Grupo",
-							"type": "INTEGER",
-							"length": 0,
+							"type": "VARCHAR",
+							"length": "10",
 							"foreignKey": true
 						},
 						{

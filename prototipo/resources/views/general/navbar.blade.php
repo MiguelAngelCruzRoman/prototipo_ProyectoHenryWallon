@@ -52,7 +52,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{route('inicio')}}">
                 <img src="{{ asset('logoHenryWallon.jpg') }}" alt="LogoHenryWallon" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #000000;">
                 <span>HENRY WALLON</span>
             </a>

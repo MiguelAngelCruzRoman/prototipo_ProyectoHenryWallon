@@ -12,12 +12,14 @@ class AlumnoModel extends Model
 
     protected $table = 'alumno';
     protected $foreignKey = [
-        'id_Usuario'];
+        'id_Usuario',
+        'id_UsuarioTutor'];
     protected $fillable = [
         'id_Usuario',
         'semestre',
         'fechaIngreso',
         'fechaEgreso',
-        'estatus'
+        'estatus',
+        'id_UsuarioTutor'
     ];
 }

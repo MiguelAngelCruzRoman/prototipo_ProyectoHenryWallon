@@ -23,8 +23,5 @@ class BloqueModel extends Model
         'componente',
         'contenidoCentral',
         'productoIntegrador',
-        'calificacionMaxima',
-        'calificacionMinima',
-        'porcentajeCalificacionFinal',
     ];
 }

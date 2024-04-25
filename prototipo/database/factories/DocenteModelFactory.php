@@ -26,7 +26,7 @@ class DocenteModelFactory extends Factory
             'id_Usuario' => $this->faker->randomElement($usuariosDocente),
             'fechaContratacion' => $fechaContratacion,
             'fechaDimision' => $this->faker->randomElement([$fechaDimision, null]),
-            'estatus' => $this->faker->randomElement([0, 1]),
+            'estatus' => $this->faker->randomElement([true, false]),
         ];
     }
 }

@@ -29,9 +29,6 @@ class BloqueModelFactory extends Factory
             'componente' => $this->faker->sentence,
             'contenidoCentral' => $this->faker->paragraph,
             'productoIntegrador' => $this->faker->sentence,
-            'calificacionMaxima'=>$calificacionMaxima,
-            'calificacionMinima'=>round($calificacionMaxima*0.8),
-            'porcentajeCalificacionFinal'=>$porcentajeCalificacionFinal,
         ];
     }
 }

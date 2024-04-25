@@ -16,12 +16,12 @@ class EvaluacionModelFactory extends Factory
      */
     public function definition(): array
     {
-        $actividades = ['Mapa mental', 'Mapa conceptual','Cuadro Sinóptico','Cuadro Comparativo','Exposición','Examen'];
+        $actividades = ['Mapa mental', 'Mapa conceptual','Cuadro sinóptico','Cuadro comparativo','Exposición','Examen'];
         $evaluaciones = ['Rúbrica','Lista de cotejo','Guía de observación'];
 
         return [
             'actividadAprendizaje' => $this->faker->sentence,
-            'tipoEvaluacion' => $this->faker->randomElement(['Examen', 'Rúbrica', 'Lista de Cotejo']),
+            'tipoEvaluacion' => $this->faker->randomElement(['Examen', 'Rúbrica', 'Lista de cotejo']),
             'archivoEjemplo' => $this->faker->randomElement([null, $this->faker->imageUrl()]),
          ];
     }

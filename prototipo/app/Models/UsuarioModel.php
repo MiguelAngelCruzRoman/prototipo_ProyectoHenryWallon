@@ -22,5 +22,7 @@ class UsuarioModel extends Model
         'rol',
         'foto',
         'estatus',
+        'sexo',
+        'telefono'
     ];
 }

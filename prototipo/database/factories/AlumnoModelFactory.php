@@ -17,7 +17,8 @@ class AlumnoModelFactory extends Factory
      */
     public function definition(): array
     {
-        $usuariosAlumno = UsuarioModel::where('rol', 'alumno')->pluck('id')->toArray();
+        $usuariosAlumno = UsuarioModel::where('rol', 'Alumno')->pluck('id')->toArray();
+        $usuariosTutor = UsuarioModel::where('rol', 'Tutor')->pluck('id')->toArray();
 
         $fechaIngreso = $this->faker->dateTimeBetween('-20 years', 'now');        
         $fechaEgreso = $this->faker->dateTimeBetween($fechaIngreso, '+3 years');
@@ -27,7 +28,8 @@ class AlumnoModelFactory extends Factory
             'semestre' => $this->faker->numberBetween(1, 6),
             'fechaIngreso' => $fechaIngreso,
             'fechaEgreso' => $this->faker->randomElement([$fechaEgreso, null]),
-            'estatus' => $this->faker->randomElement([0, 1]),
+            'estatus' => $this->faker->randomElement([true,false]),
+            'id_UsuarioTutor' => $this->faker->randomElement($usuariosTutor),
         ];
     }
 }
