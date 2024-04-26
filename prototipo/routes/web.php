@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Asignatura;
+use App\Http\Controllers\Grupo;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Periodo;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,7 @@ Route::get('/asignatura/agregar/datosAsignatura',[Asignatura::class, 'agregarDat
 Route::post('/asignatura/agregar/datosAsignatura/insert',[Asignatura::class, 'insertDatosAsignatura'])->name('asignatura.agregar.datosAsignatura.insert');
 
 Route::get('/asignatura/editar/datosAsignatura/{idAsignatura}',[Asignatura::class, 'editarDatosAsignatura'])->name('asignatura.editar.datosAsignatura');
-Route::post('/asignatura/agregar/datosAsignatura/update/{idAsignatura}',[Asignatura::class, 'updateDatosAsignatura'])->name('asignatura.editar.datosAsignatura.update');
+Route::post('/asignatura/editar/datosAsignatura/update/{idAsignatura}',[Asignatura::class, 'updateDatosAsignatura'])->name('asignatura.editar.datosAsignatura.update');
 
 Route::get('/asignatura/eliminar/{idAsignatura}',[Asignatura::class, 'eliminarAsignatura'])->name('asignatura.eliminar');
 
@@ -42,6 +43,20 @@ Route::get('/asignatura/ver/{idAsignatura}',[Asignatura::class, 'verAsignatura']
 Route::get('/asignatura/planeacion/ver/{idAsignatura}/{idDocente}', [Asignatura::class, 'verPlaneacionAsignatura'])->name('asignatura.planeacion.ver');
 Route::post('/asignatura/agregar/datosBloque/{numeroBloque}',[Asignatura::class, 'agregarDatosBloque'])->name('asignatura.agregar.datosBloque');
 Route::post('/asignatura/agregar/insert',[Asignatura::class, 'insertDatos'])->name('asignatura.agregar.insert');
+
+
+
+
+Route::get('/grupo/index',[Grupo::class, 'index'])->name('grupo.index');
+Route::get('/grupo/busqueda',[Grupo::class, 'busqueda'])->name('grupo.busqueda');
+Route::get('/grupo/agregar',[Grupo::class, 'agregar'])->name('grupo.agregar');
+Route::post('/grupo/agregar/insert',[Grupo::class, 'insert'])->name('grupo.agregar.insert');
+Route::get('/grupo/editar/{idGrupo}',[Grupo::class, 'editar'])->name('grupo.editar');
+Route::post('/grupo/editar/update/{idGrupo}',[Grupo::class, 'update'])->name('grupo.editar.update');
+Route::get('/grupo/ver/{idGrupo}',[Grupo::class, 'ver'])->name('grupo.ver');
+Route::get('/grupo/eliminar/{idGrupo}',[Grupo::class, 'eliminar'])->name('grupo.eliminar');
+
+
 
 
 

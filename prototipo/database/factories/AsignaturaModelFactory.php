@@ -33,7 +33,7 @@ class AsignaturaModelFactory extends Factory
             'horasEstudioIndependiente'=>$horasEstudioIndependiente,
             'calificacionAprobatoria'=>$this->faker->numberBetween(80,100),
             'imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
-            'estatus' => $this->faker->randomElement([true, false]),
+            'estatus' => $this->faker->randomElement(['Aprobada','No aprobada','En revisión','Sin planeación']),
         ];
     }
     

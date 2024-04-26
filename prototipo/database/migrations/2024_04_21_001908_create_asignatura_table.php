@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedInteger('horasEstudioIndependiente');
             $table->unsignedInteger('calificacionAprobatoria');
             $table->string('imagen');
-            $table->boolean('estatus');
+            $table->enum('estatus', ['Aprobada','No aprobada','En revisión','Sin planeación']);
             $table->timestamps();
         });
     }

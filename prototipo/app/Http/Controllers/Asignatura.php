@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-use App\Models\AsignaturaModel; 
+use App\Models\AsignaturaModel;
 
 class Asignatura extends Controller
 {
 
 
     ///Este método no va aquiiiii, pero es pa ver si jala jsjs
-    public function inicio(){
-        return view ('administrador/inicio');
+    public function inicio()
+    {
+        return view('administrador/inicio');
     }
 
 
@@ -52,32 +53,33 @@ class Asignatura extends Controller
 
     public function agregarDatosAsignatura()
     {
-        return view('administrador/asignatura/agregar/datosAsignatura');
+        return view('administrador/asignatura/agregar');
     }
 
 
     public function insertDatosAsignatura(Request $request)
     {
         $asignatura = new AsignaturaModel();
-        $asignatura->nombre = $request->nombre;
-        $asignatura->objetivo = $request->objetivo;
-        $asignatura->intencionDidactica = $request->intencionDidactica; 
+        $asignatura->nombre = ucwords(strtolower($request->nombre));
+        $asignatura->objetivo = ucwords(strtolower($request->objetivo));
+        $asignatura->intencionDidactica = ucwords(strtolower($request->intencionDidactica));
         $asignatura->turno = $request->turno;
         $asignatura->semestre = $request->semestre;
-        $asignatura->componente = $request->componente; 
-        $asignatura->creditos = ($request->horasDocente) +($request->horasAprendizajeAutodidacta);
-        $asignatura->horasDocente = $request->horasDocente; 
-        $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente; 
-        $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria; 
-        $asignatura->imagen = $request->imagen; 
-        $asignatura->estatus = 1; 
-        $asignatura->created_at = now(); 
-        $asignatura->updated_at = now(); 
-    
+        $asignatura->componente = ucwords(strtolower($request->componente));
+        $asignatura->creditos = $request->creditos;
+        $asignatura->horasDocente = $request->horasDocente;
+        $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
+        $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
+        $asignatura->imagen = $request->imagen;
+        $asignatura->estatus = "Sin planeación";
+        $asignatura->created_at = now();
+        $asignatura->updated_at = now();
+
         $asignatura->save();
 
         return redirect('/asignatura/index');
     }
+
 
 
     public function verAsignatura(string $idAsignatura)
@@ -100,24 +102,29 @@ class Asignatura extends Controller
     {
         $asignatura = AsignaturaModel::findOrFail($idAsignatura);
 
-        $asignatura->nombre = $request->nombre;
-        $asignatura->objetivo = $request->objetivo;
-        $asignatura->intencionDidactica = $request->intencionDidactica; 
+        $asignatura->nombre = ucwords(strtolower($request->nombre));
+        $asignatura->objetivo = ucwords(strtolower($request->objetivo));
+        $asignatura->intencionDidactica = ucwords(strtolower($request->intencionDidactica));
         $asignatura->turno = $request->turno;
         $asignatura->semestre = $request->semestre;
-        $asignatura->componente = $request->componente; 
-        $asignatura->creditos = ($request->horasDocente) +($request->horasAprendizajeAutodidacta);
-        $asignatura->horasDocente = $request->horasDocente; 
-        $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente; 
-        $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria; 
-        $asignatura->imagen = $request->imagen; 
-        $asignatura->estatus = 1; 
-        $asignatura->updated_at = now(); 
-    
+        $asignatura->componente = ucwords(strtolower($request->componente));
+        $asignatura->creditos = $request->creditos;
+        $asignatura->horasDocente = $request->horasDocente;
+        $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
+        $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
+
+        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
+            $asignatura->imagen = $request->imagen;
+        }       
+        
+        //$asignatura->estatus = "En revisión";
+        $asignatura->updated_at = now();
+
         $asignatura->save();
 
         return redirect('/asignatura/index');
     }
+
 
     public function eliminarAsignatura(string $idAsignatura)
     {
