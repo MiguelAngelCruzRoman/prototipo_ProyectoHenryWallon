@@ -20,8 +20,8 @@ class EvaluacionModelFactory extends Factory
         $evaluaciones = ['Rúbrica','Lista de cotejo','Guía de observación'];
 
         return [
-            'actividadAprendizaje' => $this->faker->sentence,
-            'tipoEvaluacion' => $this->faker->randomElement(['Examen', 'Rúbrica', 'Lista de cotejo']),
+            'actividadAprendizaje' => $this->faker->randomElement($actividades),
+            'tipoEvaluacion' => $this->faker->randomElement($evaluaciones),
             'archivoEjemplo' => $this->faker->randomElement([null, $this->faker->imageUrl()]),
          ];
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('objetivo');
             $table->text('intencionDidactica');
             $table->enum('turno', ['Matutino', 'Vespertino']);
-            $table->unsignedInteger('semestre');
+            $table->enum('semestre', ['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto']);
             $table->enum('componente', ['Fundamental', 'Fundamental Extendido','Fundamental Extendido Obligatorio','Laboral Básico','Ampliada']);
             $table->unsignedInteger('creditos');
             $table->unsignedInteger('horasDocente');

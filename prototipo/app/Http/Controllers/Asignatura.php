@@ -21,19 +21,19 @@ class Asignatura extends Controller
     public function index()
     {
         //Sección que funciona para las vistas de usuario y docente
-        $asignaturas = DB::table('asignatura_docente')
+        /*$asignaturas = DB::table('asignatura_docente')
             ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
             ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
             ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
             ->get();
-        return view('docente/asignatura/index', compact('asignaturas'));
+        return view('docente/asignatura/index', compact('asignaturas'));*/
 
 
 
         ///Sección que funciona para las vistas de administrador
-        /*$asignaturas = DB::table('asignatura')->paginate(10);
+        $asignaturas = DB::table('asignatura')->paginate(10);
 
-        return view('administrador/asignatura/index', compact('asignaturas'));*/
+        return view('administrador/asignatura/index', compact('asignaturas'));
     }
 
 

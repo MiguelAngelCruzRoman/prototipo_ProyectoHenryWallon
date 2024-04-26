@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fechaInicio');
             $table->date('fechaFin');
-            $table->enum('tipo', ['CicloEscolar', 'Semanal']);
+            $table->enum('tipo', ['CicloEscolar', 'Semanal','Momento']);
             $table->timestamps();
         });
     }

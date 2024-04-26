@@ -16,7 +16,7 @@ class PeriodoModelFactory extends Factory
      */
     public function definition(): array
     {
-        $tiposPeriodos = ['CicloEscolar','Semanal'];
+        $tiposPeriodos = ['CicloEscolar','Semanal','Momento'];
         $fechaInicioClases = '2024-01-01';
         $fechaFinClases = '2024-12-31';
 

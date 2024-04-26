@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('evaluacion', function (Blueprint $table) {
             $table->id();
             $table->string('actividadAprendizaje');
-            $table->enum('tipoEvaluacion', ['Examen', 'Rúbrica', 'Lista de Cotejo']);
+            $table->enum('tipoEvaluacion', ['Rúbrica','Lista de cotejo','Guía de observación']);
             $table->string('archivoEjemplo')->nullable();
             $table->timestamps();
         });

@@ -26,7 +26,7 @@ class AsignaturaModelFactory extends Factory
             'objetivo'=>$this->faker->text(),
             'intencionDidactica' => $this->faker->paragraph,
             'turno' => $this->faker->randomElement(['Matutino', 'Vespertino']),
-            'semestre' => $this->faker->numberBetween(1, 6),
+            'semestre' => $this->faker->randomElement(['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto']),
             'componente' => $this->faker->randomElement(['Fundamental', 'Fundamental Extendido','Fundamental Extendido Obligatorio','Laboral Básico','Ampliada']),
             'creditos'=>$creditos,
             'horasDocente'=>$horasDocente,

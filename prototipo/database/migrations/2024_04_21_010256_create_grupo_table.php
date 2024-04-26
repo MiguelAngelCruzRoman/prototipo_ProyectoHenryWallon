@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_Asignatura_Docente')->constrained('asignatura_docente');
             $table->foreignId('id_Periodo')->constrained('periodo');
-            $table->integer('semestre');
+            $table->enum('semestre', ['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto']);
             $table->timestamps();
         });
     }

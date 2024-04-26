@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('bloque', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_asignatura');
-            $table->foreign('id_asignatura')->references('id')->on('asignatura')->onDelete('cascade');
+            $table->foreignId('id_Asignatura')->constrained('asignatura');
             $table->string('nombre');
             $table->integer('numero');
             $table->text('proposito');
@@ -22,9 +21,6 @@ return new class extends Migration
             $table->text('componente');
             $table->text('contenidoCentral');
             $table->text('productoIntegrador');
-            $table->integer('calificacionMaxima');
-            $table->integer('calificacionMinima');
-            $table->integer('porcentajeCalificacionFinal');
             $table->timestamps();
         });
     }

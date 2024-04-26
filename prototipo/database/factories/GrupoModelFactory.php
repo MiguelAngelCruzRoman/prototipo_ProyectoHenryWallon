@@ -21,7 +21,7 @@ class GrupoModelFactory extends Factory
         return [
             'id_Asignatura_Docente'=>Asignatura_DocenteModel::inRandomOrder()->first()->id,
             'id_Periodo'=>PeriodoModel::inRandomOrder()->first()->id,
-            'semestre'=>$this->faker->numberBetween(1,6)
+            'semestre' => $this->faker->randomElement(['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto']),
         ];
     }
 }

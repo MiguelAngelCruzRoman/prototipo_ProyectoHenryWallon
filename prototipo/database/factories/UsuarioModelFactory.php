@@ -25,7 +25,7 @@ class UsuarioModelFactory extends Factory
             'nombreUsuario' => $this->faker->userName(),
             'contrasenia' => $this->faker->password(),
             'correo' => $this->faker->unique()->safeEmail(),
-            'rol' => $this->faker->randomElement(['administrador', 'alumno','docente']),
+            'rol' => $this->faker->randomElement(['administrador', 'alumno','docente','tutor']),
             'foto' => $this->faker->imageUrl(),
             'estatus' => $this->faker->randomElement([true,false]),
             'sexo' => $this->faker->randomElement(['Hombre','Mujer']),

@@ -17,12 +17,14 @@ return new class extends Migration
             $table->string('segundoNombre')->nullable();
             $table->string('apellidoPaterno');
             $table->string('apellidoMaterno');
-            $table->string('nombreUsuario');
+            $table->string('nombreUsuario')->unique();
             $table->string('contrasenia');
             $table->string('correo')->nullable();
-            $table->enum('rol', ['administrador', 'alumno', 'docente']);
+            $table->enum('rol', ['administrador', 'alumno', 'docente','tutor']);
             $table->string('foto');
             $table->boolean('estatus');
+            $table->enum('sexo', ['Hombre', 'Mujer']);
+            $table->string('telefono');
             $table->timestamps();
         });
     }

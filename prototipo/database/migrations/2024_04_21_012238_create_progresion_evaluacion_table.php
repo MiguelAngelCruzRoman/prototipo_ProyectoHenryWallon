@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('progresion_evaluacion', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_Progresion');
-            $table->foreign('id_Progresion')->references('id')->on('progresion')->onDelete('cascade');
-            $table->unsignedBigInteger('id_Evaluacion');
-            $table->foreign('id_Evaluacion')->references('id')->on('evaluacion')->onDelete('cascade');
+            $table->foreignId('id_Progresion')->constrained('progresion');            
+            $table->foreignId('id_Evaluacion')->constrained('evaluacion');            
             $table->timestamps();
         });
     }

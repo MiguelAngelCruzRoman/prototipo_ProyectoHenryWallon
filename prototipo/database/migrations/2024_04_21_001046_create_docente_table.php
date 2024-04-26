@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('docente', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_Usuario');
-            $table->foreign('id_Usuario')->references('id')->on('usuario')->onDelete('cascade');
+            $table->foreignId('id_Usuario')->constrained('usuario');
             $table->dateTime('fechaContratacion');
             $table->dateTime('fechaDimision')->nullable();
             $table->boolean('estatus');

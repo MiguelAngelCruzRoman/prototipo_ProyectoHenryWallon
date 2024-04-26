@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_Periodo')->constrained('periodo');
             $table->string('tema');
             $table->string('aprendizajeEsperado');
-            $table->text('materiales');
+            $table->string('materiales');
             $table->timestamps();
         });
     }
