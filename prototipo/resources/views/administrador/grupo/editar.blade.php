@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editar Datos de Asignatura</title>
+    <title>Editar Grupo</title>
     @include('general.estilos')
 </head>
 
 <body>
 
     @include('general.navbar')
+
+
     <div class="container">
         <div class="row">
             <center>
-                <h1><strong>EDITAR ASIGNATURA</strong></h1>
-                <h3>- DATOS GENERALES -</h3>
+                <h1><strong>EDITAR GRUPO</strong></h1>
             </center>
         </div>
 
@@ -24,37 +25,57 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosAsignatura"
-                    action="{{ route('asignatura.editar.datosAsignatura.update',['idAsignatura' => $asignatura[0]->id])}}" method="POST">
+                <form id="formularioDatosGrupo" action="{{ route('grupo.editar.update',['idGrupo' => $grupo[0]->id]) }}" method="POST">
                     @csrf
+                    <input type="hidden" id="id_asignatura_docente_anterior" name="id_asignatura_docente_anterior" value="{{ $grupo[0]->idAsignaturaDocente }}">
+
+
+                    <center>
+                        <h3>- DATOS DE LA ASIGNATURA -</h3>
+                    </center>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <center>
-                                <img src="{{ $asignatura[0]->imagen }}" alt="" height="200px" width="400px"
-                                    style="border: 4px solid #000000">
-                            </center>
+                            <label for="id_Asignatura" class="form-label">Asignatura:</label>
+                            <select class="form-select" id="id_Asignatura" name="id_Asignatura" required>
+                                <option value="{{ $grupo[0]->idAsignatura }}">{{ $grupo[0]->nombreAsignatura }}</option>
+                                @foreach ($asignaturas as $asignatura)
+                                    <option value="{{ $asignatura->id }}">{{ $asignatura->nombre }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-7">
-                            <label for="nombre" class="form-label">Nombre de asignatura:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$asignatura[0]->nombre}}" >
+                        <div class="col-md-6">
+                            <label for="id_Docente" class="form-label">Docente:</label>
+                            <select class="form-select" id="id_Docente" name="id_Docente" required>
+                                <option value="{{ $grupo[0]->idDocente }}">{{ $grupo[0]->nombreDocente }}
+                                    {{ $grupo[0]->segundoNombreDocente }} {{ $grupo[0]->apellidoPaternoDocente }}
+                                    {{ $grupo[0]->apellidoMaternoDocente }}</option>
+                                @foreach ($docentes as $docente)
+                                    <option value="{{ $docente->id }}">{{ $docente->primerNombre }}
+                                        {{ $docente->segundoNombre }} {{ $docente->apellidoPaterno }}
+                                        {{ $docente->apellidoMaterno }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div class="col-md-2">
-                            <label for="turno" class="form-label">Turno:</label>
-                            <select class="form-select" id="turno" name="turno">
-                                <option value="{{$asignatura[0]->turno}}">{{$asignatura[0]->turno}}</option>
-                                <option value="Matutino">Matutino</option>
-                                <option value="Vespertino">Vespertino</option>
+                        <div class="col-md-3">
+                            <label for="id_Periodo" class="form-label">Periodo:</label>
+                            <select class="form-select" id="id_Periodo" name="id_Periodo" required>
+                                <option value="{{ $grupo[0]->idPeriodo }}">
+                                    {{ $grupo[0]->fechaInicioPeriodo }}/{{ $grupo[0]->fechaFinPeriodo }}</option>
+                                @foreach ($periodos as $periodo)
+                                    <option value="{{ $periodo->id }}">{{ $periodo->fechaInicio }} /
+                                        {{ $periodo->fechaFin }}</option>
+                                @endforeach
                             </select>
-                        </div> 
+                        </div>
 
                         <div class="col-md-3">
                             <label for="semestre" class="form-label">Semestre:</label>
-                            <select class="form-select" id="semestre" name="semestre">
-                                <option value="{{$asignatura[0]->semestre}}">{{$asignatura[0]->semestre}}</option>
+                            <select class="form-select" id="semestre" name="semestre" required>
+                                <option value="{{ $grupo[0]->semestre }}">{{ $grupo[0]->semestre }}</option>
                                 <option value="Primero">Primero</option>
                                 <option value="Segundo">Segundo</option>
                                 <option value="Tercero">Tercero</option>
@@ -63,68 +84,50 @@
                                 <option value="Sexto">Sexto</option>
                             </select>
                         </div>
+
                     </div>
 
 
+                    <div style="height: 100px;"></div>
+                    <center>
+                        <h3>- LISTA DE ALUMNOS -</h3>
+                    </center>
                     <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="objetivo" class="form-label">Objetivo:</label>
-                            <input type="text" class="form-control" id="objetivo" name="objetivo" value="{{$asignatura[0]->objetivo}}" >
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="intencionDidactica" class="form-label">Intención Didáctica:</label>
-                            <input type="text" class="form-control" id="intencionDidactica" name="intencionDidactica"
-                            value="{{$asignatura[0]->intencionDidactica}}" >
-                        </div>
-                    </div>
-
-
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label for="componente" class="form-label">Componente de formación:</label>
-                            <select class="form-select" id="componente" name="componente">
-                                <option value="{{$asignatura[0]->componente}}">{{$asignatura[0]->componente}}</option>
-                                <option value="Fundamental">Fundamental</option>
-                                <option value="Fundamental Extendido">Fundamental extendido</option>
-                                <option value="Fundamental Extendido Obligatorio">Fundamental extendido obligatorio</option>
-                                <option value="Laboral Básico">Laboral básico</option>
-                                <option value="Ampliada">Ampliada</option>
+                        <div class="col-md-10">
+                            <label for="arregloAlumnos" class="form-label">Alumno:</label>
+                            <select class="form-select" id="arregloAlumnos" name="arregloAlumnos" required>
+                                @foreach ($alumnos as $alumno)
+                                    <option value="{{ $alumno->id }}">{{ $alumno->primerNombre }}
+                                        {{ $alumno->segundoNombre }} {{ $alumno->apellidoPaterno }}
+                                        {{ $alumno->apellidoMaterno }}</option>
+                                @endforeach
                             </select>
-                        </div>  
-
-                        <div class="col-md-3">
-                            <label for="calificacionAprobatoria" class="form-label">Calificación aprobatoria:</label>
-                            <input type="number" class="form-control" id="calificacionAprobatoria"
-                                name="calificacionAprobatoria" value="{{$asignatura[0]->calificacionAprobatoria}}" >
                         </div>
 
                         <div class="col-md-2">
-                            <label for="horasDocente" class="form-label">Horas con docente:</label>
-                            <input type="number" class="form-control" id="horasDocente" name="horasDocente" value="{{$asignatura[0]->horasDocente}}" >
-                        </div>
-                        <div class="col-md-3">
-                            <label for="horasEstudioIndependiente" class="form-label">Horas autodidactas:</label>
-                            <input type="number" class="form-control" id="horasEstudioIndependiente"
-                                name="horasEstudioIndependiente" value="{{$asignatura[0]->horasEstudioIndependiente}}" >
+                            <button type="button" onclick="agregarAlumno()" class="btn btn-primary">Agregar
+                                a lista</button>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-3">
-                            <label for="creditos" class="form-label">Créditos:</label>
-                            <input type="number" class="form-control" id="creditos"
-                                name="creditos" value="{{$asignatura[0]->creditos}}">
-                        </div>
-
-                        <div class="col-md-9">
-                            <label for="imagen" class="form-label">Imagen alusiva a la asignatura:</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" value="{{$asignatura[0]->imagen}}">
+                        <div class="col-md-12">
+                            <table class="table" id="tablaAlumnos">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th colspan="8">Nombre</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpoTabla">
+                                    
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
+                    <input type="hidden" id="listaAlumnos" name="listaAlumnos">
 
                 </form>
             </div>
@@ -153,15 +156,76 @@
                     </button>
                 </center>
             </div>
+
+            <div style="height: 50px;"></div>
+
         </div>
     </div>
 
-    <div style="height: 50px;"></div>
-    
 </body>
-
 
 @include('general.footer')
 @include('general.scripts')
+
+<script>
+    var alumnos = [];
+
+    @foreach ($grupo as $alumno)
+        alumnos.push({
+            id: "{{ $alumno->idAlumno }}",
+            nombre: "{{ $alumno->nombreAlumno }} {{ $alumno->segundoNombreAlumno }} {{ $alumno->apellidoPaternoAlumno }} {{ $alumno->apellidoMaternoAlumno }}"
+        });
+    @endforeach
+    actualizarTabla();
+
+
+    function agregarAlumno() {
+        var idAlumno = document.getElementById("arregloAlumnos").value;
+        var nombreAlumno = document.getElementById("arregloAlumnos").options[document.getElementById(
+            "arregloAlumnos").selectedIndex].text;
+
+        if (!alumnos.some(alumno => alumno.id === idAlumno)) {
+            alumnos.push({
+                id: idAlumno,
+                nombre: nombreAlumno
+            });
+            alumnos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            actualizarTabla();
+            actualizarListaAlumnos();
+        } else {
+            alert("El alumno ya está en la lista.");
+        }
+    }
+
+    function eliminarAlumno(index) {
+        alumnos.splice(index, 1);
+        actualizarTabla();
+        actualizarListaAlumnos();
+    }
+
+    function actualizarTabla() {
+        var cuerpoTabla = document.getElementById("cuerpoTabla");
+        cuerpoTabla.innerHTML = "";
+        for (var i = 0; i < alumnos.length; i++) {
+            var fila = "<tr>";
+            fila += "<td>" + (i + 1) + "</td>";
+            fila += "<td colspan='8'>" + alumnos[i].nombre + "</td>";
+            fila += "<td><button class='btn btn-danger' onclick='eliminarAlumno(" + i +
+                ")'>X</button></td>";
+            fila += "</tr>";
+            cuerpoTabla.innerHTML += fila;
+        }
+    }
+
+    function actualizarListaAlumnos() {
+        var listaAlumnos = document.getElementById("listaAlumnos");
+        listaAlumnos.value = JSON.stringify(alumnos);
+    }
+
+    function submitForm() {
+        actualizarListaAlumnos();
+        document.getElementById("formularioDatosGrupo").submit();
+    }
+</script>
 
 </html>
