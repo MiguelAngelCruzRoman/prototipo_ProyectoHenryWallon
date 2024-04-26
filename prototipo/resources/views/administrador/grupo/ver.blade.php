@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ver Datos de Asignatura</title>
+    <title>Ver Grupo</title>
     @include('general.estilos')
 </head>
 
 <body>
 
     @include('general.navbar')
+
+
     <div class="container">
         <div class="row">
             <center>
-                <h1><strong>VER ASIGNATURA</strong></h1>
-                <h3>- DATOS GENERALES -</h3>
+                <h1><strong>VER GRUPO</strong></h1>
             </center>
         </div>
 
@@ -24,98 +25,59 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form action="" method="POST">
+                <form id="formularioDatosGrupo" action="" method="POST">
                     @csrf
+
+                    <center>
+                        <h3>- DATOS DE LA ASIGNATURA -</h3>
+                    </center>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <center>
-                                <img src="{{ $asignatura[0]->imagen }}" alt="" height="200px" width="400px"
-                                    style="border: 4px solid #000000">
-                            </center>
+                            <label for="id_Asignatura" class="form-label">Asignatura:</label>
+                            <input type="text" class="form-control" id="id_Asignatura" name="id_Asignatura" value="{{ $grupo[0]->nombreAsignatura }}" readonly>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-7">
-                            <label for="nombre" class="form-label">Nombre de asignatura:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre"
-                                value="{{ $asignatura[0]->nombre }}" readonly>
+                        <div class="col-md-6">
+                            <label for="id_Docente" class="form-label">Docente:</label>
+                            <input type="text" class="form-control" id="id_Docente" name="id_Docente" value="{{ $grupo[0]->nombreDocente }} {{ $grupo[0]->segundoNombreDocente }} {{ $grupo[0]->apellidoPaternoDocente }} {{ $grupo[0]->apellidoMaternoDocente }}" readonly>
                         </div>
 
-                        <div class="col-md-2">
-                            <label for="turno" class="form-label">Turno:</label>
-                            <input type="text" class="form-control" id="turno" name="turno"
-                                value="{{ $asignatura[0]->turno }}" readonly>
+                        <div class="col-md-3">
+                            <label for="id_Periodo" class="form-label">Periodo:</label>
+                            <input type="text" class="form-control" id="id_Periodo" name="id_Periodo" value="{{ $grupo[0]->fechaInicioPeriodo }}/{{ $grupo[0]->fechaFinPeriodo }}" readonly>
                         </div>
 
                         <div class="col-md-3">
                             <label for="semestre" class="form-label">Semestre:</label>
-                            <input type="number" class="form-control" id="semestre" name="semestre"
-                                value="{{ $asignatura[0]->semestre }}" readonly>
+                            <input type="text" class="form-control" id="semestre" name="semestre" value="{{ $grupo[0]->semestre }}" readonly>
                         </div>
+
                     </div>
 
 
+                    <div style="height: 100px;"></div>
+                    <center>
+                        <h3>- LISTA DE ALUMNOS -</h3>
+                    </center>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <label for="objetivo" class="form-label">Objetivo:</label>
-                            <input type="text" class="form-control" id="objetivo" name="objetivo"
-                                value="{{ $asignatura[0]->objetivo }}" readonly>
+                            <table class="table" id="tablaAlumnos">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th colspan="8">Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpoTabla">
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="intencionDidactica" class="form-label">Intención Didáctica:</label>
-                            <input type="text" class="form-control" id="intencionDidactica" name="intencionDidactica"
-                                value="{{ $asignatura[0]->intencionDidactica }}" readonly>
-                        </div>
-                    </div>
-
-
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label for="componente" class="form-label">Componente de formación:</label>
-                            <input type="text" class="form-control" id="componente" name="componente"
-                                value="{{ $asignatura[0]->componente }}" readonly>
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="calificacionAprobatoria" class="form-label">Calificación aprobatoria:</label>
-                            <input type="number" class="form-control" id="calificacionAprobatoria"
-                                name="calificacionAprobatoria" value="{{ $asignatura[0]->calificacionAprobatoria }}"
-                                readonly>
-                        </div>
-
-                        <div class="col-md-2">
-                            <label for="horasDocente" class="form-label">Horas con docente:</label>
-                            <input type="number" class="form-control" id="horasDocente" name="horasDocente"
-                                value="{{ $asignatura[0]->horasDocente }}" readonly>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="horasEstudioIndependiente" class="form-label">Horas autodidactas:</label>
-                            <input type="number" class="form-control" id="horasEstudioIndependiente"
-                                name="horasEstudioIndependiente" value="{{ $asignatura[0]->horasEstudioIndependiente }}"
-                                readonly>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-3">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="creditos" class="form-label">Créditos:</label>
-                            <input type="number" class="form-control" id="creditos" name="creditos"
-                                value="{{ $asignatura[0]->creditos }}" readonly>
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="estatus" class="form-label">Estado:</label>
-                            <input type="text" class="form-control" id="estatus" name="estatus"
-                                value="{{ $asignatura[0]->estatus }}" readonly>
-                        </div>
-                    </div>
+                    <input type="hidden" id="listaAlumnos" name="listaAlumnos">
 
                 </form>
             </div>
@@ -134,14 +96,45 @@
                     </button>
                 </center>
             </div>
+            <div style="height: 50px;"></div>
+
         </div>
     </div>
-
-    <div style="height: 50px;"></div>
 
 </body>
 
 @include('general.footer')
 @include('general.scripts')
+
+<script>
+    var alumnos = [];
+
+    @foreach ($grupo as $alumno)
+        alumnos.push({
+            id: "{{ $alumno->idAlumno }}",
+            nombre: "{{ $alumno->nombreAlumno }} {{ $alumno->segundoNombreAlumno }} {{ $alumno->apellidoPaternoAlumno }} {{ $alumno->apellidoMaternoAlumno }}"
+        });
+    @endforeach
+    actualizarTabla();
+
+
+
+    function actualizarTabla() {
+        var cuerpoTabla = document.getElementById("cuerpoTabla");
+        cuerpoTabla.innerHTML = "";
+        for (var i = 0; i < alumnos.length; i++) {
+            var fila = "<tr>";
+            fila += "<td>" + (i + 1) + "</td>";
+            fila += "<td colspan='8'>" + alumnos[i].nombre + "</td>";
+            fila += "</tr>";
+            cuerpoTabla.innerHTML += fila;
+        }
+    }
+
+    function actualizarListaAlumnos() {
+        var listaAlumnos = document.getElementById("listaAlumnos");
+        listaAlumnos.value = JSON.stringify(alumnos);
+    }
+</script>
 
 </html>

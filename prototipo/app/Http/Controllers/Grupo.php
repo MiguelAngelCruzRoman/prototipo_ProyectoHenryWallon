@@ -231,5 +231,43 @@ class Grupo extends Controller
     }
 
 
+    public function ver(string $idGrupo)
+    {
+        $grupo = DB::table('grupo')
+            ->select(
+                'grupo.id',
+                'grupo.semestre',
+                'periodo.id as idPeriodo',
+                'periodo.fechaInicio as fechaInicioPeriodo',
+                'periodo.fechaFin as fechaFinPeriodo',
+                'usuario.id as idAlumno',
+                'usuario.primerNombre as nombreAlumno',
+                'usuario.segundoNombre as segundoNombreAlumno',
+                'usuario.apellidoPaterno as apellidoPaternoAlumno',
+                'usuario.apellidoMaterno as apellidoMaternoAlumno',
+                'usuario2.id as idDocente',
+                'usuario2.primerNombre as nombreDocente',
+                'usuario2.segundoNombre as segundoNombreDocente',
+                'usuario2.apellidoPaterno as apellidoPaternoDocente',
+                'usuario2.apellidoMaterno as apellidoMaternoDocente',
+                'asignatura.nombre as nombreAsignatura',
+                'asignatura.id as idAsignatura',
+                'asignatura_docente.id as idAsignaturaDocente',
+                'grupo_alumno.id as idgrupoAlumno'
+            )
+            ->join('periodo', 'grupo.id_Periodo', '=', 'periodo.id')
+            ->join('grupo_alumno', 'grupo.id', '=', 'grupo_alumno.id_Grupo')
+            ->join('alumno', 'grupo_alumno.id_Alumno', '=', 'alumno.id')
+            ->join('usuario', 'alumno.id_Usuario', '=', 'usuario.id')
+            ->join('asignatura_docente', 'grupo.id_Asignatura_Docente', '=', 'asignatura_docente.id')
+            ->join('docente', 'asignatura_docente.id_Docente', '=', 'docente.id')
+            ->join('usuario as usuario2', 'docente.id_Usuario', '=', 'usuario2.id')
+            ->join('asignatura', 'asignatura_docente.id_Asignatura', '=', 'asignatura.id')
+            ->where('grupo.id',$idGrupo)
+            ->paginate(10);
+
+        return view('administrador/grupo/ver', compact('grupo'));
+    }
+
 }
 
