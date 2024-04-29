@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('docente', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Usuario')->constrained('usuario');
+            $table->foreignId('id_Usuario')->constrained('users');
             $table->dateTime('fechaContratacion');
             $table->dateTime('fechaDimision')->nullable();
             $table->boolean('estatus');

@@ -23,16 +23,16 @@ class Grupo extends Controller
                 'grupo.semestre',
                 'periodo.fechaInicio as fechaInicioPeriodo',
                 'periodo.fechaFin as fechaFinPeriodo',
-                'usuario.primerNombre as nombreDocente',
-                'usuario.segundoNombre as segundoNombreDocente',
-                'usuario.apellidoPaterno as apellidoPaternoDocente',
-                'usuario.apellidoMaterno as apellidoMaternoDocente',
+                'users.primerNombre as nombreDocente',
+                'users.segundoNombre as segundoNombreDocente',
+                'users.apellidoPaterno as apellidoPaternoDocente',
+                'users.apellidoMaterno as apellidoMaternoDocente',
                 'asignatura.nombre as nombreAsignatura'
             )
             ->join('periodo', 'grupo.id_Periodo', '=', 'periodo.id')
             ->join('asignatura_docente', 'grupo.id_Asignatura_Docente', '=', 'asignatura_docente.id')
             ->join('docente', 'asignatura_docente.id_Docente', '=', 'docente.id')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
+            ->join('users', 'docente.id_Usuario', '=', 'users.id')
             ->join('asignatura', 'asignatura_docente.id_Asignatura', '=', 'asignatura.id')
             ->paginate(10);
 
@@ -49,22 +49,22 @@ class Grupo extends Controller
                 'grupo.semestre',
                 'periodo.fechaInicio as fechaInicioPeriodo',
                 'periodo.fechaFin as fechaFinPeriodo',
-                'usuario.primerNombre as nombreDocente',
-                'usuario.segundoNombre as segundoNombreDocente',
-                'usuario.apellidoPaterno as apellidoPaternoDocente',
-                'usuario.apellidoMaterno as apellidoMaternoDocente',
+                'users.primerNombre as nombreDocente',
+                'users.segundoNombre as segundoNombreDocente',
+                'users.apellidoPaterno as apellidoPaternoDocente',
+                'users.apellidoMaterno as apellidoMaternoDocente',
                 'asignatura.nombre as nombreAsignatura'
             )
             ->join('periodo', 'grupo.id_Periodo', '=', 'periodo.id')
             ->join('asignatura_docente', 'grupo.id_Asignatura_Docente', '=', 'asignatura_docente.id')
             ->join('docente', 'asignatura_docente.id_Docente', '=', 'docente.id')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
+            ->join('users', 'docente.id_Usuario', '=', 'users.id')
             ->join('asignatura', 'asignatura_docente.id_Asignatura', '=', 'asignatura.id')
             ->where('asignatura.nombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->orwhere('usuario.primerNombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->orwhere('usuario.segundoNombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->orwhere('usuario.apellidoPaterno', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->orwhere('usuario.apellidoMaterno', 'like', '%' . $_GET['valorBusqueda'] . '%')
+            ->orwhere('users.primerNombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
+            ->orwhere('users.segundoNombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
+            ->orwhere('users.apellidoPaterno', 'like', '%' . $_GET['valorBusqueda'] . '%')
+            ->orwhere('users.apellidoMaterno', 'like', '%' . $_GET['valorBusqueda'] . '%')
             ->orwhere('grupo.semestre', 'like', '%' . $_GET['valorBusqueda'] . '%')
             ->paginate(10);
 
@@ -81,13 +81,13 @@ class Grupo extends Controller
             ->get();
 
         $docentes = DB::table('docente')
-            ->select('docente.id', 'usuario.primerNombre', 'usuario.segundoNombre', 'usuario.apellidoPaterno', 'usuario.apellidoMaterno')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
+            ->select('docente.id', 'users.primerNombre', 'users.segundoNombre', 'users.apellidoPaterno', 'users.apellidoMaterno')
+            ->join('users', 'docente.id_Usuario', '=', 'users.id')
             ->get();
 
         $alumnos = DB::table('alumno')
-            ->select('alumno.id', 'usuario.primerNombre', 'usuario.segundoNombre', 'usuario.apellidoPaterno', 'usuario.apellidoMaterno')
-            ->join('usuario', 'alumno.id_Usuario', '=', 'usuario.id')
+            ->select('alumno.id', 'users.primerNombre', 'users.segundoNombre', 'users.apellidoPaterno', 'users.apellidoMaterno')
+            ->join('users', 'alumno.id_Usuario', '=', 'users.id')
             ->get();
 
         $periodos = DB::table('periodo')
@@ -141,13 +141,13 @@ class Grupo extends Controller
             ->get();
 
         $docentes = DB::table('docente')
-            ->select('docente.id', 'usuario.primerNombre', 'usuario.segundoNombre', 'usuario.apellidoPaterno', 'usuario.apellidoMaterno')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
+            ->select('docente.id', 'users.primerNombre', 'users.segundoNombre', 'users.apellidoPaterno', 'users.apellidoMaterno')
+            ->join('users', 'docente.id_Usuario', '=', 'users.id')
             ->get();
 
         $alumnos = DB::table('alumno')
-            ->select('alumno.id', 'usuario.primerNombre', 'usuario.segundoNombre', 'usuario.apellidoPaterno', 'usuario.apellidoMaterno')
-            ->join('usuario', 'alumno.id_Usuario', '=', 'usuario.id')
+            ->select('alumno.id', 'users.primerNombre', 'users.segundoNombre', 'users.apellidoPaterno', 'users.apellidoMaterno')
+            ->join('users', 'alumno.id_Usuario', '=', 'users.id')
             ->get();
 
         $periodos = DB::table('periodo')
@@ -162,16 +162,16 @@ class Grupo extends Controller
                 'periodo.id as idPeriodo',
                 'periodo.fechaInicio as fechaInicioPeriodo',
                 'periodo.fechaFin as fechaFinPeriodo',
-                'usuario.id as idAlumno',
-                'usuario.primerNombre as nombreAlumno',
-                'usuario.segundoNombre as segundoNombreAlumno',
-                'usuario.apellidoPaterno as apellidoPaternoAlumno',
-                'usuario.apellidoMaterno as apellidoMaternoAlumno',
-                'usuario2.id as idDocente',
-                'usuario2.primerNombre as nombreDocente',
-                'usuario2.segundoNombre as segundoNombreDocente',
-                'usuario2.apellidoPaterno as apellidoPaternoDocente',
-                'usuario2.apellidoMaterno as apellidoMaternoDocente',
+                'users.id as idAlumno',
+                'users.primerNombre as nombreAlumno',
+                'users.segundoNombre as segundoNombreAlumno',
+                'users.apellidoPaterno as apellidoPaternoAlumno',
+                'users.apellidoMaterno as apellidoMaternoAlumno',
+                'users2.id as idDocente',
+                'users2.primerNombre as nombreDocente',
+                'users2.segundoNombre as segundoNombreDocente',
+                'users2.apellidoPaterno as apellidoPaternoDocente',
+                'users2.apellidoMaterno as apellidoMaternoDocente',
                 'asignatura.nombre as nombreAsignatura',
                 'asignatura.id as idAsignatura',
                 'asignatura_docente.id as idAsignaturaDocente',
@@ -180,10 +180,10 @@ class Grupo extends Controller
             ->join('periodo', 'grupo.id_Periodo', '=', 'periodo.id')
             ->join('grupo_alumno', 'grupo.id', '=', 'grupo_alumno.id_Grupo')
             ->join('alumno', 'grupo_alumno.id_Alumno', '=', 'alumno.id')
-            ->join('usuario', 'alumno.id_Usuario', '=', 'usuario.id')
+            ->join('users', 'alumno.id_Usuario', '=', 'users.id')
             ->join('asignatura_docente', 'grupo.id_Asignatura_Docente', '=', 'asignatura_docente.id')
             ->join('docente', 'asignatura_docente.id_Docente', '=', 'docente.id')
-            ->join('usuario as usuario2', 'docente.id_Usuario', '=', 'usuario2.id')
+            ->join('users as users2', 'docente.id_Usuario', '=', 'users2.id')
             ->join('asignatura', 'asignatura_docente.id_Asignatura', '=', 'asignatura.id')
             ->where('grupo.id',$idGrupo)
             ->paginate(10);
@@ -240,16 +240,16 @@ class Grupo extends Controller
                 'periodo.id as idPeriodo',
                 'periodo.fechaInicio as fechaInicioPeriodo',
                 'periodo.fechaFin as fechaFinPeriodo',
-                'usuario.id as idAlumno',
-                'usuario.primerNombre as nombreAlumno',
-                'usuario.segundoNombre as segundoNombreAlumno',
-                'usuario.apellidoPaterno as apellidoPaternoAlumno',
-                'usuario.apellidoMaterno as apellidoMaternoAlumno',
-                'usuario2.id as idDocente',
-                'usuario2.primerNombre as nombreDocente',
-                'usuario2.segundoNombre as segundoNombreDocente',
-                'usuario2.apellidoPaterno as apellidoPaternoDocente',
-                'usuario2.apellidoMaterno as apellidoMaternoDocente',
+                'users.id as idAlumno',
+                'users.primerNombre as nombreAlumno',
+                'users.segundoNombre as segundoNombreAlumno',
+                'users.apellidoPaterno as apellidoPaternoAlumno',
+                'users.apellidoMaterno as apellidoMaternoAlumno',
+                'users2.id as idDocente',
+                'users2.primerNombre as nombreDocente',
+                'users2.segundoNombre as segundoNombreDocente',
+                'users2.apellidoPaterno as apellidoPaternoDocente',
+                'users2.apellidoMaterno as apellidoMaternoDocente',
                 'asignatura.nombre as nombreAsignatura',
                 'asignatura.id as idAsignatura',
                 'asignatura_docente.id as idAsignaturaDocente',
@@ -258,13 +258,13 @@ class Grupo extends Controller
             ->join('periodo', 'grupo.id_Periodo', '=', 'periodo.id')
             ->join('grupo_alumno', 'grupo.id', '=', 'grupo_alumno.id_Grupo')
             ->join('alumno', 'grupo_alumno.id_Alumno', '=', 'alumno.id')
-            ->join('usuario', 'alumno.id_Usuario', '=', 'usuario.id')
+            ->join('users', 'alumno.id_Usuario', '=', 'users.id')
             ->join('asignatura_docente', 'grupo.id_Asignatura_Docente', '=', 'asignatura_docente.id')
             ->join('docente', 'asignatura_docente.id_Docente', '=', 'docente.id')
-            ->join('usuario as usuario2', 'docente.id_Usuario', '=', 'usuario2.id')
+            ->join('users as users2', 'docente.id_Usuario', '=', 'users2.id')
             ->join('asignatura', 'asignatura_docente.id_Asignatura', '=', 'asignatura.id')
             ->where('grupo.id',$idGrupo)
-            ->paginate(10);
+            ->get();
 
         return view('administrador/grupo/ver', compact('grupo'));
     }

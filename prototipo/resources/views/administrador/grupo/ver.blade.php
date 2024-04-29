@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Ver Grupo</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ver Grupo</title>
-    @include('general.estilos')
-</head>
-
-<body>
-
-    @include('general.navbar')
-
-
+@extends('layouts.app')
+@section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -34,24 +22,29 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="id_Asignatura" class="form-label">Asignatura:</label>
-                            <input type="text" class="form-control" id="id_Asignatura" name="id_Asignatura" value="{{ $grupo[0]->nombreAsignatura }}" readonly>
+                            <input type="text" class="form-control" id="id_Asignatura" name="id_Asignatura"
+                                value="{{ $grupo[0]->nombreAsignatura }}" readonly>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="id_Docente" class="form-label">Docente:</label>
-                            <input type="text" class="form-control" id="id_Docente" name="id_Docente" value="{{ $grupo[0]->nombreDocente }} {{ $grupo[0]->segundoNombreDocente }} {{ $grupo[0]->apellidoPaternoDocente }} {{ $grupo[0]->apellidoMaternoDocente }}" readonly>
+                            <input type="text" class="form-control" id="id_Docente" name="id_Docente"
+                                value="{{ $grupo[0]->nombreDocente }} {{ $grupo[0]->segundoNombreDocente }} {{ $grupo[0]->apellidoPaternoDocente }} {{ $grupo[0]->apellidoMaternoDocente }}"
+                                readonly>
                         </div>
 
                         <div class="col-md-3">
                             <label for="id_Periodo" class="form-label">Periodo:</label>
-                            <input type="text" class="form-control" id="id_Periodo" name="id_Periodo" value="{{ $grupo[0]->fechaInicioPeriodo }}/{{ $grupo[0]->fechaFinPeriodo }}" readonly>
+                            <input type="text" class="form-control" id="id_Periodo" name="id_Periodo"
+                                value="{{ $grupo[0]->fechaInicioPeriodo }}/{{ $grupo[0]->fechaFinPeriodo }}" readonly>
                         </div>
 
                         <div class="col-md-3">
                             <label for="semestre" class="form-label">Semestre:</label>
-                            <input type="text" class="form-control" id="semestre" name="semestre" value="{{ $grupo[0]->semestre }}" readonly>
+                            <input type="text" class="form-control" id="semestre" name="semestre"
+                                value="{{ $grupo[0]->semestre }}" readonly>
                         </div>
 
                     </div>
@@ -100,11 +93,7 @@
 
         </div>
     </div>
-
-</body>
-
-@include('general.footer')
-@include('general.scripts')
+@endsection
 
 <script>
     var alumnos = [];
@@ -136,5 +125,3 @@
         listaAlumnos.value = JSON.stringify(alumnos);
     }
 </script>
-
-</html>

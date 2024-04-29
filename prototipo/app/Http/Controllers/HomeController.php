@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('login');
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }else{
+            $userData = session('user');
+            $rol = $userData['rol'];
+    
+            if ($rol === 'Administrador') {
+                return view('administrador/inicio');
+            } elseif ($rol === 'Docente') {
+                return view('docente/inicio');
+            } else {
+                return view('alumno/inicio');
+            }
+        } 
     }
 }

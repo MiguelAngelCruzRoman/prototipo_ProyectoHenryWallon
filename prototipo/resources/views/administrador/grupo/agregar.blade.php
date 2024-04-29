@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregar Grupo</title>
-    @include('general.estilos')
-</head>
-
-<body>
-
-    @include('general.navbar')
-
-
+<title>Agregar Grupo</title>
+@extends('layouts.app')
+@section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -151,11 +138,7 @@
 
         </div>
     </div>
-
-</body>
-
-@include('general.footer')
-@include('general.scripts')
+@endsection
 
 <script>
     var alumnos = [];
@@ -208,5 +191,3 @@
         document.getElementById("formularioDatosGrupo").submit();
     }
 </script>
-
-</html>

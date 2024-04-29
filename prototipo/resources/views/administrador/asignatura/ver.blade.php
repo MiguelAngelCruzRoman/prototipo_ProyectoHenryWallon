@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Ver Datos de Asignatura</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ver Datos de Asignatura</title>
-    @include('general.estilos')
-</head>
-
-<body>
-
-    @include('general.navbar')
+@extends('layouts.app')
+@section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -137,11 +127,4 @@
         </div>
     </div>
 
-    <div style="height: 50px;"></div>
-
-</body>
-
-@include('general.footer')
-@include('general.scripts')
-
-</html>
+@endsection

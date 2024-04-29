@@ -16,7 +16,7 @@ class RegisterController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
+    | validation and creation. By default, this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
     */
@@ -49,9 +49,18 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'max:255'],
+            'correo' => ['nullable', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'primerNombre' => ['required', 'string', 'max:255'],
+            'segundoNombre' => ['nullable', 'string', 'max:255'],
+            'apellidoPaterno' => ['required', 'string', 'max:255'],
+            'apellidoMaterno' => ['nullable', 'string', 'max:255'],
+            'rol' => ['required', 'string', 'in:Administrador,Alumno,Docente,Tutor'],
+            'foto' => ['nullable'],
+            'estatus' => ['required', 'in:true,false'],
+            'sexo' => ['required', 'string', 'in:Hombre,Mujer'],
+            'telefono' => ['required'],
         ]);
     }
 
@@ -64,9 +73,20 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
+            'correo' => $data['correo'],
             'password' => Hash::make($data['password']),
+            'primerNombre' => $data['primerNombre'],
+            'segundoNombre' => $data['segundoNombre'],
+            'apellidoPaterno' => $data['apellidoPaterno'],
+            'apellidoMaterno' => $data['apellidoMaterno'],
+            'rol' => $data['rol'],
+            'foto' => $data['foto'], 
+            'estatus' => $data['estatus'] === 'true' ? true : false,
+            'sexo' => $data['sexo'],
+            'telefono' => $data['telefono'],
+            'created_at' =>now(),
+            'updated_at' =>now()
         ]);
     }
 }

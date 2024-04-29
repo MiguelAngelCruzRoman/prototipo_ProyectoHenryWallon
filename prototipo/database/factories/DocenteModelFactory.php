@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\UsuarioModel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +17,7 @@ class DocenteModelFactory extends Factory
      */
     public function definition(): array
     {
-        $usuariosDocente = UsuarioModel::where('rol', 'docente')->pluck('id')->toArray();
+        $usuariosDocente = User::where('rol', 'docente')->pluck('id')->toArray();
 
         $fechaContratacion = $this->faker->dateTimeBetween('-20 years', 'now');        
         $fechaDimision = $this->faker->dateTimeBetween($fechaContratacion, '+3 years');

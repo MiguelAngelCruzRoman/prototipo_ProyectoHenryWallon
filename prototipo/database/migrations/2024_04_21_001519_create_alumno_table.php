@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('alumno', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Usuario')->constrained('usuario');
+            $table->foreignId('id_Usuario')->constrained('users');
             $table->integer('semestre');
             $table->dateTime('fechaIngreso');
             $table->dateTime('fechaEgreso')->nullable();
             $table->boolean('estatus');
-            $table->foreignId('id_UsuarioTutor')->constrained('usuario');
+            $table->foreignId('id_UsuarioTutor')->constrained('users');
             $table->timestamps();
         });
     }

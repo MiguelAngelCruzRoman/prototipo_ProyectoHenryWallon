@@ -10,31 +10,31 @@ use App\Models\AsignaturaModel;
 class Asignatura extends Controller
 {
 
-
-    ///Este método no va aquiiiii, pero es pa ver si jala jsjs
-    public function inicio()
-    {
-        return view('administrador/inicio');
-    }
-
-
-
     public function index()
     {
-        //Sección que funciona para las vistas de usuario y docente
-        /*$asignaturas = DB::table('asignatura_docente')
-            ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
-            ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
-            ->get();
-        return view('docente/asignatura/index', compact('asignaturas'));*/
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } else {
+            $userData = session('user');
+            $rol = $userData['rol'];
 
+            if ($rol === 'Administrador') {
+                $asignaturas = DB::table('asignatura')->paginate(10);
+                return view('administrador/asignatura/index', compact('asignaturas'));
+                
+            } elseif ($rol === 'Docente' || $rol === 'Alumno') {
+                $asignaturas = DB::table('asignatura_docente')
+                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente')
+                    ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
+                    ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
+                    ->join('users', 'docente.id_Usuario', '=', 'users.id')
+                    ->get();
+                return view('docente/asignatura/index', compact('asignaturas'));
 
-
-        ///Sección que funciona para las vistas de administrador
-        $asignaturas = DB::table('asignatura')->paginate(10);
-
-        return view('administrador/asignatura/index', compact('asignaturas'));
+            } else {
+                return redirect('/');
+            }
+        }
     }
 
 
@@ -84,7 +84,6 @@ class Asignatura extends Controller
 
     public function verAsignatura(string $idAsignatura)
     {
-
         $asignatura = DB::table('asignatura')->where('id', $idAsignatura)->get();
 
         return view('administrador/asignatura/ver', compact('asignatura'));
@@ -115,8 +114,8 @@ class Asignatura extends Controller
 
         if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
             $asignatura->imagen = $request->imagen;
-        }       
-        
+        }
+
         //$asignatura->estatus = "En revisión";
         $asignatura->updated_at = now();
 
@@ -139,7 +138,7 @@ class Asignatura extends Controller
         $asignatura = DB::table('asignatura_docente')
             ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
             ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
+            ->join('users', 'docente.id_Usuario', '=', 'users.id')
             ->where('asignatura_docente.id_asignatura', $idAsignatura)
             ->where('asignatura_docente.id_docente', $idDocente)
             ->get();

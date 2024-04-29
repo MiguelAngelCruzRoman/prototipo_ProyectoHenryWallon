@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Agregar Datos de Asignatura</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregar Datos de Asignatura</title>
-    @include('general.estilos')
-</head>
-
-<body>
-
-    @include('general.navbar')
-
-
+@extends('layouts.app')
+@section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -149,14 +137,10 @@
 
 </body>
 
-@include('general.footer')
-@include('general.scripts')
+@endsection
 
 <script>
     function submitForm() {
         document.getElementById("formularioDatosAsignatura").submit();
     }
 </script>
-
-
-</html>

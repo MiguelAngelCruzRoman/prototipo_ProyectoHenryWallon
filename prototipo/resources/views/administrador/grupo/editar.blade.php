@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Editar Grupo</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editar Grupo</title>
-    @include('general.estilos')
-</head>
-
-<body>
-
-    @include('general.navbar')
-
-
+@extends('layouts.app')
+@section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -25,9 +13,11 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosGrupo" action="{{ route('grupo.editar.update',['idGrupo' => $grupo[0]->id]) }}" method="POST">
+                <form id="formularioDatosGrupo" action="{{ route('grupo.editar.update', ['idGrupo' => $grupo[0]->id]) }}"
+                    method="POST">
                     @csrf
-                    <input type="hidden" id="id_asignatura_docente_anterior" name="id_asignatura_docente_anterior" value="{{ $grupo[0]->idAsignaturaDocente }}">
+                    <input type="hidden" id="id_asignatura_docente_anterior" name="id_asignatura_docente_anterior"
+                        value="{{ $grupo[0]->idAsignaturaDocente }}">
 
 
                     <center>
@@ -121,7 +111,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="cuerpoTabla">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -151,8 +141,7 @@
                     <button type="button" class="btn btn-primary" onclick="submitForm()"
                         style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
                         <strong> GUARDAR</strong>
-                        <img src="https://cdn-icons-png.flaticon.com/128/376/376218.png" alt="iconoGuardar"
-                            width="40px">
+                        <img src="https://cdn-icons-png.flaticon.com/128/376/376218.png" alt="iconoGuardar" width="40px">
                     </button>
                 </center>
             </div>
@@ -161,11 +150,7 @@
 
         </div>
     </div>
-
-</body>
-
-@include('general.footer')
-@include('general.scripts')
+@endsection
 
 <script>
     var alumnos = [];
@@ -227,5 +212,3 @@
         document.getElementById("formularioDatosGrupo").submit();
     }
 </script>
-
-</html>

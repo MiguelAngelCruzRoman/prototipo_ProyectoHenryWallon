@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\UsuarioModel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +17,8 @@ class AlumnoModelFactory extends Factory
      */
     public function definition(): array
     {
-        $usuariosAlumno = UsuarioModel::where('rol', 'Alumno')->pluck('id')->toArray();
-        $usuariosTutor = UsuarioModel::where('rol', 'Tutor')->pluck('id')->toArray();
+        $usuariosAlumno = User::where('rol', 'Alumno')->pluck('id')->toArray();
+        $usuariosTutor = User::where('rol', 'Tutor')->pluck('id')->toArray();
 
         $fechaIngreso = $this->faker->dateTimeBetween('-20 years', 'now');        
         $fechaEgreso = $this->faker->dateTimeBetween($fechaIngreso, '+3 years');
