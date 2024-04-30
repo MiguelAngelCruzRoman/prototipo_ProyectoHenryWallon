@@ -5,29 +5,19 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrador.perfil') }}">
-                                <img src=" {{ session('user.foto') }}" alt="ImagenUsuario"
-                                    style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #000000;">
-                                {{ session('user.primerNombre') }} {{ session('user.segundoNombre') }}
-                                {{ session('user.apellidoPaterno') }} {{ session('user.apellidoMaterno') }}
-                            </a>
-                        </li>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <a class="nav-link" href="{{ route('home') }}">
+                    <center>
+                        <img src="{{ asset('logoHenryWallon.jpg') }}" alt="ImagenUsuario"
+                            style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #000000;">
+                    </center>
+                </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="logoutAndDestroySession()">
-                            Cerrar <br> Sesión
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                    @endif
-
-                </ul>
+                <a class="nav-link" href="{{ route('home') }}" style="color:white">
+                    <center>
+                        INSTITUTO <br>HENRY WALLON
+                    </center>
+                </a>
             </div>
         </div>
     </nav>

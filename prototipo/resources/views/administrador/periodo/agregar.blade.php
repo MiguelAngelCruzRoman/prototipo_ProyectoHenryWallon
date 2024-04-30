@@ -58,7 +58,7 @@
                 <center>
                     <button type="button" class="btn btn-primary" onclick="submitForm()"
                         style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
-                        <strong> CONTINUAR</strong>
+                        <strong> GUARDARX</strong>
                         <img src="https://cdn-icons-png.flaticon.com/128/3031/3031716.png" alt="flechaContinuar"
                             width="40px">
                     </button>

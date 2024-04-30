@@ -1,4 +1,5 @@
 <title>Asignaturas</title>
+
 @extends('layouts.app')
 @section('content')
     <div class="container">
@@ -34,7 +35,8 @@
         </div>
 
         <div class="row">
-            <table class="table">
+    <div class="col-md-12">
+        <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -86,11 +88,10 @@
             </table>
 
         </div>
-
-        <div class="col-2">
-            @if ($asignaturas->total() > 10)
-                {{ $asignaturas->links() }}
-            @endif
         </div>
+
+           
     </div>
+    {{ $asignaturas->links() }}
+
 @endsection

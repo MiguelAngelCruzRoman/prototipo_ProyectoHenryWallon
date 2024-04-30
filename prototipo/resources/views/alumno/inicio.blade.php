@@ -33,7 +33,7 @@
 
  
                 <div class="col-md-4">
-                    <a href="{{ route('asignatura.index') }}" class="btn btn-primary">
+                    <a href="{{ route('alumno.asignatura.index') }}" class="btn btn-primary">
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>

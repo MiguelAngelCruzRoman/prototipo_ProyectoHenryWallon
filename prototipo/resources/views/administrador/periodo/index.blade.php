@@ -36,7 +36,8 @@
         </div>
 
         <div class="row">
-            <table class="table">
+    <div class="col-md-12">
+        <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -46,6 +47,7 @@
                         <th colspan="2">OPERACIONES</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @foreach ($periodos as $periodo)
                         <tr>
@@ -54,13 +56,14 @@
                             <td>{{ $periodo->fechaFin }}</td>
                             <td>{{ $periodo->tipo }}</td>
                             <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="btn-group" role="group" aria-label="Basic example">
                                     <button
                                         onclick="window.location='{{ route('periodo.editar.datosPeriodo', ['idPeriodo' => $periodo->id]) }}'"
                                         class="btn btn-warning">
                                         <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt=""
                                             height="20px"> Editar
                                     </button>
+
                                     <button
                                         onclick="window.location='{{ route('periodo.eliminar', ['idPeriodo' => $periodo->id]) }}'"
                                         class="btn btn-danger">
@@ -73,14 +76,11 @@
                     @endforeach
                 </tbody>
             </table>
+                </tbody>
+            </table>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-2">
-                @if ($periodos->total() > 10)
-                    {{ $periodos->links() }}
-                @endif
-            </div>
         </div>
+    {{ $periodos->links() }}
+</div>
     </div>
 @endsection

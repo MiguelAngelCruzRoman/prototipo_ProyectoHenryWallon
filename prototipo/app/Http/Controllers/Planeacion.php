@@ -5,44 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-use App\Models\AsignaturaModel;
+use App\Models\User;
+use Illuminate\Support\Facades\Password;
 
-class Asignatura extends Controller
+class Users extends Controller
 {
+
+    public function perfil()
+    {
+        $user = User::find(session('user.id'));
+
+    // Generar el token de restablecimiento de contraseña
+    $token = Password::createToken($user);
+
+    return view('administrador/users/perfil', compact('user', 'token'));
+
+    }
 
     public function index()
     {
-        if (!session()->has('user')) {
-            return redirect()->route('login');
-        } else {
-            $userData = session('user');
-            $rol = $userData['rol'];
+        $user = DB::table('users')
+            ->where('id', session('user.id'));
 
-            if ($rol === 'Administrador') {
-                $asignaturas = DB::table('asignatura')->paginate(10);
-                return view('administrador/asignatura/index', compact('asignaturas'));
-                
-            } elseif ($rol === 'Docente') {
-                $asignaturas = DB::table('asignatura_docente')
-                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente')
-                    ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
-                    ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
-                    ->join('users', 'docente.id_Usuario', '=', 'users.id')
-                    ->get();
-                return view('docente/asignatura/index', compact('asignaturas'));
-
-            } elseif ($rol === 'Alumno') {
-                $asignaturas = DB::table('asignatura_docente')
-                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente')
-                    ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
-                    ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
-                    ->join('users', 'docente.id_Usuario', '=', 'users.id')
-                    ->get();
-                return view('alumno/asignatura/index', compact('asignaturas'));
-            }else{
-                return redirect('/');
-            }
-        }
+        return view('administrador/users/index', compact('user'));
     }
 
 
@@ -67,7 +52,7 @@ class Asignatura extends Controller
 
     public function insertDatosAsignatura(Request $request)
     {
-        $asignatura = new AsignaturaModel();
+        $asignatura = new User();
         $asignatura->nombre = ucwords(strtolower($request->nombre));
         $asignatura->objetivo = ucwords(strtolower($request->objetivo));
         $asignatura->intencionDidactica = ucwords(strtolower($request->intencionDidactica));
@@ -92,6 +77,7 @@ class Asignatura extends Controller
 
     public function verAsignatura(string $idAsignatura)
     {
+
         $asignatura = DB::table('asignatura')->where('id', $idAsignatura)->get();
 
         return view('administrador/asignatura/ver', compact('asignatura'));
@@ -107,7 +93,7 @@ class Asignatura extends Controller
 
     public function updateDatosAsignatura(Request $request, string $idAsignatura)
     {
-        $asignatura = AsignaturaModel::findOrFail($idAsignatura);
+        $asignatura = User::findOrFail($idAsignatura);
 
         $asignatura->nombre = ucwords(strtolower($request->nombre));
         $asignatura->objetivo = ucwords(strtolower($request->objetivo));
@@ -135,7 +121,7 @@ class Asignatura extends Controller
 
     public function eliminarAsignatura(string $idAsignatura)
     {
-        $asignatura = AsignaturaModel::findOrFail($idAsignatura);
+        $asignatura = User::findOrFail($idAsignatura);
         $asignatura->delete();
         return redirect()->back();
     }
@@ -146,7 +132,7 @@ class Asignatura extends Controller
         $asignatura = DB::table('asignatura_docente')
             ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
             ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
-            ->join('users', 'docente.id_Usuario', '=', 'users.id')
+            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
             ->where('asignatura_docente.id_asignatura', $idAsignatura)
             ->where('asignatura_docente.id_docente', $idDocente)
             ->get();

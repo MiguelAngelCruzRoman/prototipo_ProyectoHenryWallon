@@ -53,7 +53,17 @@ Route::get('/grupo/eliminar/{idGrupo}',[Grupo::class, 'eliminar'])->name('grupo.
 
 Route::get('/evaluacion/index',[Evaluacion::class, 'index'])->name('evaluacion.index');
 Route::get('/evaluacion/busqueda',[Evaluacion::class, 'busqueda'])->name('evaluacion.busqueda');
+Route::get('/evaluacion/agregar',[Evaluacion::class, 'agregar'])->name('evaluacion.agregar');
+Route::post('/evaluacion/agregar/insert',[Evaluacion::class, 'insert'])->name('evaluacion.agregar.insert');
+Route::get('/evaluacion/editar/{idEvaluacion}',[Evaluacion::class, 'editar'])->name('evaluacion.editar');
+Route::post('/evaluacion/editar/update/{idEvaluacion}',[Evaluacion::class, 'update'])->name('evaluacion.editar.update');
+Route::get('/evaluacion/ver/{idEvaluacion}',[Evaluacion::class, 'ver'])->name('.ver');
 Route::get('/evaluacion/eliminar/{idEvaluacion}',[Evaluacion::class, 'eliminar'])->name('evaluacion.eliminar');
+
+Route::get('/usuario/index',[Users::class, 'inicio'])->name('user.inicio');
+Route::get('/usuario/busqueda',[Users::class, 'busqueda'])->name('user.busqueda');
+Route::get('/usuario/ver/{idUser}',[Users::class, 'verUsuario'])->name('user.ver');
+Route::get('/usuario/eliminar/{idUser}',[Users::class, 'eliminarUsuario'])->name('user.eliminar');
 
 
 
@@ -71,9 +81,9 @@ Route::post('/asignatura/agregar/insert',[Asignatura::class, 'insertDatos'])->na
 
 
 
-
 //-----------------------------------Rutas de Docente-------------------------------------//
 Route::get('/docente', [Users::class, 'perfil'])->name('docente.perfil');
+Route::get('/docente/asignatura/index',[Asignatura::class, 'index'])->name('docente.asignatura.index');
 
 
 
@@ -83,4 +93,8 @@ Route::get('/docente', [Users::class, 'perfil'])->name('docente.perfil');
 //-----------------------------------Rutas de Alumno-------------------------------------//
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'index'])->name('homeE');
 Route::get('/alumno/asignatura/index',[Asignatura::class, 'index'])->name('alumno.asignatura.index');
+
+
+//Rutas pendientes para darle funcionaldiad
 Route::get('/alumno/asignatura/planeacion/ver/{idAsignatura}/{idDocente}', [Asignatura::class, 'verPlaneacionAsignatura'])->name('alumno.asignatura.planeacion.ver');
+Route::get('/horario/alumnos/ver/{id_alumno}', [App\Http\Controllers\Horario::class, 'horario_alumno'])->name('horario');

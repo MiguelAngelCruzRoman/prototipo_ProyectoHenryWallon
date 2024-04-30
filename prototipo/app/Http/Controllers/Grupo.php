@@ -268,6 +268,5 @@ class Grupo extends Controller
 
         return view('administrador/grupo/ver', compact('grupo'));
     }
-
 }
 

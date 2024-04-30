@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Agregar Evaluación</title>
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregar Datos de Evaluacion</title>
-    @include('general.estilos')
-</head>
-
-<body>
-
-    @include('layouts.app')
-    @section('section')
-
+@section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -26,14 +14,13 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosEvaluacion" action="{{ route('evaluacion.store') }}" method="POST">
+                <form id="formularioDatosEvaluacion" action="{{ route('evaluacion.agregar.insert') }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="nombre" class="form-label">Actividad de Aprendizaje:</label>
                             <input type="text" id="actividad" name="actividadAprendizaje" class="styled-input">
                         </div>
-
                         <div class="col-md-3">
                             <label for="nombre" class="form-label">Tipo de Evaluacion:</label>
                             <select class="form-select" id="archivo" name="tipoEvaluacion">
@@ -42,9 +29,8 @@
                                 <option value="Lista de Cotejo">Lista de Cotejo</option>
                             </select>
                         </div>
-
                         <div class="col-md-3">
-                            <label for="tipo" class="form-label">Subir Ejemplo:</label>
+                            <label for="tipo" class="form-label">Subir Ejemplo de Evaluación:</label>
                             <input type="text" id="tipo" name="archivoEjemplo" class="styled-input">
                         </div>
                     </div>
@@ -77,8 +63,6 @@
             </div>
         </div>
     </div>
-    @endsection
-</body>
 
 <div style="height: 50px;"></div>
 
@@ -91,4 +75,4 @@
     }
 </script>
 
-</html>
+@endsection

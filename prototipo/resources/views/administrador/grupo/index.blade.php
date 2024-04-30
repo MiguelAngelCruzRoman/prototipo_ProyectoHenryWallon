@@ -71,10 +71,6 @@
 
         </div>
 
-        <div class="col-2">
-            @if ($grupos->total() > 10)
                 {{ $grupos->links() }}
-            @endif
-        </div>
     </div>
 @endsection

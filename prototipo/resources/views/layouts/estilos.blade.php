@@ -114,7 +114,7 @@
         object-fit: cover;
     }
 
-    .btn-group {
+    .btn-group-card {
         position: absolute;
         bottom: 15px;
         left: 50%;
@@ -122,5 +122,8 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+    }
+    .table{
+        overflow-x:auto;
     }
 </style>

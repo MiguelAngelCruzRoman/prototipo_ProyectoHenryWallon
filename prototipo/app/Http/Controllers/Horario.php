@@ -14,9 +14,9 @@ class Horario extends Controller
         
         //retorna los grupos, materias, nombre completo del alumno, dias y horas que toma una materia, de un alumno especifico
         $horario = DB::table('alumno as al')
-        ->select('g.id as Grupo,a.nombre as nombre_asignatura,u.primerNombre,u.segundoNombre,u.apellidoPaterno,u.apellidoMaterno as nombre_estudiante, 
-        h.dia,h.horaInicio,h.horaFin')
-        ->join('usuario as u','al.id_Usuario','=','u.id')
+        ->select('g.id, a.nombre, u.primerNombre, u.segundoNombre, u.apellidoPaterno, u.apellidoMaterno, 
+        h.dia, h.horaInicio, h.horaFin')
+        ->join('sers as u','al.id_Usuario','=','u.id')
         ->join('grupo_alumno as ga','al.id','=','ga.id_alumno')
         ->join('grupo as g','ga.id_Grupo','=','g.id')
         ->join('asignatura_docente as ad','g.id_Asignatura_Docente','=','ad.id')
@@ -30,7 +30,7 @@ class Horario extends Controller
 
         $ids_asignaturas =  DB::table('alumno as al')
         ->select('a.id as id_asignatura')
-        ->join('usuario as u','al.id_Usuario','=','u.id')
+        ->join('Users as u','al.id_Usuario','=','u.id')
         ->join('grupo_alumno as ga','al.id','=','ga.id_alumno')
         ->join('grupo as g','ga.id_Grupo','=','g.id')
         ->join('asignatura_docente as ad','g.id_Asignatura_Docente','=','ad.id')
@@ -45,7 +45,7 @@ class Horario extends Controller
 
         $ids_docentes =  DB::table('alumno as al')
         ->select('d.id as id_docente')
-        ->join('usuario as u','al.id_Usuario','=','u.id')
+        ->join('Users as u','al.id_Usuario','=','u.id')
         ->join('grupo_alumno as ga','al.id','=','ga.id_alumno')
         ->join('grupo as g','ga.id_Grupo','=','g.id')
         ->join('asignatura_docente as ad','g.id_Asignatura_Docente','=','ad.id')
@@ -64,7 +64,7 @@ class Horario extends Controller
             foreach ($ids_docentes as $id_docente){
                 $datos_maestros[] = DB::table('docente as d')
                 ->select('u.primerNombre', 'u.apellidoPaterno', 'u.apellidoMaterno')
-                ->join('usuario as u', 'd.id_Usuario', '=', 'u.id')
+                ->join('Users as u', 'd.id_Usuario', '=', 'u.id')
                 ->join('asignatura_docente as ad', 'd.id', '=', 'ad.id_docente')
                 ->join('asignatura as a', 'ad.id_asignatura', '=', 'a.id')
                 ->where('d.id', $id_docente)

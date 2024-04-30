@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Actualizar Datos de Evaluacion</title>
-    @include('general.estilos')
-    
-</head>
-
+<title>Editar Evaluación</title>
 <body>
-
-    @section('section')
+@extends('layouts.app')
+    @section('content')
     <div class="container">
         <div class="row">
             <center>
@@ -25,7 +14,7 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioActualizarEvaluacion" action="{{ route('evaluacion.update', $evaluacion->id) }}" method="POST">
+                <form id="formularioActualizarEvaluacion" action="{{ route('evaluacion.editar.update', $evaluacion->id) }}" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-3">
@@ -89,5 +78,3 @@
         window.history.back();
     }
 </script>
-
-</html>

@@ -35,16 +35,16 @@ class Evaluacion extends Controller
 
     public function insert(Request $request)
     {
-        $evaluacions = new EvaluacionModel;
-        $evaluacions->actividadAprendizaje = $request->input('actividadAprendizaje');
-        $evaluacions->tipoEvaluacion = $request->input('tipoEvaluacion');
-        $evaluacions->archivoEjemplo = $request->input('archivoEjemplo');
-        $evaluacions->save();
-
-        return redirect()->route('grupo.index');
+        $evaluaciones = new EvaluacionModel;
+        $evaluaciones->actividadAprendizaje = $request->input('actividadAprendizaje');
+        $evaluaciones->tipoEvaluacion = $request->input('tipoEvaluacion');
+        $evaluaciones->archivoEjemplo = $request->input('archivoEjemplo');
+        $evaluaciones->save();
+        return redirect()->route('evaluacion.index');
     }
 
 
+    //se probará con el servidor activo
     public function ver(string $id)
     {
 
@@ -66,13 +66,13 @@ class Evaluacion extends Controller
 
     public function update(Request $request, $id)
     {
-        $evaluacions = EvaluacionModel::find($id);
-        $evaluacions->actividadAprendizaje = $request->input('actividadAprendizaje');
-        $evaluacions->tipoEvaluacion = $request->input('tipoEvaluacion');
-        $evaluacions->archivoEjemplo = $request->input('archivoEjemplo');
-        $evaluacions->save();
+        $evaluaciones = EvaluacionModel::find($id);
+        $evaluaciones->actividadAprendizaje = $request->input('actividadAprendizaje');
+        $evaluaciones->tipoEvaluacion = $request->input('tipoEvaluacion');
+        $evaluaciones->archivoEjemplo = $request->input('archivoEjemplo');
+        $evaluaciones->save();
 
-        return redirect()->route('grupo.index');
+        return redirect()->route('evaluacion.index');
     }
 
 
@@ -81,6 +81,6 @@ class Evaluacion extends Controller
         $evaluacion = EvaluacionModel::find($id);
         $evaluacion->delete();
 
-        return redirect()->route('grupo.index');
+        return redirect()->route('evaluacion.index');
     }
 }
