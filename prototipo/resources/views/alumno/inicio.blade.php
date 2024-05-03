@@ -12,14 +12,10 @@
             </div>
 
             <div style="height: 30px;"></div>
-
             <div class="row">
-               
-                <div class="col-md-2">
-                </div>
 
                 <div class="col-md-4">
-                    <a href="" class="btn btn-primary">
+                    <a href="">
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>
@@ -31,9 +27,12 @@
                     </a>
                 </div>
 
- 
                 <div class="col-md-4">
-                    <a href="{{ route('alumno.asignatura.index') }}" class="btn btn-primary">
+                </div>
+
+
+                <div class="col-md-4">
+                    <a href="{{ route('asignatura.index') }}">
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>
@@ -45,8 +44,10 @@
                     </a>
                 </div>
 
-                
+
             </div>
+
+         
         </center>
     </div>
 @endsection

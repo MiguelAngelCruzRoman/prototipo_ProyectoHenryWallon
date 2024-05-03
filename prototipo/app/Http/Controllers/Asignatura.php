@@ -28,6 +28,7 @@ class Asignatura extends Controller
                     ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
                     ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
                     ->join('users', 'docente.id_Usuario', '=', 'users.id')
+                    ->where('users.id',8)
                     ->get();
                 return view('docente/asignatura/index', compact('asignaturas'));
 
@@ -37,6 +38,7 @@ class Asignatura extends Controller
                     ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
                     ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
                     ->join('users', 'docente.id_Usuario', '=', 'users.id')
+                    ->where('users.id',8)
                     ->get();
                 return view('alumno/asignatura/index', compact('asignaturas'));
             }else{

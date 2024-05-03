@@ -13,7 +13,7 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosGrupo" action="" method="POST">
+                <form id="verGrupo" action="" method="POST">
                     @csrf
 
                     <center>

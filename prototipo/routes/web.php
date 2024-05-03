@@ -64,6 +64,9 @@ Route::get('/usuario/index',[Users::class, 'inicio'])->name('user.inicio');
 Route::get('/usuario/busqueda',[Users::class, 'busqueda'])->name('user.busqueda');
 Route::get('/usuario/ver/{idUser}',[Users::class, 'verUsuario'])->name('user.ver');
 Route::get('/usuario/eliminar/{idUser}',[Users::class, 'eliminarUsuario'])->name('user.eliminar');
+Route::get('/usuario/editar/{idUser}', [Users::class, 'editarUsuario'])->name('user.editar');
+Route::put('/usuario/editar/update{idUser}', [Users::class, 'updateUsuario'])->name('user.actualizar');
+
 
 
 

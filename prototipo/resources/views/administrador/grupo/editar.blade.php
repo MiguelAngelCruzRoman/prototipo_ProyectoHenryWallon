@@ -13,7 +13,7 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form id="formularioDatosGrupo" action="{{ route('grupo.editar.update', ['idGrupo' => $grupo[0]->id]) }}"
+                <form id="formularioDatosGrupoEditar" action="{{ route('grupo.editar.update', ['idGrupo' => $grupo[0]->id]) }}"
                     method="POST">
                     @csrf
                     <input type="hidden" id="id_asignatura_docente_anterior" name="id_asignatura_docente_anterior"
@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <button type="button" onclick="agregarAlumno()" class="btn btn-primary">Agregar
+                            <button type="button" onclick="agregarAlumnoEditar()" class="btn btn-primary">Agregar
                                 a lista</button>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
             </div>
             <div class="col-6">
                 <center>
-                    <button type="button" class="btn btn-primary" onclick="submitForm()"
+                    <button type="button" class="btn btn-primary" onclick="submitFormEditar()"
                         style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
                         <strong> GUARDAR</strong>
                         <img src="https://cdn-icons-png.flaticon.com/128/376/376218.png" alt="iconoGuardar" width="40px">
@@ -161,10 +161,10 @@
             nombre: "{{ $alumno->nombreAlumno }} {{ $alumno->segundoNombreAlumno }} {{ $alumno->apellidoPaternoAlumno }} {{ $alumno->apellidoMaternoAlumno }}"
         });
     @endforeach
-    actualizarTabla();
+    actualizarTablaEditar();
 
 
-    function agregarAlumno() {
+    function agregarAlumnoEditar() {
         var idAlumno = document.getElementById("arregloAlumnos").value;
         var nombreAlumno = document.getElementById("arregloAlumnos").options[document.getElementById(
             "arregloAlumnos").selectedIndex].text;
@@ -175,40 +175,40 @@
                 nombre: nombreAlumno
             });
             alumnos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            actualizarTabla();
-            actualizarListaAlumnos();
+            actualizarTablaEditar();
+            actualizarListaAlumnosEditar();
         } else {
             alert("El alumno ya está en la lista.");
         }
     }
 
-    function eliminarAlumno(index) {
+    function eliminarAlumnoEditar(index) {
         alumnos.splice(index, 1);
-        actualizarTabla();
-        actualizarListaAlumnos();
+        actualizarTablaEditar();
+        actualizarListaAlumnosEditar();
     }
 
-    function actualizarTabla() {
+    function actualizarTablaEditar() {
         var cuerpoTabla = document.getElementById("cuerpoTabla");
         cuerpoTabla.innerHTML = "";
         for (var i = 0; i < alumnos.length; i++) {
             var fila = "<tr>";
             fila += "<td>" + (i + 1) + "</td>";
             fila += "<td colspan='8'>" + alumnos[i].nombre + "</td>";
-            fila += "<td><button class='btn btn-danger' onclick='eliminarAlumno(" + i +
+            fila += "<td><button class='btn btn-danger' onclick='eliminarAlumnoEditar(" + i +
                 ")'>X</button></td>";
             fila += "</tr>";
             cuerpoTabla.innerHTML += fila;
         }
     }
 
-    function actualizarListaAlumnos() {
+    function actualizarListaAlumnosEditar() {
         var listaAlumnos = document.getElementById("listaAlumnos");
         listaAlumnos.value = JSON.stringify(alumnos);
     }
 
-    function submitForm() {
-        actualizarListaAlumnos();
-        document.getElementById("formularioDatosGrupo").submit();
+    function submitFormEditar() {
+        actualizarListaAlumnosEditar();
+        document.getElementById("formularioDatosGrupoEditar").submit();
     }
 </script>

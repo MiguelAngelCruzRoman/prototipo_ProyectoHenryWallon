@@ -1,80 +1,47 @@
-<title>Evaluaciones</title>
-
-@extends('layouts.app')
-
-
-@section('content')
-<div class="container">
-        <div class="row">
-            <center>
-                <h1><strong>EVALUACIONES</strong></h1>
-            </center>
+    <title>Evaluaciones</title>
+    @extends('layouts.app')
+    @section('content')
+        <div class="container mx-auto">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold my-8">EVALUACIONES</h1>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <!--SECCIÓN DE BÚSQUEDA-->
+                    <form action="{{ route('evaluacion.busqueda') }}" method="GET">
+                        <div class="input-group">
+                            <label for="valorBusqueda" class="mr-2">Filtrar por:</label>
+                            <input type="text" class="form-control flex-1 mr-2"
+                                placeholder="Buscar evaluación por actividad o tipo de evaluación" name="valorBusqueda">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal">
+                        <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+            <!--se incluye el modal con formulario-->
+            @include('administrador.evaluacion.partials.modals.agregar')
+            <!--sección para mostrar los datos-->
+            @include('administrador.evaluacion.partials.tablas.evaluacion')
+            <!--paginación-->
+            {{ $evaluaciones->links() }}
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <form action="{{ route('evaluacion.busqueda') }}" method="GET">
-                    <div class="input-group">
-                        <input type="text" class="form-control"
-                            placeholder="Buscar evaluación por actividad o tipo de evaluación" name="valorBusqueda">
-                        <button class="btn-sm" style="background-color:#336A7B; color:white" type="submit">Buscar</button>
-                    </div>
-                </form>
-            </div>
+    <!--se incluye modal para confirmación de eliminar-->
+    @include('administrador.evaluacion.partials.modals.eliminar')
+    @endsection
 
-            <div class="col-md-4">
-            </div>
+    <!--scripts para modales-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
 
-            <div class="col-md-2">
-                <button onclick="window.location='{{ route('evaluacion.agregar') }}'" class="btn btn-success">
-                    <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
-                    Agregar
-                </button>
-            </div>
-
-     </div>
-    
-
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
-            <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ACTIVIDAD DE APRENDIZAJE</th>
-                        <th>TIPO DE EVALUACION</th>
-                        <th>ARCHIVO DE EJEMPLO</th>
-                        <th colspan="2">OPERACIONES</th>
-                    </tr>
-            </thead>
-            <tbody>
-                    @foreach ($evaluaciones as $evaluacion)
-                        <tr>
-                            <th scope="row">{{ $evaluacion->id }}</th>
-                            <td>{{ $evaluacion->actividadAprendizaje }}</td>
-                            <td>{{ $evaluacion->tipoEvaluacion }}</td>
-                            <td>{{ $evaluacion->archivoEjemplo }}</td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button onclick="window.location='{{ route('evaluacion.editar', $evaluacion->id) }}'"
-                                        class="btn btn-warning">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt=""
-                                            height="20px"> Editar
-                                    </button>
-                                    <button onclick="window.location='{{route('evaluacion.eliminar', ['idEvaluacion' => $evaluacion->id]) }}'"
-                                        class="btn btn-danger">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt=""
-                                            height="20px"> Eliminar
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-        </table>
-    </div>
-
-                {{ $evaluaciones->links() }}
-
-</div>
-@endsection
+    <!--script para alerta y envio de datos-->
+    @include('administrador.evaluacion.partials.script.evaluacion')

@@ -1,97 +1,51 @@
 <title>Asignaturas</title>
 
 @extends('layouts.app')
+
 @section('content')
-    <div class="container">
-        <div class="row">
-            <center>
-                <h1><strong>ASIGNATURAS</strong></h1>
-            </center>
+    <div class="container mx-auto">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold my-8">ASIGNATURAS</h1>
         </div>
 
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
                 <form action="{{ route('asignatura.busqueda') }}" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control flex-1 mr-2"
                             placeholder="Buscar asignatura por nombre, componente o semestre" name="valorBusqueda">
-                        <button class="btn" style="flex:0"
-                            type="submit">Buscar</button>
+                        <button class="btn btn-primary" type="submit">Buscar</button>
                     </div>
                 </form>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
             </div>
 
             <div class="col-md-2">
-                <button onclick="window.location='{{ route('asignatura.agregar.datosAsignatura') }}'"
-                    class="btn btn-success">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal">
                     <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
                     Agregar
                 </button>
             </div>
-
         </div>
 
-        <div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NOMBRE</th>
-                        <th>COMPONENTE</th>
-                        <th>SEMESTRE Y TURNO</th>
-                        <th>HORAS DE ESTUDIO</th>
-                        <th colspan="2">OPERACIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($asignaturas as $asignatura)
-                        <tr>
-                            <th scope="row">{{ $asignatura->id }}</th>
-                            <td>{{ $asignatura->nombre }}</td>
-                            <td>{{ $asignatura->componente }}</td>
-                            <td>{{ $asignatura->semestre }} ({{ $asignatura->turno }})</td>
-                            <td>
-                                <ul>
-                                    <li>Con docente: {{ $asignatura->horasDocente }}</li>
-                                    <li>Independiente: {{ $asignatura->horasEstudioIndependiente }}</li>
-                                </ul>
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button
-                                        onclick="window.location='{{ route('asignatura.ver', ['idAsignatura' => $asignatura->id]) }}'"
-                                        class="btn btn-primary">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/2874/2874802.png"
-                                            alt="" height="20px"> Ver
-                                    </button>
-                                    <button
-                                        onclick="window.location='{{ route('asignatura.editar.datosAsignatura', ['idAsignatura' => $asignatura->id]) }}'"
-                                        class="btn btn-warning">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png"
-                                            alt="" height="20px"> Editar
-                                    </button>
-                                    <button
-                                        onclick="window.location='{{ route('asignatura.eliminar', ['idAsignatura' => $asignatura->id]) }}'"
-                                        class="btn btn-danger">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png"
-                                            alt="" height="20px"> Eliminar
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-        </div>
-        </div>
-
-           
+        <!--se incluye el modal con formulario-->
+        @include('administrador.asignatura.partials.modals.agregar')
+        <!--sección para mostrar los datos-->
+        @include('administrador.asignatura.partials.tablas.periodos')
+        <!--paginación-->
+        {{ $asignaturas->links() }}
     </div>
-    {{ $asignaturas->links() }}
-
+    <!--se incluye modal para confirmación de eliminar-->
+    @include('administrador.asignatura.partials.modals.eliminar')
 @endsection
+<!--scripts para modales-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
+<!--script para alerta y envio de datos-->
+@include('administrador.asignatura.partials.script.periodo')

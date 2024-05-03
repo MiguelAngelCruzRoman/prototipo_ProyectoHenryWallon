@@ -1,47 +1,50 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <!-- Nombre de Usuario -->
-   
-    <li class="nav-item">
-    @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
-        <a class="nav-link" href="{{ route('administrador.perfil') }}">
-            <center>
-
-            <img src="{{ session('user.foto') }}" alt="ImagenUsuario"
-                style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #000000;">
-                <br>
-            {{ session('user.primerNombre') }} {{ session('user.segundoNombre') }} <br>
-            {{ session('user.apellidoPaterno') }} {{ session('user.apellidoMaterno') }}
-        </center>    
-
-        </a>
-    
-    </li>
-
-  
+<ul class="navbar-nav bg-primary-custom sidebar sidebar-dark accordion" id="accordionSidebar">
+    <br>
+    <center>
+        <li class="nav-item">
+            <button class="btn btn-primary" id="sidebarToggle"></button>
+        </li>
+    </center>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    <!-- Nav Item - Dashboard -->
+
+    <!-- Info usuario -->
+    <li class="nav-item">
+        @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
+            <a class="nav-link" href="{{ route('administrador.perfil') }}">
+                <div class="flex">
+                    <center>
+                        <img src="{{ session('user.foto') }}" alt="ImagenUsuario"
+                            class="rounded-circle border border-dark" style="width: 80px; height: 80px;">
+                        {{ session('user.primerNombre') }} {{ session('user.apellidoPaterno') }}
+                    </center>
+                </div>
+            </a>
+        @endif
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Menú de inicio -->
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('home') }}">
-        <i class="fas fa-fw fa-home"></i>
-
-            @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
-                <span>INICIO</span>
-            @else
-                <span>LOGIN</span>
-            @endif
+            <i class="fas fa-fw fa-home"></i>
+            <span>INICIO</span>
         </a>
     </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
     @if (session('user.rol') === 'Administrador')
+        <!-- Opciones de Administrador -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('user.inicio')}}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>USUARIOS</span>
             </a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('periodo.index') }}">
                 <i class="far fa-fw fa-clock"></i>
@@ -61,6 +64,7 @@
             </a>
         </li>
     @endif
+    <!-- Opciones comunes a varios roles -->
     @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
         <li class="nav-item">
             <a class="nav-link" href="#">
@@ -75,6 +79,7 @@
             </a>
         </li>
     @endif
+    <!-- Opciones solo para Administrador y Docente -->
     @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('grupo.index') }}">
@@ -83,28 +88,17 @@
             </a>
         </li>
     @endif
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-<!-- Navbar -->
-<li class="nav-item">
-<a class="nav-link" href="#" onclick="logoutAndDestroySession()">
-<i class="fas fa-fw fa-sign-out-alt"></i>
-
-<span>CERRAR SESIÓN</span>
-            </a>
-           
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </li>
-
-
-        @endif
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-        
-    </ul>
-
-<!-- End of Sidebar -->
+    <!-- Cerrar Sesión -->
+    <li class="nav-item">
+        <a class="nav-link" href="#" onclick="logoutAndDestroySession()">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>CERRAR SESIÓN</span>
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </li>
+</ul>

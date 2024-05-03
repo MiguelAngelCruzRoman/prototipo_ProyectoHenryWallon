@@ -37,7 +37,26 @@ class Grupo extends Controller
             ->paginate(10);
 
 
-        return view('administrador/grupo/index', compact('grupos'));
+        $asignaturas = DB::table('asignatura')
+            ->select('id', 'nombre')
+            ->get();
+
+        $docentes = DB::table('docente')
+            ->select('docente.id', 'users.primerNombre', 'users.segundoNombre', 'users.apellidoPaterno', 'users.apellidoMaterno')
+            ->join('users', 'docente.id_Usuario', '=', 'users.id')
+            ->get();
+
+        $alumnos = DB::table('alumno')
+            ->select('alumno.id', 'users.primerNombre', 'users.segundoNombre', 'users.apellidoPaterno', 'users.apellidoMaterno')
+            ->join('users', 'alumno.id_Usuario', '=', 'users.id')
+            ->get();
+
+        $periodos = DB::table('periodo')
+            ->select('id', 'fechaInicio', 'fechaFin')
+            ->where('tipo', 'CicloEscolar')
+            ->get();
+
+        return view('administrador/grupo/index', compact('grupos','asignaturas', 'docentes', 'alumnos', 'periodos'));
     }
 
 
@@ -175,7 +194,7 @@ class Grupo extends Controller
                 'asignatura.nombre as nombreAsignatura',
                 'asignatura.id as idAsignatura',
                 'asignatura_docente.id as idAsignaturaDocente',
-                'grupo_alumno.id as idgrupoAlumno'
+                'grupo_alumno.id as idgrupoAlumno',
             )
             ->join('periodo', 'grupo.id_Periodo', '=', 'periodo.id')
             ->join('grupo_alumno', 'grupo.id', '=', 'grupo_alumno.id_Grupo')
