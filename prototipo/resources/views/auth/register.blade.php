@@ -4,9 +4,15 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <center>
-                <h1><strong>REGISTRAR USUARIO</strong></h1>
-            </center>
+        <div class="container">
+    <div class="text-center">
+            <!--ENCABEZADO DE LA PÁGINA-->
+            <h1 class="text-3xl font-bold my-8"> <strong> REGISTRAR USUARIO</strong></h1>
+        </div>
+  
+  
+</div>
+        
         </div>
 
         <div style="height: 30px;"></div>
@@ -25,9 +31,8 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="text"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required
-                                        autocomplete="email" autofocus>
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -55,10 +60,13 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña:') }}</label>
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Contraseña:') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -69,10 +77,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña:') }}</label>
+                                <label for="password-confirm"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña:') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
 
@@ -82,9 +92,8 @@
 
                                 <div class="col-md-6">
                                     <input id="primerNombre" type="text"
-                                        class="form-control @error('primerNombre') is-invalid @enderror"
-                                        name="primerNombre" value="{{ old('primerNombre') }}" required
-                                        autocomplete="primerNombre">
+                                        class="form-control @error('primerNombre') is-invalid @enderror" name="primerNombre"
+                                        value="{{ old('primerNombre') }}" required autocomplete="primerNombre">
                                 </div>
                             </div>
 
@@ -164,8 +173,8 @@
                                 <div class="col-md-6">
                                     <select id="estatus" class="form-select @error('estatus') is-invalid @enderror"
                                         name="estatus" required autocomplete="estatus">
-                                        <option value="true"
-                                            {{ old('estatus', 'true') == 'true' ? 'selected' : '' }}>Activo</option>
+                                        <option value="true" {{ old('estatus', 'true') == 'true' ? 'selected' : '' }}>
+                                            Activo</option>
                                         <option value="false" {{ old('estatus') == 'false' ? 'selected' : '' }}>
                                             Inactivo</option>
                                     </select>
@@ -208,9 +217,17 @@
                             </div>
 
                             <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                <div class="col-md-6 offset-md-3">
+                                    <button class="btn btn-primary" onclick="goBack()"
+                                        style="background-color: #21182F;color: white">
+                                        <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png"
+                                            alt="flechaRegresar" width="20px" style="filter: invert(100%);">
+                                        Regresar
+                                    </button>
+                                    <button type="submit" class="btn btn-success">
+                                        <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
+                                            height="20px">
+                                        {{ __('Agregar') }}
                                     </button>
                                 </div>
                             </div>
@@ -220,5 +237,4 @@
             </div>
         </div>
     </div>
-
 @endsection

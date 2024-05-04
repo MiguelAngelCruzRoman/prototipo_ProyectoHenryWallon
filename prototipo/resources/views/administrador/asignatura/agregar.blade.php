@@ -12,7 +12,7 @@
 
         <div style="height: 50px;"></div>
 
-        <div class="card card-style">
+        <div class="card card-style ">
             <div class="card-body">
                 <form id="formularioDatosAsignatura" action="{{ route('asignatura.agregar.datosAsignatura.insert') }}"
                     method="POST">

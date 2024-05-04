@@ -7,7 +7,6 @@
                 <div class="row">
                     <center>
                         <h1><strong>PÁGINA DE INICIO</strong></h1>
-                        <h3><strong>- ADMINISTRADOR -</strong></h3>
                     </center>
                 </div>
 
@@ -103,7 +102,7 @@
 
                 <div style="height: 30px;"></div>
 
-                <div class="row">
+               <!-- <div class="row">
 
                     <div class="col-md-4">
                     </div>
@@ -120,7 +119,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div>-->
 
             </center>
         </div>

@@ -7,9 +7,19 @@
     @endif
 
 
+    <div class="row">
+        <center>
+            <h1><strong>VER PERFIL</strong></h1>
+            <h3><strong>- ADMINISTRADOR -</strong></h3>
+        </center>
+    </div>
+
     <div class="tiles">
-        <div class="row" style="margin-top:-20px; padding-bottom:-20px">
-            <div class="col-lg-12">
+        <div class="row" style="margin-top:20px; padding-bottom:-20px">
+            <div class="col-lg-1">
+            </div>
+
+            <div class="col-lg-10">
                 <div class="card border-primary mb-3">
                     <h4 class="card-header text-right text-danger">Identificador: {{ $user->id }} </h4>
                     <div class="card-body">
@@ -70,9 +80,9 @@
         <div class="col-6">
             <center>
                 <button class="btn btn-primary me-2" onclick="goBack()"
-                    style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
-                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="40px">
-                    <strong>REGRESAR</strong>
+                    style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px" style="filter: invert(100%);">
+                    Regresar
                 </button>
             </center>
         </div>
@@ -80,10 +90,10 @@
             <center>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#cambiarContrasenaModal"
-                    style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
-                    <strong>CAMBIAR CONTRASEÑA</strong>
+                    style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
+                   Cambiar contraseña
                     <img src="https://cdn-icons-png.flaticon.com/128/4692/4692344.png" alt="cambiarContraseña"
-                        width="40px">
+                        width="20px" style="filter: invert(100%);">
                 </button>
             </center>
         </div>

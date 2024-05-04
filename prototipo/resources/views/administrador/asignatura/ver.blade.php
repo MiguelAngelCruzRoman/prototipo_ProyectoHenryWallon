@@ -3,12 +3,11 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="row">
-            <center>
-                <h1><strong>VER ASIGNATURA</strong></h1>
-                <h3>- DATOS GENERALES -</h3>
-            </center>
+        <div class="text-center">
+            <!--ENCABEZADO DE LA PÁGINA-->
+            <h1 class="text-3xl font-bold my-8">VER ASIGNATURA</h1>
         </div>
+
 
         <div style="height: 50px;"></div>
 
@@ -117,14 +116,13 @@
             <div class="col-12">
                 <center>
                     <button class="btn btn-primary me-2" onclick="goBack()"
-                        style="background-color: #B3C9FF; border: 4px solid #000000;border-radius: 20px; color: black">
+                        style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
                         <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
-                            width="40px">
-                        <strong>REGRESAR</strong>
+                            width="20px" style="filter: invert(100%);">
+                        Regresar
                     </button>
                 </center>
             </div>
         </div>
     </div>
-
 @endsection

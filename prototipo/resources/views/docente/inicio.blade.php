@@ -41,7 +41,7 @@
                     </a>
                 </div>
 
-                <div class="col-md-4">
+                <!--<div class="col-md-4">
                     <a href="{{ route('evaluacion.index') }}" class="btn btn-primary">
                         <div class="card card-style">
                             <div class="card-body">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div>-->
             </div>
         </center>
     </div>

@@ -2,12 +2,15 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formularioModalLabel">Agregar Evaluación</h5>
+        <div class="modal-header">
+                <h5 class="modal.title" id="formularioModalLabel">Agregar Evaluación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
+
+
             <div class="modal-body">
                 <form action="{{ route('evaluacion.agregar.insert') }}" method="POST" id="formularioDatosEvaluacion">
                     @csrf
@@ -37,9 +40,18 @@
                             Por favor ingresa el archivo de ejemplo.
                         </div>
                     </div>
-                    <div class="text-end">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="flex justify-end">
+
+                        <button class="btn btn-primary" data-dismiss="modal"
+                            style="background-color: #21182F;color: white">
+                            <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
+                                width="20px" style="filter: invert(100%);">
+                            Regresar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
+                                height="20px">
+                            Agregar
                     </div>
                 </form>
             </div>

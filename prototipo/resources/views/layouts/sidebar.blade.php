@@ -27,19 +27,23 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Menú de inicio -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('home') }}">
-            <i class="fas fa-fw fa-home"></i>
-            <span>INICIO</span>
-        </a>
-    </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-home"></i>
+                @if (session('user'))
+                <span>INICIO</span>
+                @else
+                <span>LOGIN</span>
+                @endif
+            </a>
+        </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
     @if (session('user.rol') === 'Administrador')
         <!-- Opciones de Administrador -->
         <li class="nav-item">
-            <a class="nav-link" href="{{route('user.inicio')}}">
+            <a class="nav-link" href="{{ route('user.inicio') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>USUARIOS</span>
             </a>
@@ -79,26 +83,28 @@
             </a>
         </li>
     @endif
-    <!-- Opciones solo para Administrador y Docente -->
+    <!-- Opciones solo para Administrador y Docente
     @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente')
-        <li class="nav-item">
+<li class="nav-item">
             <a class="nav-link" href="{{ route('grupo.index') }}">
                 <i class="fas fa-fw fa-chart-bar"></i>
                 <span>REPORTES</span>
             </a>
         </li>
-    @endif
+@endif-->
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Cerrar Sesión -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" onclick="logoutAndDestroySession()">
-            <i class="fas fa-fw fa-sign-out-alt"></i>
-            <span>CERRAR SESIÓN</span>
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-    </li>
+    @if (session('user'))
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="logoutAndDestroySession()">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>CERRAR SESIÓN</span>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </li>
+    @endif
 </ul>

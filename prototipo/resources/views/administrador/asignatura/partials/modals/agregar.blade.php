@@ -136,8 +136,16 @@
                     </div>
 
                     <div class="flex justify-end">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary ml-2">Guardar</button>
+                        <button class="btn btn-primary" data-dismiss="modal"
+                            style="background-color: #21182F;color: white">
+                            <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
+                                width="20px" style="filter: invert(100%);">
+                            Regresar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
+                                height="20px">
+                            Agregar
                     </div>
                 </form>
             </div>
