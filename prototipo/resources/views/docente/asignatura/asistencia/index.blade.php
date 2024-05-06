@@ -7,12 +7,10 @@
             <div class="text-center">
                 <!--ENCABEZADO DE LA PÁGINA-->
                 <h1 class="text-3xl font-bold my-8">ASISTENCIA</h1>
-                <h3 class="text-3xl font-bold my-8">- -</h3>
+                <h3 class="text-3xl font-bold my-8">- {{$nombreAsignatura}} -</h3>
             </div>
 
-@foreach($asistencias as $asistencia)
-            {{print_r($asistencia)}}
-@endforeach
+             <!--sección para mostrar los datos-->
+             @include('docente.asignatura.asistencia.partials.tablas.asistencia')
         </div>
-        
     @endsection

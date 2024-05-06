@@ -9,23 +9,23 @@ use Illuminate\Http\Request;
 
 class Asistencia extends Controller
 {
-    public function index($idAsignatura)
+    public function index($idAsignatura,$idDocente,$nombreAsignatura)
     {
         $userData = session('user');
         $id = $userData['id'];
 
         $asistencias = DB::table('asistencia')
+        ->select('ua.primerNombre','ua.segundoNombre','ua.apellidoPaterno','ua.apellidoMaterno','alumno.id')
         ->join('grupo_alumno', 'grupo_alumno.id', '=', 'asistencia.id_grupo_alumno')
         ->join('alumno', 'grupo_alumno.id_alumno', '=', 'alumno.id')
+        ->join('users as ua', 'alumno.id_usuario', '=', 'ua.id')
         ->join('grupo', 'grupo_alumno.id_grupo', '=', 'grupo.id')
         ->join('asignatura_docente', 'grupo.id_asignatura_docente', '=', 'asignatura_docente.id')
-        ->join('docente', 'docente.id', '=', 'asignatura_docente.id_docente')
-        ->join('users', 'docente.id_usuario', '=', 'users.id')
         ->where('asignatura_docente.id_Asignatura', $idAsignatura)
-        ->where('asignatura_docente.id_docente', 11)
-        ->paginate(10);
+        ->where('asignatura_docente.id_docente', $idDocente)
+        ->get();
 
-        return view('docente/asignatura/asistencia/index', compact('asistencias'));
+        return view('docente/asignatura/asistencia/index', compact('asistencias', 'nombreAsignatura'));
     }
 
     public function busqueda()

@@ -43,7 +43,7 @@
                             Planeación
                         </a>
                         
-                        <a href="{{ route('docente.asignatura.asistencia',['idAsignatura'=>$asignatura->id_asignatura]) }}" class="btn btn-primary">
+                        <a href="{{ route('docente.asignatura.asistencia',['idAsignatura'=>$asignatura->id_asignatura,'idDocente' => $asignatura->id_docente, 'asignaturaNombre'=> $asignatura->nombre]) }}" class="btn btn-primary">
                             Asistencias
                         </a>
                     </div>
