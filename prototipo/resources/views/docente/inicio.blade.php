@@ -16,7 +16,7 @@
             <div class="row">
                
                 <div class="col-md-4">
-                    <a href="" class="btn btn-primary">
+                    <a href="">
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>
@@ -29,7 +29,7 @@
                 </div>
  
                 <div class="col-md-4">
-                    <a href="{{ route('asignatura.index') }}" class="btn btn-primary">
+                    <a href="{{ route('asignatura.index') }}" >
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>
@@ -41,8 +41,8 @@
                     </a>
                 </div>
 
-                <!--<div class="col-md-4">
-                    <a href="{{ route('evaluacion.index') }}" class="btn btn-primary">
+                <div class="col-md-4">
+                    <a href="{{ route('evaluacion.index') }}" >
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </a>
-                </div>-->
+                </div>
             </div>
         </center>
     </div>

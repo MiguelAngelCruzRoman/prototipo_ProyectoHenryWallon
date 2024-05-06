@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Asignatura;
+use App\Http\Controllers\Asistencia;
 use App\Http\Controllers\Grupo;
 use App\Http\Controllers\Periodo;
 use App\Http\Controllers\Evaluacion;
@@ -87,6 +88,7 @@ Route::post('/asignatura/agregar/insert',[Asignatura::class, 'insertDatos'])->na
 //-----------------------------------Rutas de Docente-------------------------------------//
 Route::get('/docente', [Users::class, 'perfil'])->name('docente.perfil');
 Route::get('/docente/asignatura/index',[Asignatura::class, 'index'])->name('docente.asignatura.index');
+Route::get('/docente/asignatura/asistencia/{idAsignatura}',[Asistencia::class, 'index'])->name('docente.asignatura.asistencia');
 
 
 

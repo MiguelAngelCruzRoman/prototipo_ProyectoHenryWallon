@@ -27,16 +27,16 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Menú de inicio -->
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('home') }}">
-                <i class="fas fa-fw fa-home"></i>
-                @if (session('user'))
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('home') }}">
+            <i class="fas fa-fw fa-home"></i>
+            @if (session('user'))
                 <span>INICIO</span>
-                @else
+            @else
                 <span>LOGIN</span>
-                @endif
-            </a>
-        </li>
+            @endif
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -55,20 +55,8 @@
                 <span>PERIODOS</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('evaluacion.index') }}">
-                <i class="fas fa-fw fa-book"></i>
-                <span>EVALUACIONES</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('grupo.index') }}">
-                <i class="fas fa-fw fa-users"></i>
-                <span>GRUPOS</span>
-            </a>
-        </li>
     @endif
-    <!-- Opciones comunes a varios roles -->
+
     @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
         <li class="nav-item">
             <a class="nav-link" href="#">
@@ -76,6 +64,21 @@
                 <span>HORARIOS</span>
             </a>
         </li>
+    @endif
+
+
+    @if (session('user.rol') === 'Administrador')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('evaluacion.index') }}">
+                <i class="fas fa-fw fa-book"></i>
+                <span>EVALUACIONES</span>
+            </a>
+        </li>
+    @endif
+        
+
+    <!-- Opciones comunes a varios roles -->
+    @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('asignatura.index') }}">
                 <i class="fas fa-fw fa-chalkboard"></i>
@@ -83,15 +86,25 @@
             </a>
         </li>
     @endif
-    <!-- Opciones solo para Administrador y Docente
+
+    @if (session('user.rol') === 'Administrador')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('grupo.index') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>GRUPOS</span>
+            </a>
+        </li>
+    @endif
+
+    <!-- Opciones solo para Administrador y Docente-->
     @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente')
-<li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('grupo.index') }}">
                 <i class="fas fa-fw fa-chart-bar"></i>
                 <span>REPORTES</span>
             </a>
         </li>
-@endif-->
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

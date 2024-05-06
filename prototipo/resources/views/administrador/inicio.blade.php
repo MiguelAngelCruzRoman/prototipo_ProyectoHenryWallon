@@ -102,7 +102,7 @@
 
                 <div style="height: 30px;"></div>
 
-               <!-- <div class="row">
+               <div class="row">
 
                     <div class="col-md-4">
                     </div>
@@ -119,7 +119,7 @@
                             </div>
                         </a>
                     </div>
-                </div>-->
+                </div>
 
             </center>
         </div>

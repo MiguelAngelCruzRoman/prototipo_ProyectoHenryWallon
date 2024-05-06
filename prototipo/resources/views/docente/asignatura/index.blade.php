@@ -42,10 +42,8 @@
                             class="btn btn-primary">
                             Planeación
                         </a>
-                        <a href="{{ route('asignatura.index') }}" class="btn btn-primary">
-                            Calificaciones
-                        </a>
-                        <a href="{{ route('asignatura.index') }}" class="btn btn-primary">
+                        
+                        <a href="{{ route('docente.asignatura.asistencia',['idAsignatura'=>$asignatura->id_asignatura]) }}" class="btn btn-primary">
                             Asistencias
                         </a>
                     </div>
