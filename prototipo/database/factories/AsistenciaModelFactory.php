@@ -23,7 +23,7 @@ class AsistenciaModelFactory extends Factory
             'id_Grupo_Alumno'=>Grupo_AlumnoModel::inRandomOrder()->first()->id,
             'fecha'=>$this->faker->dateTimeBetween('-20 years', 'now'),
             'estatus' => $this->faker->randomElement(['Asistencia','Justificante','Retraso'.'Falta']),
-            'obervacion'=>$this->faker->text(),
+            'observacion'=>$this->faker->text(),
         ];
     }
 }

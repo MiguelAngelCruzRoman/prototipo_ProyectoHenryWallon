@@ -9,21 +9,20 @@ use Illuminate\Http\Request;
 
 class Asistencia extends Controller
 {
-    public function index($idAsignatura,$idDocente,$nombreAsignatura)
+    public function index($idAsignatura, $idDocente, $nombreAsignatura)
     {
         $userData = session('user');
         $id = $userData['id'];
 
-        $asistencias = DB::table('asistencia')
-        ->select('ua.primerNombre','ua.segundoNombre','ua.apellidoPaterno','ua.apellidoMaterno','alumno.id')
-        ->join('grupo_alumno', 'grupo_alumno.id', '=', 'asistencia.id_grupo_alumno')
-        ->join('alumno', 'grupo_alumno.id_alumno', '=', 'alumno.id')
-        ->join('users as ua', 'alumno.id_usuario', '=', 'ua.id')
-        ->join('grupo', 'grupo_alumno.id_grupo', '=', 'grupo.id')
-        ->join('asignatura_docente', 'grupo.id_asignatura_docente', '=', 'asignatura_docente.id')
-        ->where('asignatura_docente.id_Asignatura', $idAsignatura)
-        ->where('asignatura_docente.id_docente', $idDocente)
-        ->get();
+        $asistencias = DB::table('grupo_alumno')
+            ->select('ua.primerNombre', 'ua.segundoNombre', 'ua.apellidoPaterno', 'ua.apellidoMaterno', 'alumno.id', 'grupo_alumno.id as id_GrupoAlumno')
+            ->join('alumno', 'grupo_alumno.id_alumno', '=', 'alumno.id')
+            ->join('users as ua', 'alumno.id_usuario', '=', 'ua.id')
+            ->join('grupo', 'grupo_alumno.id_grupo', '=', 'grupo.id')
+            ->join('asignatura_docente', 'grupo.id_asignatura_docente', '=', 'asignatura_docente.id')
+            ->where('asignatura_docente.id_Asignatura', $idAsignatura)
+            ->where('asignatura_docente.id_docente', $idDocente)
+            ->get();
 
         return view('docente/asignatura/asistencia/index', compact('asistencias', 'nombreAsignatura'));
     }
@@ -44,14 +43,23 @@ class Asistencia extends Controller
 
     public function insert(Request $request)
     {
-        $periodo = new AsistenciaModel();
-        $periodo->fechaInicio = date(strtolower($request->fechaInicio));
-        $periodo->fechaFin = date(strtolower($request->fechaFin));
-        $periodo->tipo = ucwords(strtolower($request->tipo));
+        $cantidadEstudiantes = 0;
+        while ($cantidadEstudiantes < count($_POST['comentarios'])) {
+            $asistencias = new AsistenciaModel();
 
-        $periodo->save();
+            if (isset($_POST['grupo_alumno'][$cantidadEstudiantes]) && isset($_POST['idAlumnos'][$cantidadEstudiantes]) && isset($_POST['asistencias_' . $_POST['idAlumnos'][$cantidadEstudiantes]])) {
+                $asistencias->id_Grupo_Alumno = $_POST['grupo_alumno'][$cantidadEstudiantes];
+                $asistencias->fecha = now();
+                $asistencias->estatus = $_POST['asistencias_' . $_POST['idAlumnos'][$cantidadEstudiantes]];
+                $asistencias->observacion = isset($_POST['comentarios'][$cantidadEstudiantes]) ? $_POST['comentarios'][$cantidadEstudiantes] : "";
 
-        return redirect('/periodo/index');
+                $asistencias->save();
+
+            } 
+            $cantidadEstudiantes++;
+
+        }
+        return redirect()->route('docente.asignatura.index');
     }
 }
 

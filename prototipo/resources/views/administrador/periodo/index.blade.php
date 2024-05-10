@@ -34,10 +34,34 @@
             </div>
             <!--se incluye el modal con formulario-->
             @include('administrador.periodo.partials.modals.agregar')
-            <!--sección para mostrar los datos-->
-            @include('administrador.periodo.partials.tablas.periodos')
-            <!--paginación-->
-            {{ $periodos->links() }}
+
+
+            <div style="display: inline-block">
+                {{ $periodos->links() }}
+            </div>
+            @if (count($periodos) == 0)
+                <div class="col-xl-8 text-center">
+
+
+                    <div
+                        class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <a href="#">
+                            <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png"
+                                alt="" />
+                        </a>
+
+                    </div>
+
+
+                </div>
+            @else
+                <!--sección para mostrar los datos-->
+                @include('administrador.periodo.partials.tablas.periodos')
+                <!--paginación-->
+                <div style="display: inline-block">
+                    {{ $periodos->links() }}
+                </div>
+            @endif
         </div>
         <!--se incluye modal para confirmación de eliminar-->
         @include('administrador.periodo.partials.modals.eliminar')

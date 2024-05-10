@@ -29,16 +29,33 @@
                     Agregar
                 </a>
             </div>
-            
+
         </div>
 
-    
+        <div style="display: inline-block"> {{ $users->links() }}
+        </div>
 
         <!--sección para mostrar los datos-->
-        @include('administrador.users.partials.tablas.users')
+        @if (count($users) == 0)
+            <div class="col-xl-8 text-center">
 
-        {{ $users->links() }}
 
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png" alt="" />
+                    </a>
+                   
+                </div>
+
+
+            </div>
+        @else
+            @include('administrador.users.partials.tablas.users')
+        @endif
+
+        <div style="display: inline-block"> {{ $users->links() }}
+        </div>
     </div>
     <!--se incluye modal para confirmación de eliminar-->
     @include('administrador.users.partials.modals.eliminar')

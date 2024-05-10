@@ -96,7 +96,7 @@
                                 <div class="card-body">
                                     <center>
                                         <h5 class="card-title" style="color:white">GRUPOS</h5>
-                                        <i class=" fas fa-group fa-6x" style="color: white"></i>
+                                        <i class=" fas fa-chalkboard-teacher fa-6x" style="color: white"></i>
 
                                     </center>
                                 </div>

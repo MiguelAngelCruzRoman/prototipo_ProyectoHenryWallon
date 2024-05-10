@@ -112,7 +112,6 @@ class Users extends Controller
         if ($request->hasFile('foto')) {
             $user->foto = $request->file('foto')->store('fotos', 'public');
         }
-
         $user->estatus = $request->estatus === 'true' ? true : false;
         $user->sexo = $request->sexo;
         $user->telefono = $request->telefono;

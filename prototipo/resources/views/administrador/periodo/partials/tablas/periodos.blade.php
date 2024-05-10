@@ -21,13 +21,11 @@
                             <!-- Añade un data-toggle y data-target para abrir el modal -->
                             <button type="button" class="btn btn-warning mr-2" data-toggle="modal"
                                 data-target="#editarModal{{ $periodo->id }}">
-                                <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt=""
-                                    class="inline-block h-5" height="20px"> Editar
+                                <i class=" fas fa-pencil-alt" style="color:black"></i>
                             </button>
                             <button class="btn btn-danger eliminar-btn"
                                 data-url="{{ route('periodo.eliminar', ['idPeriodo' => $periodo->id]) }}">
-                                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt=""
-                                    class="inline-block h-5" height="20px"> Eliminar
+                                <i class=" fas fa-trash" style="color:black"></i>
                             </button>
 
                         </div>

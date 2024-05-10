@@ -12,7 +12,7 @@
 
 
             <div class="modal-body">
-                <form action="{{ route('evaluacion.agregar.insert') }}" method="POST" id="formularioDatosEvaluacion">
+                <form action="{{ route('evaluacion.agregar.insert') }}" method="POST" id="formularioDatosEvaluacion" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Actividad de Aprendizaje:</label>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Archivo de Ejemplo:</label>
-                        <input type="text" class="form-control" name="archivoEjemplo" required>
+                        <input type="file" class="form-control" name="archivoEjemplo" required>
                         <div class="invalid-feedback">
                             Por favor ingresa el archivo de ejemplo.
                         </div>

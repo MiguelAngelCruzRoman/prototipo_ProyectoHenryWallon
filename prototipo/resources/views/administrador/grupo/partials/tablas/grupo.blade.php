@@ -15,19 +15,26 @@
                     <tr>
                         <td class="border border-gray-400 px-4 py-2">{{ $grupo->id }}</td>
                         <td class="border border-gray-400 px-4 py-2">{{ $grupo->nombreAsignatura }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $grupo->nombreDocente }} {{ $grupo->segundoNombreDocente }} {{ $grupo->apellidoPaternoDocente }} {{ $grupo->apellidoMaternoDocente }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ $grupo->nombreDocente }}
+                            {{ $grupo->segundoNombreDocente }} {{ $grupo->apellidoPaternoDocente }}
+                            {{ $grupo->apellidoMaternoDocente }}</td>
                         <td class="border border-gray-400 px-4 py-2">{{ $grupo->semestre }}</td>
                         <td class="border border-gray-400 px-4 py-2">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                               
-                                <button onclick="window.location='{{ route('grupo.ver', ['idGrupo' => $grupo->id]) }}'" class="btn btn-primary mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/2874/2874802.png" alt="" height="20px"> Ver
+
+                                <button onclick="window.location='{{ route('grupo.ver', ['idGrupo' => $grupo->id]) }}'"
+                                    class="btn btn-primary mr-2">
+                                    <i class=" fas fa-eye" style="color:black"></i>
                                 </button>
-                                <button onclick="window.location='{{ route('grupo.editar', ['idGrupo' => $grupo->id]) }}'" class="btn btn-warning mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt="" height="20px"> Editar
+                                <button
+                                    onclick="window.location='{{ route('grupo.editar', ['idGrupo' => $grupo->id]) }}'"
+                                    class="btn btn-warning mr-2">
+                                    <i class=" fas fa-pencil-alt" style="color:black"></i>
                                 </button>
-                                <button onclick="window.location='{{ route('grupo.eliminar', ['idGrupo' => $grupo->id]) }}'" class="btn btn-danger mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt="" height="20px"> Eliminar
+                                <button
+                                    onclick="window.location='{{ route('grupo.eliminar', ['idGrupo' => $grupo->id]) }}'"
+                                    class="btn btn-danger mr-2">
+                                    <i class=" fas fa-trash" style="color:black"></i>
                                 </button>
                             </div>
                         </td>

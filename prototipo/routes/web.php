@@ -89,6 +89,7 @@ Route::post('/asignatura/agregar/insert',[Asignatura::class, 'insertDatos'])->na
 Route::get('/docente', [Users::class, 'perfil'])->name('docente.perfil');
 Route::get('/docente/asignatura/index',[Asignatura::class, 'index'])->name('docente.asignatura.index');
 Route::get('/docente/asignatura/asistencia/{idAsignatura}/{idDocente}/{asignaturaNombre}',[Asistencia::class, 'index'])->name('docente.asignatura.asistencia');
+Route::post('/docente/asignatura/asistencia/insert',[Asistencia::class, 'insert'])->name('docente.asignatura.asistencia.insert');
 
 
 

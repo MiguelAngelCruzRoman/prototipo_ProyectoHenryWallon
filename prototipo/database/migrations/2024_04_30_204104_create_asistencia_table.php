@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_Grupo_Alumno')->constrained('grupo_alumno');
             $table->dateTime('fecha');
-            $table->enum('estatus', ['Asistencia','Justificante','Retraso'.'Falta']);
-            $table->text('obervacion');
+            $table->enum('estatus', ['Asistencia', 'Justificante', 'Retraso', 'Falta']);
+            $table->text('observacion');
             $table->timestamps();
         });
     }

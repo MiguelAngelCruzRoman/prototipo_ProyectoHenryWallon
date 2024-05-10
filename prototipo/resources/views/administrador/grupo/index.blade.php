@@ -148,11 +148,33 @@
             </div>
         </div>
 
+        <div style="display: inline-block">
+            {{ $grupos->links() }}
+        </div>
+
         <!--sección para mostrar los datos-->
-        @include('administrador.grupo.partials.tablas.grupo')
 
-        {{ $grupos->links() }}
+        @if (count($grupos) == 0)
+            <div class="col-xl-8 text-center">
 
+
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png"
+                            alt="" />
+                    </a>
+
+                </div>
+
+
+            </div>
+        @else
+            @include('administrador.grupo.partials.tablas.grupo')
+        @endif
+        <div style="display: inline-block">
+            {{ $grupos->links() }}
+        </div>
     </div>
     <!--se incluye modal para confirmación de eliminar-->
     @include('administrador.grupo.partials.modals.eliminar')

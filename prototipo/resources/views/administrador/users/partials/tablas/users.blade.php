@@ -19,15 +19,17 @@
                         <td class="border border-gray-400 px-4 py-2"><ul><li>{{ $user->correo}}</li><li>{{ $user->telefono}}</li></ul></td>
                         <td class="border border-gray-400 px-4 py-2">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                               
                                 <button onclick="window.location='{{ route('user.ver', ['idUser' => $user->id]) }}'" class="btn btn-primary mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/2874/2874802.png" alt="" height="20px"> Ver
+                                <i class=" fas fa-eye" style="color:black"></i>
+                                    <!--<img src="https://cdn-icons-png.flaticon.com/128/2874/2874802.png" alt="" height="20px"> Ver-->
                                 </button>
                                 <button onclick="window.location='{{ route('user.editar', ['idUser' => $user->id]) }}'" class="btn btn-warning mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt="" height="20px"> Editar
+                                <i class=" fas fa-pencil-alt" style="color:black"></i>
+                                <!--  <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt="" height="20px"> Editar-->
                                 </button>
                                 <button onclick="window.location='{{ route('user.eliminar', ['idUser' => $user->id]) }}'" class="btn btn-danger mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt="" height="20px"> Eliminar
+                                <i class=" fas fa-trash" style="color:black"></i>   
+                                <!--<img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt="" height="20px"> Eliminar-->
                                 </button>
                             </div>
                         </td>

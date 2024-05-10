@@ -1,39 +1,43 @@
 <div class="row">
     <div class="col-md-12">
-        <table class="w-full border-collapse border border-gray-400">
-            <thead>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">   
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th class="border border-gray-400 px-4 py-2">ID</th>
-                    <th class="border border-gray-400 px-4 py-2">ACTIVIDAD DE APRENDIZAJE</th>
-                    <th class="border border-gray-400 px-4 py-2">TIPO DE EVALUACION</th>
-                    <th class="border border-gray-400 px-4 py-2">ARCHIVO DE EJEMPLO</th>
-                    <th class="border border-gray-400 px-4 py-2">OPERACIONES</th>
+                    <th scope="col" class="px-6 py-3">ID</th>
+                    <th scope="col" class="px-6 py-3">ACTIVIDAD DE APRENDIZAJE</th>
+                    <th scope="col" class="px-6 py-3">TIPO DE EVALUACION</th>
+                    <th scope="col" class="px-6 py-3">ARCHIVO DE EJEMPLO</th>
+                    <th scope="col" class="px-6 py-3">OPERACIONES</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($evaluaciones as $evaluacion)
-                    <tr>
-                        <td class="border border-gray-400 px-4 py-2">{{ $evaluacion->id }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $evaluacion->actividadAprendizaje }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $evaluacion->tipoEvaluacion }}</td>
-                        <td class="border border-gray-400 px-4 py-2"><a href="{{ $evaluacion->archivoEjemplo }}">Ver
-                                archivo</a></td>
-                        <td class="border border-gray-400 px-4 py-2">
-                            <div class="btn-group" role="group" aria-label="Basic example">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4">{{ $evaluacion->id }}</td>
+                        <td class="px-6 py-4">{{ $evaluacion->actividadAprendizaje }}</td>
+                        <td class="px-6 py-4">{{ $evaluacion->tipoEvaluacion }}</td>
+                        <td class="px-6 py-4" align="center">
+                            <a href="{{ Storage::url($evaluacion->archivoEjemplo) }}">
+                            <button  class="btn btn-primary mr-2">
+                                <i class="fas fa-eye" style="color:black"></i> 
+                                <span style="color:black">Ver Archivo</span>
+                            </button>
+                        </a>
+                        <td class="px-6 py-4">
+                        <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-warning mr-2" data-toggle="modal"
                                     data-target="#editarModal{{ $evaluacion->id }}">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt=""
-                                        height="20px"> Editar
+                                    <i class=" fas fa-pencil-alt" style="color:black"></i>
                                 </button>
                                 <button class="btn btn-danger eliminar-btn"
                                     data-url="{{ route('evaluacion.eliminar', ['idEvaluacion' => $evaluacion->id]) }}">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt=""
-                                        height="20px"> Eliminar
+                                    <i class=" fas fa-trash" style="color:black"></i> 
                                 </button>
                             </div>
                         </td>
                     </tr>
-
+</div>
                     <!-- Modal para la edición -->
                     <div class="modal fade" id="editarModal{{ $evaluacion->id }}" tabindex="-1" role="dialog"
                         aria-labelledby="editarModal{{ $evaluacion->id }}Label" aria-hidden="true">
@@ -49,7 +53,7 @@
                                     <!-- Formulario de edición -->
                                     <form id="formularioEdicionEvaluacion{{ $evaluacion->id }}"
                                         action="{{ route('evaluacion.editar.update', ['idEvaluacion' => $evaluacion->id]) }}"
-                                        method="POST" data-evaluacion-id="{{ $evaluacion->id }}">
+                                        method="POST" data-evaluacion-id="{{ $evaluacion->id }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row mb-3">
                                             <div class="col-md-6">
@@ -74,7 +78,7 @@
 
                                             <div class="col-md-12">
                                                 <label for="tipo" class="form-label">Subir Ejemplo:</label>
-                                                <input type="text" id="tipo" name="archivoEjemplo"
+                                                <input type="file" id="tipo" name="archivoEjemplo"
                                                     class="styled-input" value="{{ $evaluacion->archivoEjemplo }}">
                                             </div>
                                         </div>

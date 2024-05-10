@@ -20,18 +20,43 @@
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal" >
                         <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
                         Agregar
                     </button>
                 </div>
             </div>
             <!--se incluye el modal con formulario-->
-            @include('administrador.evaluacion.partials.modals.agregar')
+            @include('administrador.evaluacion.partials.modals.agregar')  
+            
+            
+            <div style="display: inline-block">        
+            {{ $evaluaciones->links() }}
+            </div>
+            @if (count($evaluaciones) == 0)
+            <div class="col-xl-8 text-center">
+
+
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png"
+                            alt="" />
+                    </a>
+
+                </div>
+
+
+            </div>
+        @else
             <!--sección para mostrar los datos-->
             @include('administrador.evaluacion.partials.tablas.evaluacion')
+            <br>
+            @endif
             <!--paginación-->
+            <div style="display: inline-block">        
             {{ $evaluaciones->links() }}
+            </div>
         </div>
 
     <!--se incluye modal para confirmación de eliminar-->

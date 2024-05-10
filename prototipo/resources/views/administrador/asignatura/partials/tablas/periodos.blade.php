@@ -21,22 +21,20 @@
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <!-- Añade un data-toggle y data-target para abrir el modal -->
                             <button onclick="window.location='{{ route('asignatura.ver', ['idAsignatura' => $asignatura->id]) }}'" class="btn btn-primary mr-2">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/2874/2874802.png" alt="" height="20px"> Ver
+                            <i class=" fas fa-eye" style="color:black"></i>
                             </button>
                             <button type="button" class="btn btn-warning mr-2" data-toggle="modal"
                                 data-target="#editarModal{{ $asignatura->id }}">
-                                <img src="https://cdn-icons-png.flaticon.com/128/10337/10337163.png" alt=""
-                                    class="inline-block h-5" height="20px"> Editar
+                                <i class=" fas fa-pencil-alt" style="color:black"></i>
                             </button>
                             <button class="btn btn-danger eliminar-btn"
                                 data-url="{{ route('asignatura.eliminar', ['idAsignatura' => $asignatura->id]) }}">
-                                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828939.png" alt=""
-                                    class="inline-block h-5" height="20px"> Eliminar
+                                <i class=" fas fa-trash" style="color:black"></i>   
                             </button>
-
                         </div>
                     </td>
                 </tr>
+                
                 <!-- Modal para la edición -->
                 <div class="modal fade" id="editarModal{{ $asignatura->id }}" tabindex="-1" role="dialog"
                     aria-labelledby="editarModal{{ $asignatura->id }}Label" aria-hidden="true">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EvaluacionModel;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class Evaluacion extends Controller
@@ -35,11 +36,17 @@ class Evaluacion extends Controller
 
     public function insert(Request $request)
     {
+        $archivo = null;
+        if ($request->hasFile('archivoEjemplo')) {
+            $archivo = Storage::disk('public')->put('/ejemplos', $request->file('archivoEjemplo'));
+        }
+
         $evaluaciones = new EvaluacionModel;
         $evaluaciones->actividadAprendizaje = $request->input('actividadAprendizaje');
         $evaluaciones->tipoEvaluacion = $request->input('tipoEvaluacion');
-        $evaluaciones->archivoEjemplo = $request->input('archivoEjemplo');
+        $evaluaciones->archivoEjemplo = $archivo;
         $evaluaciones->save();
+
         return redirect()->route('evaluacion.index');
     }
 
@@ -66,10 +73,15 @@ class Evaluacion extends Controller
 
     public function update(Request $request, $id)
     {
+        $archivo = null;
+        if ($request->hasFile('archivoEjemplo')) {
+            $archivo = Storage::disk('public')->put('/evaluaciones', $request->file('archivoEjemplo'));
+        }
+
         $evaluaciones = EvaluacionModel::find($id);
         $evaluaciones->actividadAprendizaje = $request->input('actividadAprendizaje');
         $evaluaciones->tipoEvaluacion = $request->input('tipoEvaluacion');
-        $evaluaciones->archivoEjemplo = $request->input('archivoEjemplo');
+        $evaluaciones->archivoEjemplo = $archivo;
         $evaluaciones->save();
 
         return redirect()->route('evaluacion.index');
