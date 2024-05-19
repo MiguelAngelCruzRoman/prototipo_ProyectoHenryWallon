@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-
+ 
 use Illuminate\Http\Request;
 use App\Models\AsignaturaModel;
+use Illuminate\Support\Facades\Storage;
 
 class Asignatura extends Controller
 {
@@ -24,7 +25,7 @@ class Asignatura extends Controller
                 
             } elseif ($rol === 'Docente') {
                 $asignaturas = DB::table('asignatura_docente')
-                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente')
+                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente', 'asignatura_docente.id as id_AsignaturaDocente')
                     ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
                     ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
                     ->join('users', 'docente.id_Usuario', '=', 'users.id')
@@ -80,7 +81,9 @@ class Asignatura extends Controller
         $asignatura->horasDocente = $request->horasDocente;
         $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
         $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
-        $asignatura->imagen = $request->imagen;
+        if ($request->hasFile('imagen')) {
+            $asignatura->imagen = Storage::disk('public')->put('/asignatura/imagenes', $request->file('imagen'));
+        }
         $asignatura->estatus = "Sin planeación";
         $asignatura->created_at = now();
         $asignatura->updated_at = now();
@@ -122,8 +125,8 @@ class Asignatura extends Controller
         $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
         $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
 
-        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
-            $asignatura->imagen = $request->imagen;
+        if ($request->hasFile('imagen')) {
+            $asignatura->imagen = Storage::disk('public')->put('/asignatura/imagenes', $request->file('imagen'));
         }
 
         //$asignatura->estatus = "En revisión";

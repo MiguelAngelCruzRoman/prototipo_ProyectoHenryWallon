@@ -24,7 +24,7 @@ class Asistencia extends Controller
             ->where('asignatura_docente.id_docente', $idDocente)
             ->get();
 
-        return view('docente/asignatura/asistencia/index', compact('asistencias', 'nombreAsignatura'));
+        return view('docente/asignatura/asistencia/index', compact('asistencias', 'nombreAsignatura', 'idAsignatura','idDocente'));
     }
 
     public function busqueda()
@@ -61,6 +61,27 @@ class Asistencia extends Controller
         }
         return redirect()->route('docente.asignatura.index');
     }
+
+
+    public function historial($idAsignatura, $idDocente, $nombreAsignatura)
+    {
+        $userData = session('user');
+        $id = $userData['id'];
+
+        $asistencias = DB::table('asistencia')
+            ->select('ua.primerNombre', 'ua.segundoNombre', 'ua.apellidoPaterno', 'ua.apellidoMaterno', 'alumno.id', 'grupo_alumno.id as id_GrupoAlumno', 'asistencia.estatus','asistencia.fecha')
+            ->join('grupo_alumno', 'grupo_alumno.id', '=', 'asistencia.id_grupo_alumno')
+            ->join('alumno', 'grupo_alumno.id_alumno', '=', 'alumno.id')
+            ->join('users as ua', 'alumno.id_usuario', '=', 'ua.id')
+            ->join('grupo', 'grupo_alumno.id_grupo', '=', 'grupo.id')
+            ->join('asignatura_docente', 'grupo.id_asignatura_docente', '=', 'asignatura_docente.id')
+            ->where('asignatura_docente.id_Asignatura', $idAsignatura)
+            ->where('asignatura_docente.id_docente', $idDocente)
+            ->orderBy('asistencia.fecha', 'ASC')
+            ->get();
+
+            return view('docente/asignatura/asistencia/historial', compact('asistencias', 'nombreAsignatura', 'idAsignatura','idDocente'));
+        }
 }
 
 

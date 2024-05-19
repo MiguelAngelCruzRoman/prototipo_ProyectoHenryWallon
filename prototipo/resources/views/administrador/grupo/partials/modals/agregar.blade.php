@@ -12,7 +12,7 @@
                 <form action="{{ route('grupo.agregar.insert') }}" method="POST" id="formularioDatosGrupo">
                     @csrf
                     <center>
-                        <h3>- DATOS DE LA ASIGNATURA -</h3>
+                        <h6>- DATOS DE LA ASIGNATURA -</h6>
                     </center>
                     <div class="row mb-3">
                         <div class="col-md-12">
@@ -59,12 +59,12 @@
                             </select>
                         </div>
 
-                    </div>
+                    </div><br>
 
 
                     <div style="height: 100px;"></div>
                     <center>
-                        <h3>- LISTA DE ALUMNOS -</h3>
+                        <h6>- LISTA DE ALUMNOS -</h6>
                     </center>
                     <div class="row mb-3">
                         <div class="col-md-10">

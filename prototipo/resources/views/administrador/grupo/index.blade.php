@@ -1,16 +1,23 @@
 <title>Grupos</title>
-
 @extends('layouts.app')
 
 @section('content')
     <div class="container mx-auto">
         <div class="text-center">
-            <h1 class="text-3xl font-bold my-8">GRUPOS</h1>
+            <h1 class="text-3xl font-bold my-8" style="color:black"><strong>GRUPOS</strong></h1>
         </div>
 
         <div class="row mb-3">
+            <div class="col-md-2">
+                <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                        style="filter: invert(100%);">
+                    Regresar
+                </button>
+            </div><br>
+
             <div class="col-md-1"></div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <form action="{{ route('grupo.busqueda') }}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control flex-1 mr-2"
@@ -20,16 +27,15 @@
                 </form>
             </div>
 
-            <div class="col-md-3">
-            </div>
+            <div class="col-md-1"></div>
 
             <div class="col-md-2">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal">
                     <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
-                    Agregar
+                    Registrar
                 </button>
             </div>
-        </div>
+        </div><br>
 
         <!--se incluye el modal con formulario-->
         <div class="modal fade" id="formularioModal" tabindex="-1" role="dialog" aria-labelledby="formularioModalLabel"
@@ -37,21 +43,26 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="formularioModalLabel">Agregar Grupo</h5>
+                        <h5 class="modal-title" id="formularioModalLabel">Registrar Grupo</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('evaluacion.agregar.insert') }}" method="POST" id="formularioDatosGrupo">
+                        <form action="{{ route('grupo.agregar.insert') }}" method="POST" id="formularioDatosGrupo">
                             @csrf
                             <center>
-                                <h3>- DATOS DE LA ASIGNATURA -</h3>
+                                <h4>- DATOS DE LA ASIGNATURA -</h4><br>
                             </center>
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <label for="id_Asignatura" class="form-label">Asignatura:</label>
-                                    <select class="form-select" id="id_Asignatura" name="id_Asignatura" required>
+                            <div class="row mb-6">
+                                <div class="col-md-3">
+                                    <label for="id_Asignatura" class="form-label">Asignatura*:</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <select
+                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        id="id_Asignatura" name="id_Asignatura" required>
                                         @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->id }}">{{ $asignatura->nombre }}</option>
                                         @endforeach
@@ -59,10 +70,16 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+
+                            <div class="row mb-6">
+                                <div class="col-md-3">
+                                    <label for="id_Docente" class="form-label">Docente*:</label>
+                                </div>
+
                                 <div class="col-md-6">
-                                    <label for="id_Docente" class="form-label">Docente:</label>
-                                    <select class="form-select" id="id_Docente" name="id_Docente" required>
+                                    <select
+                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        id="id_Docente" name="id_Docente" required>
                                         @foreach ($docentes as $docente)
                                             <option value="{{ $docente->id }}">{{ $docente->primerNombre }}
                                                 {{ $docente->segundoNombre }} {{ $docente->apellidoPaterno }}
@@ -70,20 +87,35 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
 
+                            <div class="row mb-6">
                                 <div class="col-md-3">
-                                    <label for="id_Periodo" class="form-label">Periodo:</label>
-                                    <select class="form-select" id="id_Periodo" name="id_Periodo" required>
+                                    <label for="id_Periodo" class="form-label">Periodo*:</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <select
+                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        id="id_Periodo" name="id_Periodo" required>
                                         @foreach ($periodos as $periodo)
                                             <option value="{{ $periodo->id }}">{{ $periodo->fechaInicio }} /
                                                 {{ $periodo->fechaFin }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
 
+
+                            <div class="row mb-6">
                                 <div class="col-md-3">
-                                    <label for="semestre" class="form-label">Semestre:</label>
-                                    <select class="form-select" id="semestre" name="semestre" required>
+                                    <label for="semestre" class="form-label">Semestre*:</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <select
+                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        id="semestre" name="semestre" required>
                                         <option value="Primero">Primero</option>
                                         <option value="Segundo">Segundo</option>
                                         <option value="Tercero">Tercero</option>
@@ -93,49 +125,43 @@
                                     </select>
                                 </div>
 
-                            </div>
+                            </div><br><br><br>
 
-
-                            <div style="height: 100px;"></div>
                             <center>
-                                <h3>- LISTA DE ALUMNOS -</h3>
+                                <h4>- LISTA DE ALUMNOS -</h4>
                             </center>
                             <div class="row mb-3">
-                                <div class="col-md-10">
-                                    <label for="arregloAlumnos" class="form-label">Alumno:</label>
-                                    <select class="form-select" id="arregloAlumnos" name="arregloAlumnos" required>
-                                        @foreach ($alumnos as $alumno)
-                                            <option value="{{ $alumno->id }}">{{ $alumno->primerNombre }}
-                                                {{ $alumno->segundoNombre }} {{ $alumno->apellidoPaterno }}
-                                                {{ $alumno->apellidoMaterno }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <button type="button" onclick="agregarAlumno()" class="btn btn-primary">Agregar
-                                        a lista</button>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
                                 <div class="col-md-12">
-                                    <table class="table" id="tablaAlumnos">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th colspan="8">Nombre</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="cuerpoTabla">
-
-                                        </tbody>
-                                    </table>
+                                    <label class="form-label">Seleccionar Alumnos:</label>
+                                    <div class="form-group">
+                                        @foreach ($alumnos as $alumno)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $alumno->id }}" id="alumno{{ $alumno->id }}"
+                                                    name="alumnos[]">
+                                                <label class="form-check-label" for="alumno{{ $alumno->id }}">
+                                                    {{ $alumno->primerNombre }} {{ $alumno->segundoNombre }}
+                                                    {{ $alumno->apellidoPaterno }} {{ $alumno->apellidoMaterno }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
 
-                            <input type="hidden" id="listaAlumnos" name="listaAlumnos">
+                            <div class="flex justify-end">
+
+                                <button class="btn" data-dismiss="modal"
+                                    style="background-color: #21182F;color: white">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
+                                        width="20px" style="filter: invert(100%);">
+                                    Regresar
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
+                                        height="20px">
+                                    Registrar
+                            </div>
                         </form>
                     </div>
                     <!--mensaje si es exito el guardado de datos-->
@@ -153,25 +179,20 @@
         </div>
 
         <!--sección para mostrar los datos-->
-
         @if (count($grupos) == 0)
             <div class="col-xl-8 text-center">
-
-
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
                         <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png"
                             alt="" />
                     </a>
-
                 </div>
-
-
             </div>
         @else
             @include('administrador.grupo.partials.tablas.grupo')
         @endif
+        <br>
         <div style="display: inline-block">
             {{ $grupos->links() }}
         </div>

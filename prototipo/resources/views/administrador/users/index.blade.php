@@ -5,12 +5,22 @@
 @section('content')
     <div class="container mx-auto">
         <div class="text-center">
-            <h1 class="text-3xl font-bold my-8">USUARIOS</h1>
+            <h1 class="text-3xl font-bold my-8" style="color: black" ><strong>USUARIOS</strong></h1>
         </div>
 
         <div class="row mb-3">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
+            <div class="col-md-2">
+                <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                        style="filter: invert(100%);">
+                    Regresar
+                </button>
+            </div>
+
+            <div class="col-md-1">
+            </div>
+
+            <div class="col-md-6">
                 <form action="{{ route('user.busqueda') }}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control flex-1 mr-2"
@@ -20,13 +30,13 @@
                 </form>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-1">
             </div>
 
             <div class="col-md-2">
-                <a href="{{ route('register') }}" class="btn btn-success">
+                <a href="{{ route('register') }}" class="btn btn-success" >
                     <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
-                    Agregar
+                    Registrar
                 </a>
             </div>
 
@@ -43,9 +53,10 @@
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
-                        <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png" alt="" />
+                        <img class="rounded-t-lg" src="https://grupoleiros.com/static/product-not-found.png"
+                            alt="" />
                     </a>
-                   
+
                 </div>
 
 
@@ -53,7 +64,7 @@
         @else
             @include('administrador.users.partials.tablas.users')
         @endif
-
+<br>    
         <div style="display: inline-block"> {{ $users->links() }}
         </div>
     </div>

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="text-center">
                 <!--ENCABEZADO DE LA PÁGINA-->
-                <h1 class="text-3xl font-bold my-8"> <strong> VER PERFIL</strong></h1>
+                <h1 class="text-3xl font-bold my-8" style="color:black"> <strong> VER PERFIL</strong></h1>
             </div>
         </div>
 
@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <div class="form-group row">
                                 <div class="col-lg-2 col-xl-2 text-center">
-                                    <img src="{{ $user[0]->foto }}" width="200" class="img-thumbnail" />
+                                <img src="{{ Storage::url($user[0]->foto) }}" width="200" class="img-thumbnail">
                                 </div>
                                 <div class="col-xs-10 col-sm-12 col-md-12 col-lg-10 col-xl-10">
                                     <div class="form-group row">
@@ -73,8 +73,8 @@
     <div class="row">
         <div class="col-12">
             <center>
-                <button class="btn btn-primary me-2" onclick="goBack()"
-                    style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
+                <button class="btn me-2" onclick="goBack()"
+                    style="background-color: #21182F; border: 4px solid #000000; color: white">
                     <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
                         style="filter: invert(100%);">
                     Regresar

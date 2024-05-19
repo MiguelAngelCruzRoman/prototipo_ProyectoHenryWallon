@@ -5,7 +5,7 @@
     <div class="container">
         <div class="text-center">
             <!--ENCABEZADO DE LA PÁGINA-->
-            <h1 class="text-3xl font-bold my-8">VER ASIGNATURA</h1>
+            <h1 class="text-3xl font-bold my-8" style="color:black"><Strong>VER ASIGNATURA</Strong></h1>
         </div>
 
 
@@ -18,7 +18,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <center>
-                                <img src="{{ $asignatura[0]->imagen }}" alt="" height="200px" width="400px"
+                                <img src="{{ Storage::url($asignatura[0]->imagen) }}" alt="" height="200px" width="400px"
                                     style="border: 4px solid #000000">
                             </center>
                         </div>
@@ -116,7 +116,7 @@
             <div class="col-12">
                 <center>
                     <button class="btn btn-primary me-2" onclick="goBack()"
-                        style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
+                        style="background-color: #21182F; border: 4px solid #000000;color: white">
                         <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
                             width="20px" style="filter: invert(100%);">
                         Regresar

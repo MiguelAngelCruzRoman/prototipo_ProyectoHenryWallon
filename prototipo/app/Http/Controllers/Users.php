@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Password;
 
 class Users extends Controller
@@ -110,7 +111,7 @@ class Users extends Controller
         $user->apellidoMaterno = $request->apellidoMaterno;
         $user->rol = $request->rol;
         if ($request->hasFile('foto')) {
-            $user->foto = $request->file('foto')->store('fotos', 'public');
+            $user->foto = Storage::disk('public')->put('/users/fotos', $request->file('foto'));
         }
         $user->estatus = $request->estatus === 'true' ? true : false;
         $user->sexo = $request->sexo;

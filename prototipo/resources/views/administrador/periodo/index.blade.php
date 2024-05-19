@@ -4,18 +4,28 @@
     @extends('layouts.app')
     @section('content')
         <div class="container mx-auto">
+
             <div class="text-center">
                 <!--ENCABEZADO DE LA PÁGINA-->
-                <h1 class="text-3xl font-bold my-8">PERIODOS</h1>
+                <h1 class="text-3xl font-bold my-8" style="color:black"><strong>PERIODOS</strong></h1><br><br>
             </div>
             <div class="row mb-3">
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
+                <div class="col-md-2">
+                    <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                        <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                            style="filter: invert(100%);">
+                        Regresar
+                    </button>
+                </div>
+                <div class="col-md-1">
+                </div>
+
+                <div class="col-md-6">
                     <!--SECCIÓN DE BÚSQUEDA-->
                     <form action="{{ route('periodo.busqueda') }}" method="GET">
                         <div class="input-group">
                             <label for="valorBusqueda" class="mr-2">Filtrar por:</label>
-                            <select class="form-select flex-1 mr-2" name="valorBusqueda">
+                            <select  name="valorBusqueda" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="CicloEscolar">Ciclo Escolar</option>
                                 <option value="Semanal">Semanal</option>
                                 <option value="">Ver todo</option>
@@ -24,14 +34,14 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal">
                         <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
-                        Agregar
+                        Registrar
                     </button>
                 </div>
-            </div>
+            </div><br>
             <!--se incluye el modal con formulario-->
             @include('administrador.periodo.partials.modals.agregar')
 
@@ -57,6 +67,7 @@
             @else
                 <!--sección para mostrar los datos-->
                 @include('administrador.periodo.partials.tablas.periodos')
+                <br>
                 <!--paginación-->
                 <div style="display: inline-block">
                     {{ $periodos->links() }}

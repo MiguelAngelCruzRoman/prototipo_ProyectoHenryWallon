@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal.title" id="formularioModalLabel">Agregar Periodo</h5>
+                <h5 class="modal.title" id="formularioModalLabel">Registrar Periodo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -43,16 +43,16 @@
                         </select>
                     </div>
                     <div class="flex justify-end">
-                        <button class="btn btn-primary me-2" onclick="goBack()"
+                        <button class="btn" data-dismiss="modal"
                             style="background-color: #21182F;color: white">
                             <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
                                 width="20px" style="filter: invert(100%);">
-                            Cerrar
+                            Regresar
                         </button>
                         <button type="submit" class="btn btn-success">
                             <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
                                 height="20px">
-                          Agregar
+                          Registrar
                         </button>
                     </div>
                 </form>

@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verAsignaturaModal" style="background-color: #B3C9FF; border: 4px solid #000000; border-radius: 20px; color: black">
     <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="Ver Asignatura" width="40px">
-    <strong>VER ASIGNATURA</strong>
+    <strong>VER ASIGNATURA asdasd</strong>
 </button>
 
 <!-- Modal -->

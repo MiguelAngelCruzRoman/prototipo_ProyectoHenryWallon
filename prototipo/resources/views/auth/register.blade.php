@@ -4,15 +4,25 @@
 @section('content')
     <div class="container">
         <div class="row">
-        <div class="container">
-    <div class="text-center">
-            <!--ENCABEZADO DE LA PÁGINA-->
-            <h1 class="text-3xl font-bold my-8"> <strong> REGISTRAR USUARIO</strong></h1>
-        </div>
-  
-  
-</div>
-        
+            <div class="col-md-2">
+                <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                        style="filter: invert(100%);">
+                    Regresar
+                </button>
+            </div>
+            <div class="col-md-1">
+            </div>
+
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="text-center">
+                        <!--ENCABEZADO DE LA PÁGINA-->
+                        <h1 class="text-3xl font-bold my-8" style="color: black"><strong>REGISTRAR USUARIO</strong></h1>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div style="height: 30px;"></div>
@@ -22,7 +32,7 @@
                 <div class="card card-style">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
@@ -44,7 +54,7 @@
 
                             <div class="row mb-3">
                                 <label for="correo"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Correo de recuperación (opcional):') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Correo de recuperación: ') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="correo" type="correo"
@@ -137,8 +147,7 @@
                                 <label for="rol"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Rol: ') }}</label>
                                 <div class="col-md-6">
-                                    <select id="rol" class="form-select @error('rol') is-invalid @enderror"
-                                        name="rol" required autocomplete="rol">
+                                    <select id="rol"  name="rol" required autocomplete="rol" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                         <option value="Administrador"
                                             {{ old('rol') == 'Administrador' ? 'selected' : '' }}>Administrador
                                         </option>
@@ -171,8 +180,8 @@
                                 <label for="estatus"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Estatus: ') }}</label>
                                 <div class="col-md-6">
-                                    <select id="estatus" class="form-select @error('estatus') is-invalid @enderror"
-                                        name="estatus" required autocomplete="estatus">
+                                    <select id="estatus" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        name="estatus" required autocomplete="estatus" value="true">
                                         <option value="true" {{ old('estatus', 'true') == 'true' ? 'selected' : '' }}>
                                             Activo</option>
                                         <option value="false" {{ old('estatus') == 'false' ? 'selected' : '' }}>
@@ -190,7 +199,7 @@
                                 <label for="sexo"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Sexo:') }}</label>
                                 <div class="col-md-6">
-                                    <select id="sexo" class="form-select @error('sexo') is-invalid @enderror"
+                                    <select id="sexo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                                         name="sexo" required autocomplete="sexo">
                                         <option value="Hombre" {{ old('sexo') == 'Hombre' ? 'selected' : '' }}>Hombre
                                         </option>
@@ -218,7 +227,7 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-3">
-                                    <button class="btn btn-primary" onclick="goBack()"
+                                    <button class="btn " onclick="goBack()"
                                         style="background-color: #21182F;color: white">
                                         <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png"
                                             alt="flechaRegresar" width="20px" style="filter: invert(100%);">

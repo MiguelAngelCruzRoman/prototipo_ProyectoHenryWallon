@@ -15,7 +15,7 @@
         <div class="card card-style ">
             <div class="card-body">
                 <form id="formularioDatosAsignatura" action="{{ route('asignatura.agregar.datosAsignatura.insert') }}"
-                    method="POST">
+                    method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-7">

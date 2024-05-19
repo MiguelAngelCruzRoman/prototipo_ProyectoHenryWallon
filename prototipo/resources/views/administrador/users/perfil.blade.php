@@ -7,12 +7,15 @@
     @endif
 
 
-    <div class="row">
-        <center>
-            <h1><strong>VER PERFIL</strong></h1>
-            <h3><strong>- ADMINISTRADOR -</strong></h3>
-        </center>
+    <div class="row" align="center">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <h1 style="color:black"><strong>VER PERFIL</strong></h1>
+            <h3 style="color:black"><strong>- ADMINISTRADOR -</strong></h3>
+        </div>
     </div>
+
 
     <div class="tiles">
         <div class="row" style="margin-top:20px; padding-bottom:-20px">
@@ -80,18 +83,18 @@
         <div class="col-6">
             <center>
                 <button class="btn btn-primary me-2" onclick="goBack()"
-                    style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
-                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px" style="filter: invert(100%);">
+                    style="background-color: #21182F; border: 4px solid #000000; color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                        style="filter: invert(100%);">
                     Regresar
                 </button>
             </center>
         </div>
         <div class="col-6">
             <center>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#cambiarContrasenaModal"
-                    style="background-color: #21182F; border: 4px solid #000000;border-radius: 20px; color: white">
-                   Cambiar contraseña
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cambiarContrasenaModal"
+                    style="background-color: #21182F; border: 4px solid #000000; color: white">
+                    Cambiar contraseña
                     <img src="https://cdn-icons-png.flaticon.com/128/4692/4692344.png" alt="cambiarContraseña"
                         width="20px" style="filter: invert(100%);">
                 </button>

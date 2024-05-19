@@ -3,32 +3,39 @@
     @section('content')
         <div class="container mx-auto">
             <div class="text-center">
-                <h1 class="text-3xl font-bold my-8">EVALUACIONES</h1>
+                <h1 class="text-3xl font-bold my-8" style="color:black"><strong>EVALUACIONES</strong></h1><br>
             </div>
             <div class="row mb-3">
+                <div class="col-md-2">
+                    <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                        <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                            style="filter: invert(100%);">
+                        Regresar
+                    </button>
+                </div>
+
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
                     <!--SECCIÓN DE BÚSQUEDA-->
                     <form action="{{ route('evaluacion.busqueda') }}" method="GET">
                         <div class="input-group">
-                            <label for="valorBusqueda" class="mr-2">Filtrar por:</label>
                             <input type="text" class="form-control flex-1 mr-2"
-                                placeholder="Buscar evaluación por actividad o tipo de evaluación" name="valorBusqueda">
+                                placeholder="Buscar evaluación por actividad o tipo" name="valorBusqueda">
                             <button class="btn btn-primary" type="submit">Buscar</button>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal" >
                         <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
-                        Agregar
+                        Registrar
                     </button>
                 </div>
             </div>
             <!--se incluye el modal con formulario-->
             @include('administrador.evaluacion.partials.modals.agregar')  
-            
+            <br>
             
             <div style="display: inline-block">        
             {{ $evaluaciones->links() }}

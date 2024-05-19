@@ -1,22 +1,40 @@
-<div class="mb-8">
-    <table class="w-full border-collapse border border-gray-400">
-        <thead>
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid rgb(123, 117, 117);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid rgb(123, 117, 117);
+        padding: 8px;
+    }
+    thead{
+        background-color: rgb(224, 223, 223);
+    }
+</style>
+
+
+
+<div class="col-md-12 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right rounded-2xl">
+            <thead class="text-sm  uppercase">
+
             <tr>
-                <th class="border border-gray-400 px-4 py-2">ID</th>
-                <th class="border border-gray-400 px-4 py-2">FECHA DE INICIO</th>
-                <th class="border border-gray-400 px-4 py-2">FECHA DE FIN</th>
-                <th class="border border-gray-400 px-4 py-2">TIPO</th>
-                <th class="border border-gray-400 px-4 py-2" colspan="2">OPERACIONES</th>
+                <th scope="col" class="px-6 py-3 text-center" style="color:black">Fecha de Inicio</th>
+                <th scope="col" class="px-6 py-3 text-center" style="color:black">Fecha de Fin</th>
+                <th scope="col" class="px-6 py-3 text-center" style="color:black">Tipo de Periodo</th>
+                <th scope="col" class="px-6 py-3 text-center" style="color:black">Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($periodos as $periodo)
-                <tr>
-                    <td class="border border-gray-400 px-4 py-2">{{ $periodo->id }}</td>
-                    <td class="border border-gray-400 px-4 py-2">{{ $periodo->fechaInicio }}</td>
-                    <td class="border border-gray-400 px-4 py-2">{{ $periodo->fechaFin }}</td>
-                    <td class="border border-gray-400 px-4 py-2">{{ $periodo->tipo }}</td>
-                    <td class="border border-gray-400 px-4 py-2">
+            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->fechaInicio}}</td>
+                    <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->fechaFin}}</td>
+                    <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->tipo}}</td>
+                    <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <!-- Añade un data-toggle y data-target para abrir el modal -->
                             <button type="button" class="btn btn-warning mr-2" data-toggle="modal"
@@ -63,7 +81,7 @@
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <label for="tipo" class="form-label">Tipo:</label>
-                                                <select class="form-select" id="tipo" name="tipo">
+                                                <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" id="tipo" name="tipo">
                                                     <option value="{{ $periodo->tipo }}">{{ $periodo->tipo }}</option>
                                                     <option value="CicloEscolar">Ciclo Escolar</option>
                                                     <option value="Semanal">Semanal</option>
@@ -71,13 +89,13 @@
                                             </div>
                                         </div>
                                         <div class="flex justify-end">
-                                            <button class="btn btn-primary me-2" onclick="goBack()"
+                                            <button class="btn " data-dismiss="modal"
                                                 style="background-color: #21182F;color: white">
                                                 <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png"
                                                     alt="flechaRegresar" width="20px" style="filter: invert(100%);">
                                                 Regresar
                                             </button>
-                                            <button type="submit" class="btn btn-warning"> <img
+                                            <button type="submit" class="btn btn-warning" style="color:black"> <img
                                                     src="https://cdn-icons-png.flaticon.com/128/376/376218.png"
                                                     alt="" width="20px">Guardar</button>
                                         </div>

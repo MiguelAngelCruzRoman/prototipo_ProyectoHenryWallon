@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
+use App\Models\AlumnoModel;
+
+use App\Models\DocenteModel;
+
+
 class Horario extends Controller
 {
     //tcpdf, dompdf, fpdf, html2pdf, xhtml
@@ -14,9 +19,9 @@ class Horario extends Controller
         
         //retorna los grupos, materias, nombre completo del alumno, dias y horas que toma una materia, de un alumno especifico
         $horario = DB::table('alumno as al')
-        ->select('g.id, a.nombre, u.primerNombre, u.segundoNombre, u.apellidoPaterno, u.apellidoMaterno, 
-        h.dia, h.horaInicio, h.horaFin')
-        ->join('sers as u','al.id_Usuario','=','u.id')
+        ->select('g.id', 'a.nombre', 'u.apellidoMaterno', 
+        'h.dia', 'h.horaInicio', 'h.horaFin')
+        ->join('Users as u','al.id_Usuario','=','u.id')
         ->join('grupo_alumno as ga','al.id','=','ga.id_alumno')
         ->join('grupo as g','ga.id_Grupo','=','g.id')
         ->join('asignatura_docente as ad','g.id_Asignatura_Docente','=','ad.id')
@@ -58,6 +63,12 @@ class Horario extends Controller
         ->distinct()
         ->pluck('id_docente');
 
+        $alumno = AlumnoModel::select('u.primerNombre','u.segundoNombre','u.apellidoPaterno','u.apellidoMaterno')
+        ->join('Users as u','alumno.id_Usuario','=','u.id')
+        ->where('alumno.id',$id_alumno)
+        ->first();
+
+
         $datos_maestros = [];
 
         foreach ($ids_asignaturas as $id_asignatura){
@@ -73,7 +84,36 @@ class Horario extends Controller
             }
         }
 
-        return view('alumno/horario/ver_horario_alumno',compact('horario','datos_maestros')); 
+        return view('alumno/horario/ver_horario_alumno',compact('horario','datos_maestros','alumno')); 
+    }
+
+    public function horario_docente($id_docente){
+
+        // retorna el nombre del docente
+        $docente = DocenteModel::select('u.primerNombre','u.segundoNombre','u.apellidoPaterno','u.apellidoMaterno')
+        ->join('Users as u','docente.id_Usuario','=','u.id')
+        ->where('docente.id',$id_docente)
+        ->first();
+
+        //Retorna todas las materias que imparte un docente especifico
+        // y las horas en las que lo imparte
+        $materias = DB::table('asignatura_docente as ad')
+        ->select('a.nombre','h.dia','h.horaInicio','h.horaFin')
+        ->join('asignatura as a','ad.id_Asignatura','=','a.id')
+        ->join('horario_asignatura as ha','a.id','=','ha.id_Asignatura')
+        ->join('horario as h','ha.id_Horario','=','h.id')
+        ->where('ad.id_Docente',$id_docente)
+        ->get();
+        
+        return view('docente/horario/ver_horario_docente',compact('docente','materias'));
+    }
+
+    public function ver_horarios_administrador(){
+        
+    }
+
+    public function modificar_horario_administrador(){
+
     }
 
 }

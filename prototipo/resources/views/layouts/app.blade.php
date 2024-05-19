@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('logoHenryWallon.jpg') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
-<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,14 +26,14 @@
 
     <!-- Luego Popper.js para Bootstrap 4 o Bootstrap Bundle que incluye Popper para Bootstrap 5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> </script>
-    <script src = "https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap5.css"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"></script>
+    <script src="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap5.css"></script>
     <!-- Y finalmente, Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js']) 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @include('layouts.estilos')
 </head>
 
@@ -47,8 +47,8 @@
 
             <main class="py-4">
                 <center>
-                @yield('content')
-            </center>
+                    @yield('content')
+                </center>
             </main>
         </div>
         @include('layouts.scripts')
@@ -62,8 +62,8 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/sb-admin-2.js') }}"></script>
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

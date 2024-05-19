@@ -3,9 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <center>
-                <h1><strong>EDITAR USUARIO</strong></h1>
-            </center>
+            <div class="col-md-2">
+                <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                        style="filter: invert(100%);">
+                    Regresar
+                </button>
+            </div>
+            <div class="col-md-1">
+            </div>
+
+            <div class="col-md-6">
+                <center>
+                    <h1 class="text-3xl font-bold my-8" style="color: black"><strong>EDITAR USUARIO</strong></h1>
+                </center>
+            </div>
+
         </div>
 
         <div style="height: 30px;"></div>
@@ -15,7 +28,8 @@
                 <div class="card card-style">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.actualizar', $user->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('user.actualizar', $user->id) }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -131,7 +145,7 @@
                                 <label for="rol"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Rol: ') }}</label>
                                 <div class="col-md-6">
-                                    <select id="rol" class="form-select @error('rol') is-invalid @enderror"
+                                    <select id="rol" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                                         name="rol" required autocomplete="rol">
                                         <option value="Administrador"
                                             {{ $user->rol == 'Administrador' ? 'selected' : '' }}>Administrador</option>
@@ -155,7 +169,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Foto:') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="foto" type="text"
+                                    <input id="foto" type="file"
                                         class="form-control @error('foto') is-invalid @enderror" name="foto">
                                 </div>
                             </div>
@@ -164,7 +178,7 @@
                                 <label for="estatus"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Estatus: ') }}</label>
                                 <div class="col-md-6">
-                                    <select id="estatus" class="form-select @error('estatus') is-invalid @enderror"
+                                    <select id="estatus" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                                         name="estatus" required autocomplete="estatus">
                                         <option value="true" {{ $user->estatus == 'true' ? 'selected' : '' }}>Activo
                                         </option>
@@ -183,7 +197,7 @@
                                 <label for="sexo"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Sexo:') }}</label>
                                 <div class="col-md-6">
-                                    <select id="sexo" class="form-select @error('sexo') is-invalid @enderror"
+                                    <select id="sexo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                                         name="sexo" required autocomplete="sexo">
                                         <option value="Hombre" {{ $user->sexo == 'Hombre' ? 'selected' : '' }}>Hombre
                                         </option>
@@ -211,13 +225,13 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-3">
-                                    <button class="btn btn-primary" onclick="goBack()"
+                                    <button class="btn" onclick="goBack()"
                                         style="background-color: #21182F;color: white">
                                         <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png"
                                             alt="flechaRegresar" width="20px" style="filter: invert(100%);">
                                         Regresar
                                     </button>
-                                    <button type="submit" class="btn btn-warning">
+                                    <button type="submit" class="btn btn-warning" style="color:black">
                                         <img src="https://cdn-icons-png.flaticon.com/128/376/376218.png" alt=""
                                             width="20px">
                                         {{ __('Actualizar') }}

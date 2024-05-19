@@ -5,13 +5,21 @@
 @section('content')
     <div class="container mx-auto">
         <div class="text-center">
-            <h1 class="text-3xl font-bold my-8">ASIGNATURAS</h1>
-        </div>
+            <h1 class="text-3xl font-bold my-8" style="color:black"><strong>ASIGNATURAS</strong></h1>
+        </div><br>
 
         <div class="row mb-3">
+            <div class="col-md-2">
+                <button class="btn" onclick="goBack()" style="background-color: #21182F;color: white">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar" width="20px"
+                        style="filter: invert(100%);">
+                    Regresar
+                </button>
+            </div>
+
             <div class="col-md-1">
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <form action="{{ route('asignatura.busqueda') }}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control flex-1 mr-2"
@@ -21,16 +29,16 @@
                 </form>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-1">
             </div>
 
             <div class="col-md-2">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formularioModal">
                     <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
-                    Agregar
+                    Registrar
                 </button>
             </div>
-        </div>
+        </div><br>
 
         <div style="display: inline-block">
             {{ $asignaturas->links() }}

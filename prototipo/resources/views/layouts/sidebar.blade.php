@@ -1,21 +1,13 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-primary-custom sidebar sidebar-dark accordion" id="accordionSidebar">
     <br>
-    <center>
-        <li class="nav-item">
-            <button class="btn btn-primary" id="sidebarToggle"></button>
-        </li>
-    </center>
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
     <!-- Info usuario -->
     <li class="nav-item">
         @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
             <a class="nav-link" href="{{ route('administrador.perfil') }}">
                 <div class="flex">
                     <center>
-                        <img src="{{ session('user.foto') }}" alt="ImagenUsuario"
+                        <img src="{{ Storage::url(session('user.foto')) }}" alt="ImagenUsuario"
                             class="rounded-circle border border-dark" style="width: 80px; height: 80px;">
                         {{ session('user.primerNombre') }} {{ session('user.apellidoPaterno') }}
                     </center>
@@ -101,7 +93,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('grupo.index') }}">
                 <i class="fas fa-fw fa-chart-bar"></i>
-                <span>REPORTES</span>
+                <span >REPORTES</span>
             </a>
         </li>
     @endif
@@ -119,5 +111,12 @@
                 @csrf
             </form>
         </li>
+           <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+        <center>
+        <li class="nav-item">
+            <button class="btn btn-primary" id="sidebarToggle"></button>
+        </li>
+    </center>
     @endif
 </ul>

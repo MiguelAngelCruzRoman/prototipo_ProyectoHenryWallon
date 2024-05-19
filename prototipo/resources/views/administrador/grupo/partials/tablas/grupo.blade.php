@@ -1,25 +1,41 @@
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid rgb(123, 117, 117);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid rgb(123, 117, 117);
+        padding: 8px;
+    }
+    thead{
+        background-color: rgb(224, 223, 223);
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <table class="w-full border-collapse border border-gray-400">
             <thead>
                 <tr>
-                    <th class="border border-gray-400 px-4 py-2">ID</th>
-                    <th class="border border-gray-400 px-4 py-2">ASIGNATURA</th>
-                    <th class="border border-gray-400 px-4 py-2">DOCENTE</th>
-                    <th class="border border-gray-400 px-4 py-2">SEMESTRE</th>
-                    <th class="border border-gray-400 px-4 py-2" colspan="2">OPERACIONES</th>
+                    <th scope="col" class="px-6 py-3 text-center" style="color:black">ID</th>
+                    <th scope="col" class="px-6 py-3 text-center" style="color:black">Asignatura</th>
+                    <th scope="col" class="px-6 py-3 text-center" style="color:black">Docente</th>
+                    <th scope="col" class="px-6 py-3 text-center" style="color:black">Semestre</th>
+                    <th scope="col" class="px-6 py-3 text-center" style="color:black" colspan="2">Operaciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($grupos as $grupo)
-                    <tr>
-                        <td class="border border-gray-400 px-4 py-2">{{ $grupo->id }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $grupo->nombreAsignatura }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $grupo->nombreDocente }}
+                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $grupo->id }}</td>
+                        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $grupo->nombreAsignatura }}</td>
+                        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $grupo->nombreDocente }}
                             {{ $grupo->segundoNombreDocente }} {{ $grupo->apellidoPaternoDocente }}
                             {{ $grupo->apellidoMaternoDocente }}</td>
-                        <td class="border border-gray-400 px-4 py-2">{{ $grupo->semestre }}</td>
-                        <td class="border border-gray-400 px-4 py-2">
+                        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $grupo->semestre }}</td>
+                        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div class="btn-group" role="group" aria-label="Basic example">
 
                                 <button onclick="window.location='{{ route('grupo.ver', ['idGrupo' => $grupo->id]) }}'"

@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', function () {
             // Al hacer clic en el botón, muestra el modal de confirmación
             $('#confirmarEliminarModal').modal('show');
-
             // Configura el evento de clic para el botón de confirmación de eliminación
             document.getElementById('confirmarEliminarBtn').addEventListener('click', function () {
                 // Redirecciona a la URL de eliminación después de confirmar

@@ -4,17 +4,20 @@
 @section('content')
     <div class="container">
         <center>
-            <div class="row">
-                <center>
-                    <h1><strong>PÁGINA DE INICIO</strong></h1>
-                    <h3><strong>- DOCENTE -</strong></h3>
-                </center>
+            <div class="row" align="center">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                        <h1 style="color:black"><strong>PÁGINA DE INICIO</strong></h1>
+                        <h3 style="color:black"><strong>- DOCENTE -</strong></h3>
+                </div>
+
             </div>
 
             <div style="height: 30px;"></div>
 
             <div class="row">
-               
+
                 <div class="col-md-4">
                     <a href="">
                         <div class="card card-style">
@@ -27,9 +30,9 @@
                         </div>
                     </a>
                 </div>
- 
+
                 <div class="col-md-4">
-                    <a href="{{ route('asignatura.index') }}" >
+                    <a href="{{ route('asignatura.index') }}">
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>
@@ -42,7 +45,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <a href="{{ route('evaluacion.index') }}" >
+                    <a href="{{ route('evaluacion.index') }}">
                         <div class="card card-style">
                             <div class="card-body">
                                 <center>

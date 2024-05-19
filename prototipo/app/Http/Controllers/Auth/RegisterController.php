@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AlumnoModel;
 use App\Models\DocenteModel;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,7 +74,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
+        $fotos = null;
+        if (isset($data['foto']) && $data['foto']->isValid()) {
+            $fotos = Storage::disk('public')->put('/users/fotos', $data['foto']);
+        }
+        $user = User::create([
             'email' => $data['email'],
             'correo' => $data['correo'],
             'password' => Hash::make($data['password']),
@@ -82,30 +87,26 @@ class RegisterController extends Controller
             'apellidoPaterno' => $data['apellidoPaterno'],
             'apellidoMaterno' => $data['apellidoMaterno'],
             'rol' => $data['rol'],
-            'foto' => $data['foto'], 
+            'foto' => $fotos,
             'estatus' => $data['estatus'] === 'true' ? true : false,
             'sexo' => $data['sexo'],
             'telefono' => $data['telefono'],
-            'created_at' =>now(),
-            'updated_at' =>now()
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
-        if($data['rol'] == "Alumno"){
+        if ($data['rol'] === 'Docente') {
+            DocenteModel::create([
+                'id_Usuario' => $user->id,
+                'fechaContratacion' => now(),
+                'estatus' => 1,
+            ]);
+        } elseif ($data['rol'] === 'Alumno') {
             AlumnoModel::create([
                 'id_Usuario' => $user->id,
                 'semestre' => 1,
                 'fechaIngreso' => now(),
-                'fechaEgreso' => null,
-                'estatus' =>$data['estatus'] === 'true' ? true : false,
-                'id_Tutor' =>null,
-            ]);
-        }
-        if($data['rol'] == "Docente"){
-            DocenteModel::create([
-                'id_Usuario'=>$user->id,
-                'fechaContratacion'=>now(),
-                'fechaDimision'=>null,
-                'estatus' =>$data['estatus'] === 'true' ? true : false
+                'estatus' => 1,
             ]);
         }
 

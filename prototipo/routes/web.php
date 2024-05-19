@@ -7,6 +7,7 @@ use App\Http\Controllers\Grupo;
 use App\Http\Controllers\Periodo;
 use App\Http\Controllers\Evaluacion;
 use App\Http\Controllers\Users;
+use App\Http\Controllers\Horario;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -88,9 +89,10 @@ Route::post('/asignatura/agregar/insert',[Asignatura::class, 'insertDatos'])->na
 //-----------------------------------Rutas de Docente-------------------------------------//
 Route::get('/docente', [Users::class, 'perfil'])->name('docente.perfil');
 Route::get('/docente/asignatura/index',[Asignatura::class, 'index'])->name('docente.asignatura.index');
-Route::get('/docente/asignatura/asistencia/{idAsignatura}/{idDocente}/{asignaturaNombre}',[Asistencia::class, 'index'])->name('docente.asignatura.asistencia');
+Route::get('/docente/asignatura/asistencia/{idAsignatura}/{idDocente}/{nombreAsignatura}',[Asistencia::class, 'index'])->name('docente.asignatura.asistencia');
 Route::post('/docente/asignatura/asistencia/insert',[Asistencia::class, 'insert'])->name('docente.asignatura.asistencia.insert');
-
+Route::get('/docente/asignatura/asistencia/historial/{idAsignatura}/{idDocente}/{nombreAsignatura}',[Asistencia::class, 'historial'])->name('docente.asignatura.asistencia.historial');
+Route::get('/docente/horario/{idDocente}',[Horario::class,'horario_docente'])->name('docente.horario');
 
 
 
@@ -99,7 +101,7 @@ Route::post('/docente/asignatura/asistencia/insert',[Asistencia::class, 'insert'
 //-----------------------------------Rutas de Alumno-------------------------------------//
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'index'])->name('homeE');
 Route::get('/alumno/asignatura/index',[Asignatura::class, 'index'])->name('alumno.asignatura.index');
-
+Route::get('/alumno/horario/{idAlumno}',[Horario::class,'horario_alumno'])->name('alumno.horario');
 
 //Rutas pendientes para darle funcionaldiad
 Route::get('/alumno/asignatura/planeacion/ver/{idAsignatura}/{idDocente}', [Asignatura::class, 'verPlaneacionAsignatura'])->name('alumno.asignatura.planeacion.ver');
