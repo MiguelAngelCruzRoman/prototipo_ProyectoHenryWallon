@@ -5,10 +5,15 @@
         <div class="container">
             <center>
                 <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
                     <center>
                         <h1><strong>PÁGINA DE INICIO</strong></h1>
                         <h3><strong>- ADMINISTRADOR -</strong></h3>
                     </center>
+                </div>
+
                 </div>
 
                 <div style="height: 30px;"></div>
