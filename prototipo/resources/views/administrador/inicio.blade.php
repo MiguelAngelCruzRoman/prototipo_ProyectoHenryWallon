@@ -10,8 +10,6 @@
                         <h1 style="color:black"><strong>PÁGINA DE INICIO</strong></h1>
                         <h3 style="color:black"><strong>- ADMINISTRADOR -</strong></h3>
                     </center></div>
-
-                    
                 </div>
 
                 <div style="height: 30px;"></div>

@@ -7,7 +7,7 @@
             <a class="nav-link" href="{{ route('administrador.perfil') }}">
                 <div class="flex">
                     <center>
-                        <img src="{{ Storage::url(session('user.foto')) }}" alt="ImagenUsuario"
+                        <img src="https://img.freepik.com/fotos-premium/alumno-leyendo-libro-escolar_13339-163126.jpg   " alt="ImagenUsuario"
                             class="rounded-circle border border-dark" style="width: 80px; height: 80px;">
                         {{ session('user.primerNombre') }} {{ session('user.apellidoPaterno') }}
                     </center>

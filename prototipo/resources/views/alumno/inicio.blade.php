@@ -5,10 +5,15 @@
     <div class="container">
         <center>
             <div class="row">
-                <center>
-                    <h1><strong>PÁGINA DE INICIO</strong></h1>
-                    <h3><strong>- ALUMNO -</strong></h3>
-                </center>
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <center>
+                        <h1 style="color:black"><strong>PÁGINA DE INICIO</strong></h1>
+                        <h3 style="color:black"><strong>- ALUMNO -</strong></h3>
+                    </center>
+                </div>
+
+
             </div>
 
             <div style="height: 30px;"></div>
@@ -16,11 +21,11 @@
 
                 <div class="col-md-4">
                     <a href="">
-                        <div class="card card-style">
+                        <div class="card card-style" style="background-color: #21182F">
                             <div class="card-body">
                                 <center>
-                                    <h5 class="card-title" style="color:black">HORARIOS</h5>
-                                    <img src="https://cdn-icons-png.flaticon.com/128/6102/6102319.png" alt="">
+                                    <h5 class="card-title" style="color:white">HORARIOS</h5>
+                                    <i class=" fas fa-calendar fa-6x" style="color: white"></i>
                                 </center>
                             </div>
                         </div>
@@ -33,11 +38,11 @@
 
                 <div class="col-md-4">
                     <a href="{{ route('asignatura.index') }}">
-                        <div class="card card-style">
+                        <div class="card card-style" style="background-color: #21182F">
                             <div class="card-body">
                                 <center>
-                                    <h5 class="card-title" style="color:black">ASIGNATURAS</h5>
-                                    <img src="https://cdn-icons-png.flaticon.com/128/29/29302.png" alt="">
+                                    <h5 class="card-title" style="color:white">ASIGNATURAS</h5>
+                                    <i class=" fas fa-book fa-6x" style="color: white"></i>
                                 </center>
                             </div>
                         </div>
@@ -47,7 +52,7 @@
 
             </div>
 
-         
+
         </center>
     </div>
 @endsection
