@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AlumnoModel;
+use App\Models\DocenteModel;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -71,7 +73,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'email' => $data['email'],
             'correo' => $data['correo'],
             'password' => Hash::make($data['password']),
@@ -87,5 +89,26 @@ class RegisterController extends Controller
             'created_at' =>now(),
             'updated_at' =>now()
         ]);
+
+        if($data['rol'] == "Alumno"){
+            AlumnoModel::create([
+                'id_Usuario' => $user->id,
+                'semestre' => 1,
+                'fechaIngreso' => now(),
+                'fechaEgreso' => null,
+                'estatus' =>$data['estatus'] === 'true' ? true : false,
+                'id_Tutor' =>null,
+            ]);
+        }
+        if($data['rol'] == "Docente"){
+            DocenteModel::create([
+                'id_Usuario'=>$user->id,
+                'fechaContratacion'=>now(),
+                'fechaDimision'=>null,
+                'estatus' =>$data['estatus'] === 'true' ? true : false
+            ]);
+        }
+
+        return $user;
     }
 }
