@@ -138,7 +138,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
                                                     value="{{ $alumno->id }}" id="alumno{{ $alumno->id }}"
-                                                    name="alumnos[]">
+                                                    name="alumnos[]" required>
                                                 <label class="form-check-label" for="alumno{{ $alumno->id }}">
                                                     {{ $alumno->primerNombre }} {{ $alumno->segundoNombre }}
                                                     {{ $alumno->apellidoPaterno }} {{ $alumno->apellidoMaterno }}

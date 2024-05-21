@@ -129,4 +129,73 @@ class Asistencia extends Controller
 
         return view('administrador/reportes/index', compact('asistencias'));
     }
+
+    public function descargarPDF($asignatura)
+    {
+       // Obtener datos de asistencias de la base de datos
+        $asistencias = DB::table('asistencia')
+        ->select(
+            'ua.primerNombre as nombreAlumno',
+            'ua.segundoNombre as segundoNombreAlumno',
+            'ua.apellidoPaterno as apellidoPAlumno',
+            'ua.apellidoMaterno as apellidoMAlumno',
+            'alumno.id as idAlumno',
+            'grupo.id as id_Grupo',
+            'asistencia.estatus as asistenciaAlumno',
+            'asistencia.fecha as fechaAsistencia',
+            'asignatura.nombre as nombreAsignatura'
+        )
+        ->join('grupo_alumno', 'grupo_alumno.id', '=', 'asistencia.id_grupo_alumno')
+        ->join('alumno', 'grupo_alumno.id_alumno', '=', 'alumno.id')
+        ->join('users as ua', 'alumno.id_usuario', '=', 'ua.id')
+        ->join('grupo', 'grupo_alumno.id_grupo', '=', 'grupo.id')
+        ->join('asignatura_docente', 'grupo.id_asignatura_docente', '=', 'asignatura_docente.id')
+        ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
+        ->where('asignatura.nombre', $asignatura)
+        ->orderBy('ua.apellidoPaterno')
+        ->orderBy('ua.apellidoMaterno')
+        ->orderBy('ua.primerNombre')
+        ->orderBy('ua.segundoNombre')
+        ->get();
+
+       // Fecha para el reporte
+        $fechaReporte = date('Y-m-d');
+
+        // Preparar el HTML para el PDF
+        $html = '<html><head><style>';
+        $html .= 'body { font-family: Arial, sans-serif; font-size: 12px; }'; 
+        $html .= 'table { width: 100%; border-collapse: collapse; }';
+        $html .= 'th, td { border: 1px solid black; padding: 5px; text-align: left; }';
+        $html .= '.header { width: 100%; margin-bottom: 20px; }'; 
+        $html .= '.logo { float: left; width: 20%; }'; 
+        $html .= '.school-info { width: 80%; text-align: center; }'; 
+        $html .= '.footer { position: fixed; bottom: 10px; left: 0px; right: 0px; height: 30px; font-size: 8px; }';
+        $html .= '</style></head><body>';
+        $html .= '<div class="header">';
+        $html .= '<div class="logo"><img src="/logoHenryWallon.png" alt="Logo" height="50" width="50"></div>';
+        $html .= '<div class="school-info"><strong>Instituto Henry Wallon</strong><br>Nivel Preparatoria<br>C.C.T 21PBH0062R
+        <br>Calle Vicente Guerrero #506 C.P. 73870 Teziutlán, Pue.</div>';
+        $html .= '</div>';
+        $html .= '<h2 style="text-align: center; clear: both; font-size: 16px;">Reporte de Asistencias de la Materia ' . $asignatura . '</h2>';
+        $html .= '<table>';
+        $html .= '<tr><th>ID Alumno</th><th>Nombre Estudiante</th><th>Asistencia</th><th>Fecha</th></tr>';
+        foreach ($asistencias as $asistencia) {
+            $html .= '<tr>';
+            $html .= '<td>' . $asistencia->idAlumno . '</td>';
+            $html .= '<td>' . htmlspecialchars($asistencia->nombreAlumno . ' ' . $asistencia->segundoNombreAlumno . ' ' . $asistencia->apellidoPAlumno . ' ' . $asistencia->apellidoMAlumno) . '</td>';
+            $html .= '<td>' . $asistencia->asistenciaAlumno . '</td>';
+            $html .= '<td>' . $asistencia->fechaAsistencia . '</td>';
+            $html .= '</tr>';
+        }
+        $html .= '</table>';
+        $html .= '<div class="footer">';
+        $html .= 'Fecha del Reporte: ' . $fechaReporte ;
+        $html .= '</div>';
+        $html .= '</body></html>';
+    
+        // Generar y descargar el PDF
+        $pdf = PDF::loadHTML($html);
+        return $pdf->stream('asistencias-' . $asignatura . '.pdf');
+    }
+    
 }

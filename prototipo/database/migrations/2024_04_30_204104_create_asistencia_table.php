@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('asistencia', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Grupo_Alumno')->constrained('grupo_alumno');
+            $table->unsignedBigInteger('id_Grupo_Alumno'); 
+            $table->foreign('id_Grupo_Alumno')->references('id')->on('grupo_alumno')->onDelete('cascade');
             $table->dateTime('fecha');
             $table->enum('estatus', ['Asistencia', 'Justificante', 'Retraso', 'Falta']);
             $table->text('observacion');

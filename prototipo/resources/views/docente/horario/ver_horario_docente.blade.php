@@ -1,3 +1,4 @@
+<link rel="icon" type="image/png" href="{{ asset('logoHenryWallon.jpg') }}">
 <title>Horario</title>
 @extends('layouts.app')
 @section('content')

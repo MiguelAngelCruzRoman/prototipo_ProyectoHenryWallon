@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\BloqueModel;
+use App\Models\EvaluacionModel;
+use App\Models\ProgresionModel;
+use App\Models\Progresion_EvaluacionModel;
 use Illuminate\Support\Facades\Password;
 
-class Users extends Controller
+class Planeacion extends Controller
 {
 
     public function perfil()
@@ -29,206 +33,115 @@ class Users extends Controller
 
         return view('administrador/users/index', compact('user'));
     }
-
-
-    public function busqueda()
-    {
-        $asignaturas = DB::table('asignatura')
-            ->where('nombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->orwhere('componente', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->orwhere('semestre', 'like', '%' . $_GET['valorBusqueda'] . '%')
-            ->paginate(10);
-
-        return view('administrador/asignatura/index', compact('asignaturas'));
+    
+    public function agregarBloque(){
+        return view('docente/asignatura/planeacion/agregarBloque');
     }
 
-
-
-    public function agregarDatosAsignatura()
+    public function insertarBloque(Request $request,string $idAsignatura)
     {
-        return view('administrador/asignatura/agregar');
+        $validatedData = $request->validate([
+            'numero' => 'required|integer',
+            'nombre' => 'required|string|max:255',
+            'proposito' => 'required|string',
+            'eje' => 'required|string|max:255',
+            'componente' => 'required|string',
+            'contenidoCentral' => 'required|string',
+            'productoIntegrador' => 'required|string',
+        ]);
+
+        $bloque = new BloqueModel();
+        $bloque->numero = $request->input('numero');
+        $bloque->nombre = $request->input('nombre');
+        $bloque->proposito = $request->input('proposito');
+        $bloque->eje = $request->input('eje');
+        $bloque->componente = $request->input('componente');
+        $bloque->contenidoCentral = $request->input('contenidoCentral');
+        $bloque->productoIntegrador = $request->input('productoIntegrador');
+        $bloque->id_Asignatura = $idAsignatura; // Tiene que buscar el id de la materia a la que va insertar
+        //Insertar en la tabla docente_bloque el id del bloque que se creo
+        //Insertar en la tabla docente_bloque el id del codente que creo el bloque(obtenido del inicio de sesion)
+        $bloque->save();
+
+        return redirect()->back()->with('success', 'Bloque agregado correctamente');
     }
 
-
-    public function insertDatosAsignatura(Request $request)
-    {
-        $asignatura = new User();
-        $asignatura->nombre = ucwords(strtolower($request->nombre));
-        $asignatura->objetivo = ucwords(strtolower($request->objetivo));
-        $asignatura->intencionDidactica = ucwords(strtolower($request->intencionDidactica));
-        $asignatura->turno = $request->turno;
-        $asignatura->semestre = $request->semestre;
-        $asignatura->componente = ucwords(strtolower($request->componente));
-        $asignatura->creditos = $request->creditos;
-        $asignatura->horasDocente = $request->horasDocente;
-        $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
-        $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
-        $asignatura->imagen = $request->imagen;
-        $asignatura->estatus = "Sin planeación";
-        $asignatura->created_at = now();
-        $asignatura->updated_at = now();
-
-        $asignatura->save();
-
-        return redirect('/asignatura/index');
+    public function bloques(String $idAsignatura){
+        $bloques = BloqueModel::all();
+        return view('/docente/asignatura/planeacion/agregarPlaneacion', compact('bloques','idAsignatura'));
     }
 
-
-
-    public function verAsignatura(string $idAsignatura)
+    public function guardarBloqueTemp(Request $request,string $idAsignatura)
     {
+        $validatedData = $request->validate([
+            'id_Asignatura' => $idAsignatura,
+            'numero' => 'required|integer',
+            'nombre' => 'required|string|max:255',
+            'proposito' => 'required|string',
+            'eje' => 'required|string|max:255',
+            'componente' => 'required|string',
+            'contenidoCentral' => 'required|string',
+            'productoIntegrador' => 'required|string',
+        ]);
 
-        $asignatura = DB::table('asignatura')->where('id', $idAsignatura)->get();
+        session()->put('bloque', $validatedData);
 
-        return view('administrador/asignatura/ver', compact('asignatura'));
+        return redirect()->route('docente.agregar.progresion');
     }
 
-    public function editarDatosAsignatura(string $idAsignatura)
+    public function guardarProgresionTemp(Request $request)
     {
-        $asignatura = DB::table('asignatura')->where('id', $idAsignatura)->get();
+        $validatedData = $request->validate([
+            'id_periodo' => 'required|exists:periodo,id',
+            'tema' => 'required|string|max:255',
+            'aprendizajeEsperado' => 'required|string|max:255',
+            'materiales' => 'required|string|max:255',
+            'actividadAprendizaje' => 'required|string|max:255',
+            'tipoEvaluacion' => 'required|in:Rúbrica,Lista de cotejo,Guía de observación',
+        ]);
 
-        return view('administrador/asignatura/editar', compact('asignatura'));
+        session()->put('progresion', $validatedData);
+
+        return redirect()->route('docente.finalizar');
     }
 
-
-    public function updateDatosAsignatura(Request $request, string $idAsignatura)
+    public function finalizar()
     {
-        $asignatura = User::findOrFail($idAsignatura);
+        $bloqueData = session()->get('bloque');
+        $progresionData = session()->get('progresion');
 
-        $asignatura->nombre = ucwords(strtolower($request->nombre));
-        $asignatura->objetivo = ucwords(strtolower($request->objetivo));
-        $asignatura->intencionDidactica = ucwords(strtolower($request->intencionDidactica));
-        $asignatura->turno = $request->turno;
-        $asignatura->semestre = $request->semestre;
-        $asignatura->componente = ucwords(strtolower($request->componente));
-        $asignatura->creditos = $request->creditos;
-        $asignatura->horasDocente = $request->horasDocente;
-        $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
-        $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
+        if ($bloqueData && $progresionData) {
+            // Guardar bloque
+            $bloque = BloqueModel::create($bloqueData);
 
-        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
-            $asignatura->imagen = $request->imagen;
-        }
+            // Guardar progresión
+            $progresion = ProgresionModel::create([
+                'id_Periodo' => $progresionData['id_periodo'],
+                'tema' => $progresionData['tema'],
+                'aprendizajeEsperado' => $progresionData['aprendizajeEsperado'],
+                'materiales' => $progresionData['materiales'],
+            ]);
 
-        //$asignatura->estatus = "En revisión";
-        $asignatura->updated_at = now();
+            // Guardar evaluación
+            $evaluacion = EvaluacionModel::create([
+                'id_Progresion' => $progresion->id,
+                'actividadAprendizaje' => $progresionData['actividadAprendizaje'],
+                'tipoEvaluacion' => $progresionData['tipoEvaluacion'],
+            ]);
 
-        $asignatura->save();
+            // Guardar relación en Progresion_Evaluacion
+            Progresion_EvaluacionModel::create([
+                'id_Progresion' => $progresion->id,
+                'id_Evaluacion' => $evaluacion->id,
+            ]);
 
-        return redirect('/asignatura/index');
-    }
+            // Limpiar sesión
+            session()->forget(['bloque', 'progresion']);
 
-
-    public function eliminarAsignatura(string $idAsignatura)
-    {
-        $asignatura = User::findOrFail($idAsignatura);
-        $asignatura->delete();
-        return redirect()->back();
-    }
-
-
-    public function verPlaneacionAsignatura(string $idAsignatura, string $idDocente)
-    {
-        $asignatura = DB::table('asignatura_docente')
-            ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
-            ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
-            ->join('usuario', 'docente.id_Usuario', '=', 'usuario.id')
-            ->where('asignatura_docente.id_asignatura', $idAsignatura)
-            ->where('asignatura_docente.id_docente', $idDocente)
-            ->get();
-
-        $bloques = DB::table('bloque')
-            ->join('asignatura', 'bloque.id_Asignatura', '=', 'asignatura.id')
-            ->where('bloque.id_Asignatura', $idAsignatura)
-            ->get();
-
-
-        $progresiones = DB::table('evaluacion')
-            ->select(
-                '*',
-                'bloque.nombre as nombreBloque'
-            )
-            ->join('progresion_evaluacion', 'evaluacion.id', '=', 'progresion_evaluacion.id_Evaluacion')
-            ->join('progresion', 'progresion_evaluacion.id_Progresion', '=', 'progresion.id')
-            ->join('bloque_progresion', 'progresion.id', '=', 'bloque_progresion.id_Progresion')
-            ->join('bloque', 'bloque_progresion.id_Bloque', '=', 'bloque.id')
-            ->join('asignatura', 'bloque.id_Asignatura', '=', 'asignatura.id')
-            ->join('asignatura_docente', 'asignatura.id', '=', 'asignatura_docente.id_Asignatura')
-            ->where('asignatura_docente.id_asignatura', $idAsignatura)
-            ->where('asignatura_docente.id_docente', $idDocente)
-            ->orderBy('bloque.numero', 'asc')
-            ->get();
-
-
-        return view('administrador/asignatura/planeacion/ver', compact('asignatura', 'bloques', 'progresiones'));
-    }
-
-    public function agregarDatosBloque(string $numeroBloque)
-    {
-        if ($_POST['bloques'] >= $numeroBloque) {
-            $numeroBloque = $numeroBloque + 1;
-            return view('administrador/asignatura/agregar/datosBloque', compact('numeroBloque'));
+            return redirect()->route('docente.bloques')->with('success', 'Planeación completada correctamente');
         } else {
-            $totalBloques = $_POST['bloques'];
-
-            $datosBloques = [];
-
-            for ($i = 1; $i <= $totalBloques; $i++) {
-                $datosUnidad = [];
-                $unidadNombre = $_POST["Unidad_${i}_nombre"];
-                $datosUnidad['nombre'] = $unidadNombre;
-                $datosUnidad['competencia'] = $_POST["Unidad_${i}_competencia"];
-                $datosUnidad['porcentajeCalificacionFinal'] = $_POST["Unidad_${i}_porcentajeCalificacionFinal"];
-                $datosUnidad['calificacionMaxima'] = $_POST["Unidad_${i}_calificacionMaxima"];
-                $datosUnidad['calificacionMinima'] = $_POST["Unidad_${i}_calificacionMinima"];
-
-                if (!empty($unidadNombre)) {
-                    for ($j = 1; $j <= 5; $j++) {
-                        $datosTema = [];
-                        $temaNombre = $_POST["Unidad_${i}_tema_${j}_nombre"];
-                        $datosTema['nombre'] = $temaNombre;
-
-                        if (!empty($temaNombre)) {
-                            for ($k = 1; $k <= 5; $k++) {
-                                $datosSubtema = [];
-                                $subtemaNombre = $_POST["Unidad_${i}_tema_${j}_subtema_${k}_nombre"];
-                                $datosSubtema['nombre'] = $subtemaNombre;
-
-                                if (!empty($subtemaNombre)) {
-                                    foreach ($_POST as $campo => $valor) {
-                                        if (strpos($campo, "Unidad_${i}_tema_${j}_subtema_${k}") === 0) {
-                                            $nombreCampo = substr($campo, strlen("Unidad_${i}_tema_${j}_subtema_${k}") + 1);
-                                            $datosSubtema[$nombreCampo] = $valor;
-                                        }
-                                    }
-                                    $datosTema["Subtema_$k"] = $datosSubtema;
-                                }
-                            }
-                            $datosUnidad["Tema_$j"] = $datosTema;
-                        }
-                    }
-                    $datosUnidades["Unidad_$i"] = $datosUnidad;
-                }
-            }
-
-            $datosAsignatura = [];
-            $datosAsignatura["asignatura"] = $_POST["asignatura"];
-            $datosAsignatura["objetivo"] = $_POST["objetivo"];
-            $datosAsignatura["intencionDidactica"] = $_POST["intencionDidactica"];
-            $datosAsignatura["unidades"] = $_POST["unidades"];
-            $datosAsignatura["creditos"] = $_POST["creditos"];
-            $datosAsignatura["horasPracticas"] = $_POST["horasPracticas"];
-            $datosAsignatura["horasTeoricas"] = $_POST["horasTeoricas"];
-            $datosAsignatura["calificacionAprobatoria"] = $_POST["calificacionAprobatoria"];
-
-            print_r($datosUnidades['Unidad_1']['Tema_1']);
-            return view('asignatura/agregar/previsualizar', compact('datosAsignatura', 'datosUnidades'));
+            return redirect()->route('docente.agregar.bloque')->with('error', 'Debe completar todos los pasos.');
         }
     }
 
-
-    public function insertDatos()
-    {
-        print_r($_POST);
-    }
 }

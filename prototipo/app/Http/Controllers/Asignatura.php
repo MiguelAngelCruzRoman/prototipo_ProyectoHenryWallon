@@ -169,7 +169,6 @@ class Asignatura extends Controller
         ]);
 
         $asignatura = AsignaturaModel::findOrFail($idAsignatura);
-
         $asignatura->nombre = ucwords(strtolower($request->nombre));
         $asignatura->objetivo = ucwords(strtolower($request->objetivo));
         $asignatura->intencionDidactica = ucwords(strtolower($request->intencionDidactica));
@@ -185,11 +184,8 @@ class Asignatura extends Controller
             $asignatura->imagen = Storage::disk('public')->put('/asignatura/imagenes', $request->file('imagen'));
         }
 
-        //$asignatura->estatus = "En revisión";
         $asignatura->updated_at = now();
-
         $asignatura->save();
-
         return redirect('/asignatura/index');
     }
 

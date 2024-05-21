@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('bloque', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Asignatura')->constrained('asignatura');
+            $table->unsignedBigInteger('id_Asignatura'); 
+            $table->foreign('id_Asignatura')->references('id')->on('asignatura')->onDelete('cascade');
             $table->string('nombre');
             $table->integer('numero');
             $table->text('proposito');

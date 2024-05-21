@@ -1,4 +1,5 @@
-<title>Página de Inicio</title>
+<link rel="icon" type="image/png" href="{{ asset('logoHenryWallon.jpg') }}">
+    <title>Inicio</title>
 
 @extends('layouts.app')
 @section('content')

@@ -163,10 +163,10 @@ class Grupo extends Controller
             'id_Docente' => 'required',
             'id_Periodo' => 'required',
             'semestre' => 'required',
-            'listaAlumnos' => 'required'
+            'alumnos' => 'required'
         ]);
 
-        $listaAlumnos = json_decode($validatedData['listaAlumnos'], true);
+        $alumnos = $request->input('alumnos');
 
         $asignaturaDocente = new Asignatura_DocenteModel();
         $asignaturaDocente->id_Asignatura = $validatedData['id_Asignatura'];
@@ -179,10 +179,10 @@ class Grupo extends Controller
         $grupo->semestre = $validatedData['semestre'];
         $grupo->save();
 
-        foreach ($listaAlumnos as $alumno) {
+        foreach ($alumnos as $alumno) {
             $grupoAlumno = new Grupo_AlumnoModel();
             $grupoAlumno->id_Grupo = $grupo->id;
-            $grupoAlumno->id_Alumno = $alumno['id'];
+            $grupoAlumno->id_Alumno = $alumno;
             $grupoAlumno->save();
         }
 

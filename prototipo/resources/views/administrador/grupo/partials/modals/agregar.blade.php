@@ -106,10 +106,10 @@
                             ¡Evaluación guardada con éxito!
                         </div>
                     </div>
-                    <input type="hidden" id="listaAlumnos" name="listaAlumnos">
+                    <input id="listaAlumnos" name="listaAlumnos">
                     <div class="text-end">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary" onclick="submitForm()">Guardar</button>
                     </div>
                 </form>
             </div>

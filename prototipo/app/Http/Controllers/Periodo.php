@@ -120,6 +120,11 @@ class Periodo extends Controller
         return redirect()->back();
     }
 
+    public function agregar_periodo_docente(){
+        $periodos = PeriodoModel::paginate(10);
+        return view('docente/asignatura/planeacion/agregarProgresion', compact('periodos'));        
+    }
+
 }
 
 

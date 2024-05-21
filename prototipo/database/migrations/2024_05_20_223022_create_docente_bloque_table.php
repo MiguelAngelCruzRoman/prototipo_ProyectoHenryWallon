@@ -11,25 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('docente', function (Blueprint $table) {
+        Schema::create('docente_bloque', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_Usuario'); 
-            $table->foreign('id_Usuario')->references('id')->on('users')->onDelete('cascade');
-            $table->dateTime('fechaContratacion');
-            $table->dateTime('fechaDimision')->nullable();
-            $table->boolean('estatus');
+            $table->unsignedBigInteger('docente_id'); 
+            $table->foreign('docente_id')->references('id')->on('docente')->onDelete('cascade');
+            $table->unsignedBigInteger('bloque_id'); 
+            $table->foreign('bloque_id')->references('id')->on('bloque')->onDelete('cascade');
             $table->timestamps();
         });
     }
-
-    
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('docente');
+        Schema::dropIfExists('docente_bloque');
     }
 };

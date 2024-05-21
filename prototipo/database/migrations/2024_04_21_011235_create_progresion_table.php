@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('progresion', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Periodo')->constrained('periodo');
+            $table->unsignedBigInteger('id_Periodo'); 
+            $table->foreign('id_Periodo')->references('id')->on('periodo')->onDelete('cascade');
             $table->string('tema');
             $table->string('aprendizajeEsperado');
             $table->string('materiales');

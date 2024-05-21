@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('bloque_progresion', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Bloque')->constrained('bloque');
-            $table->foreignId('id_Progresion')->constrained('progresion');
+            $table->unsignedBigInteger('id_Bloque'); 
+            $table->foreign('id_Bloque')->references('id')->on('bloque')->onDelete('cascade');
+            $table->unsignedBigInteger('id_Progresion'); 
+            $table->foreign('id_Progresion')->references('id')->on('progresion')->onDelete('cascade');
             $table->timestamps();
         });
     }

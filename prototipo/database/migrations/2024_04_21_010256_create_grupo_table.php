@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('grupo', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_Asignatura_Docente')->constrained('asignatura_docente');
-            $table->foreignId('id_Periodo')->constrained('periodo');
+            $table->unsignedBigInteger('id_Asignatura_Docente'); 
+            $table->foreign('id_Asignatura_Docente')->references('id')->on('asignatura_docente')->onDelete('cascade');
+            $table->unsignedBigInteger('id_Periodo'); 
+            $table->foreign('id_Periodo')->references('id')->on('periodo')->onDelete('cascade');
             $table->enum('semestre', ['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto']);
             $table->timestamps();
         });

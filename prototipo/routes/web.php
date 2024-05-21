@@ -9,6 +9,8 @@ use App\Http\Controllers\Evaluacion;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Horario;
+use App\Http\Controllers\Progresion;
+use App\Http\Controllers\Planeacion;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -16,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/reportes', [Asistencia::class, 'indexReportes'])->name('reportes.index');
+Route::get('/descargarPDF/{asignatura}', [Asistencia::class, 'descargarPDF'])->name('descargarPDF');
 
 
 
@@ -108,3 +111,16 @@ Route::get('/alumno/horario/{idAlumno}',[Horario::class,'horario_alumno'])->name
 //Rutas pendientes para darle funcionaldiad
 Route::get('/alumno/asignatura/planeacion/ver/{idAsignatura}/{idDocente}', [Asignatura::class, 'verPlaneacionAsignatura'])->name('alumno.asignatura.planeacion.ver');
 Route::get('/horario/alumnos/ver/{id_alumno}', [App\Http\Controllers\Horario::class, 'horario_alumno'])->name('horario');
+
+
+// rutas usadas en planeaciones
+Route::get('/docente/planeacion/agregarBloque/',[App\Http\Controllers\Planeacion::class, 'agregarBloque'])->name('docente.agregar.bloque');
+Route::post('/docente/planeacion/insertarBloque/', [App\Http\Controllers\Planeacion::class, 'insertarBloque'])->name('planeacion.insertar.bloque');
+// Route::get('/docente/planeacion/planeacion/ver/{idAsignatura}/{idDocente}',[App\Http\Controllers\Planeacion::class, 'verPlaneacionAsignatura']);
+Route::get('/docente/planeacion/agregarProgresion', [Periodo::class, 'agregar_periodo_docente'])->name('docente.agregar.progresion');
+Route::post('/docente/planeacion/insertarProgresion', [Progresion::class, 'insertarProgresion'])->name('progresion.insertar');
+Route::get('/docente/planeacion/agregarPlaneacion/{idAsignatura}',[Planeacion::class,'bloques'])->name('docente.agregar.planeacion');
+Route::post('/docente/planeacion/guardarBloqueTemp', [Planeacion::class, 'guardarBloqueTemp'])->name('docente.guardar.bloque.temp');
+Route::post('/docente/planeacion/guardarProgresionTemp', [Planeacion::class, 'guardarProgresionTemp'])->name('docente.guardar.progresion.temp');
+Route::get('/docente/planeacion/finalizar', [Planeacion::class, 'finalizar'])->name('docente.finalizar');
+Route::get('/docente/planeacion/bloques', [Planeacion::class, 'bloques'])->name('docente.bloques');
