@@ -19,7 +19,7 @@
   <!-- Segunda sección: Botón "Agregar" alineado a la derecha -->
   <div class="row mt-4">
     <div class="col text-right">
-      <a href="{{ route('docente.agregar.bloque') ['id_Asignatura' => $idAsignatura] }}" class="btn btn-primary">Agregar</a>
+      <a href="{{ route('docente.agregar.bloque', ['idAsignatura'=>$idAsignatura, 'idDocente'=> $idDocente]) }}" class="btn btn-primary">Agregar</a>
     </div>
   </div>
 

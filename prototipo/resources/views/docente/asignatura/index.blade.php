@@ -20,8 +20,7 @@
                 <div class="col-md-4">
                     <div class="card card-style">
                         <div class="card-body position-relative">
-                            <img src="{{ $asignatura->imagen }}" class="card-img-top" alt="imagen asignatura">
-
+                            <img src="{{ Storage::url($asignatura->imagen) }}" class="card-img-top" alt="imagen asignatura">
                             <style>
                                 .docente-img {
                                     position: absolute;
@@ -36,8 +35,6 @@
                                 }
                             </style>
 
-                            <img src="{{ $asignatura->foto }}" class="docente-img" alt="foto docente">
-
 
 
                             <h3 class="card-title" style="margin-top: 50px;">{{ $asignatura->nombre }}</h3>
@@ -46,7 +43,7 @@
                                 @endif {{ $asignatura->apellidoPaterno }}
                                 {{ $asignatura->apellidoMaterno }}</p>
                             <div class="btn-group">
-                                <a href="{{ route('asignatura.planeacion.ver', ['id_AsignaturaDocente' => $asignatura->id_AsignaturaDocente, 'idDocente' => $asignatura->id_docente]) }}"
+                                <a href="{{ route('docente.agregar.planeacion', ['idAsignatura' => $asignatura->idAsignatura, 'idDocente' => $asignatura->id_docente]) }}"
                                     class="btn" style="background-color: #21182F;color: white">
                                     Planeación
                                 </a>

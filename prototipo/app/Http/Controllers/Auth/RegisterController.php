@@ -107,6 +107,7 @@ class RegisterController extends Controller
                 'semestre' => 1,
                 'fechaIngreso' => now(),
                 'estatus' => 1,
+                'id_Tutor' => null
             ]);
         }
 

@@ -34,8 +34,8 @@ class Planeacion extends Controller
         return view('administrador/users/index', compact('user'));
     }
     
-    public function agregarBloque(){
-        return view('docente/asignatura/planeacion/agregarBloque');
+    public function agregarBloque(string $idAsignatura,string $idDocente){
+        return view('docente/asignatura/planeacion/agregarBloque',compact('idAsignatura','idDocente'));
     }
 
     public function insertarBloque(Request $request,string $idAsignatura)
@@ -66,15 +66,17 @@ class Planeacion extends Controller
         return redirect()->back()->with('success', 'Bloque agregado correctamente');
     }
 
-    public function bloques(String $idAsignatura){
+    public function bloques(string $idAsignatura, string $idDocente){
         $bloques = BloqueModel::all();
-        return view('/docente/asignatura/planeacion/agregarPlaneacion', compact('bloques','idAsignatura'));
+        return view('/docente/asignatura/planeacion/agregarPlaneacion', compact('bloques','idAsignatura','idDocente'));
     }
 
-    public function guardarBloqueTemp(Request $request,string $idAsignatura)
+    public function guardarBloqueTemp(Request $request, int $idAsignatura, int $idDocente)
     {
+        // $request
+
         $validatedData = $request->validate([
-            'id_Asignatura' => $idAsignatura,
+            // 'id_Asignatura' => $idAsignatura,
             'numero' => 'required|integer',
             'nombre' => 'required|string|max:255',
             'proposito' => 'required|string',
@@ -84,7 +86,21 @@ class Planeacion extends Controller
             'productoIntegrador' => 'required|string',
         ]);
 
+        $validatedData =[
+            'id_Asignatura' => $idAsignatura,
+            'numero' => $request->numero,
+            'nombre' => $request->nombre,
+            'proposito' => $request->proposito,
+            'eje' => $request->eje,
+            'componente' => $request->componente,
+            'contenidoCentral' => $request->contenidoCentral,
+            'productoIntegrador' => $request->productoIntegrador,
+        ];
+
         session()->put('bloque', $validatedData);
+        session()->put('idAsignatura', $idAsignatura);
+        session()->put('idDocente', $idDocente);
+        
 
         return redirect()->route('docente.agregar.progresion');
     }
@@ -109,6 +125,8 @@ class Planeacion extends Controller
     {
         $bloqueData = session()->get('bloque');
         $progresionData = session()->get('progresion');
+        $idAsignatura = session()->get('idAsignatura');
+        $idDocente = session()->get('idDocente');
 
         if ($bloqueData && $progresionData) {
             // Guardar bloque
@@ -140,8 +158,12 @@ class Planeacion extends Controller
 
             return redirect()->route('docente.bloques')->with('success', 'Planeación completada correctamente');
         } else {
-            return redirect()->route('docente.agregar.bloque')->with('error', 'Debe completar todos los pasos.');
+            return redirect()->route('docente.agregar.progresion',compact('idAsignatura','idDocente'))->with('error', 'Debe completar todos los pasos.');
         }
+    }
+
+    public function ver_planeaciones(){
+        return view('/docente/asignatura/planeacion/verPlaneacion');
     }
 
 }

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <center>
-                <h1><strong>EDITAR ASIGNATURA</strong></h1>
+                <h1><strong>EDITAR ASIGNATURA si</strong></h1>
                 <h3>- DATOS GENERALES -</h3>
             </center>
         </div>
@@ -15,7 +15,7 @@
         <div class="card card-style">
             <div class="card-body">
                 <form id="formularioDatosAsignatura"
-                    action="{{ route('asignatura.editar.datosAsignatura.update',['idAsignatura' => $asignatura[0]->id])}}" method="POST">
+                    action="{{ route('asignatura.editar.datosAsignatura.update',['idAsignatura' => $asignatura[0]->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-12">

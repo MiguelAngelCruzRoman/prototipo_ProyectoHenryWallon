@@ -77,7 +77,7 @@
                                 <!-- Formulario de edición -->
                                 <form id="formularioEdicionAsignatura{{ $asignatura->id }}"
                                     action="{{ route('asignatura.editar.datosAsignatura.update', ['idAsignatura' => $asignatura->id]) }}"
-                                    method="POST" data-asignatura-id="{{ $asignatura->id }}">
+                                    method="POST" data-asignatura-id="{{ $asignatura->id }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row mb-4">
                                         <div class="col-md-4">

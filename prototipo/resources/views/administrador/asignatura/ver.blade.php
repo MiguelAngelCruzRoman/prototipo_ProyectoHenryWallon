@@ -13,8 +13,8 @@
 
         <div class="card card-style">
             <div class="card-body">
-                <form action="" method="POST">
-                    @csrf
+                
+              
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <center>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                </form>
+               
             </div>
         </div>
 

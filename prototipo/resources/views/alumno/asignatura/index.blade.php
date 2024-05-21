@@ -15,7 +15,7 @@
         <div class="col-md-4">
             <div class="card card-style">
                 <div class="card-body position-relative">
-                    <img src="{{ $asignatura->imagen }}" class="card-img-top" alt="imagen asignatura">
+                    <img src="{{ Storage::url($asignatura->imagen) }}" class="card-img-top" alt="imagen asignatura">
 
                     <style>
                         .docente-img {
@@ -31,7 +31,7 @@
                         }
                     </style>
 
-                    <img src="{{ $asignatura->foto }}" class="docente-img" alt="foto docente">
+                    <img src="{{ Storage::url($asignatura->foto) }}" class="docente-img" alt="foto docente">
                     
                     
 

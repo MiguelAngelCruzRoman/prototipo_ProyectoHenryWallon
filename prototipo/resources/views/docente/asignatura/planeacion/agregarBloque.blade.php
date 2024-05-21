@@ -12,7 +12,7 @@
 <body>
 <div class="container mt-5">
     <h1>Agregar Bloque</h1>
-    <form method="POST" action="{{ route('docente.guardar.bloque.temp', ['id_Asignatura' => $idAsignatura]) }}">
+    <form method="POST" action="{{ route('docente.guardar.bloque.temp',['idAsignatura'=>$idAsignatura, 'idDocente'=> $idDocente]) }}">
         @csrf
         <div class="form-group">
             <label for="numero">Número</label>

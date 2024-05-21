@@ -21,7 +21,6 @@ Route::get('/reportes', [Asistencia::class, 'indexReportes'])->name('reportes.in
 Route::get('/descargarPDF/{asignatura}', [Asistencia::class, 'descargarPDF'])->name('descargarPDF');
 
 
-
 //-----------------------------------Rutas de Administrador-------------------------------------//
 Route::get('/administrador', [Users::class, 'perfil'])->name('administrador.perfil');
 
@@ -114,13 +113,14 @@ Route::get('/horario/alumnos/ver/{id_alumno}', [App\Http\Controllers\Horario::cl
 
 
 // rutas usadas en planeaciones
-Route::get('/docente/planeacion/agregarBloque/',[App\Http\Controllers\Planeacion::class, 'agregarBloque'])->name('docente.agregar.bloque');
+Route::get('/docente/planeacion/agregarBloque/{idAsignatura}/{idDocente}',[App\Http\Controllers\Planeacion::class, 'agregarBloque'])->name('docente.agregar.bloque');
 Route::post('/docente/planeacion/insertarBloque/', [App\Http\Controllers\Planeacion::class, 'insertarBloque'])->name('planeacion.insertar.bloque');
 // Route::get('/docente/planeacion/planeacion/ver/{idAsignatura}/{idDocente}',[App\Http\Controllers\Planeacion::class, 'verPlaneacionAsignatura']);
 Route::get('/docente/planeacion/agregarProgresion', [Periodo::class, 'agregar_periodo_docente'])->name('docente.agregar.progresion');
 Route::post('/docente/planeacion/insertarProgresion', [Progresion::class, 'insertarProgresion'])->name('progresion.insertar');
-Route::get('/docente/planeacion/agregarPlaneacion/{idAsignatura}',[Planeacion::class,'bloques'])->name('docente.agregar.planeacion');
-Route::post('/docente/planeacion/guardarBloqueTemp', [Planeacion::class, 'guardarBloqueTemp'])->name('docente.guardar.bloque.temp');
+Route::get('/docente/planeacion/agregarPlaneacion/{idAsignatura}/{idDocente}',[Planeacion::class,'bloques'])->name('docente.agregar.planeacion');
+Route::post('/docente/planeacion/guardarBloqueTemp/{idAsignatura}/{idDocente}', [Planeacion::class, 'guardarBloqueTemp'])->name('docente.guardar.bloque.temp');
 Route::post('/docente/planeacion/guardarProgresionTemp', [Planeacion::class, 'guardarProgresionTemp'])->name('docente.guardar.progresion.temp');
 Route::get('/docente/planeacion/finalizar', [Planeacion::class, 'finalizar'])->name('docente.finalizar');
 Route::get('/docente/planeacion/bloques', [Planeacion::class, 'bloques'])->name('docente.bloques');
+Route::get('/docente/planeacion/verPlaneacion',[Planeacion::class,'ver_planeaciones'])->name('docente.planeacion.ver');

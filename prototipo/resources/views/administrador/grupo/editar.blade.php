@@ -147,7 +147,7 @@
                     <label for="arregloAlumnos" class="form-label">Alumno:</label>
                     <select
                         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                        id="arregloAlumnos" name="arregloAlumnos" required>
+                        id="arregloAlumnos" name="alumnos[]" required>
                         @foreach ($alumnos as $alumno)
                             <option value="{{ $alumno->id }}">{{ $alumno->primerNombre }}
                                 {{ $alumno->segundoNombre }} {{ $alumno->apellidoPaterno }}
@@ -217,8 +217,7 @@
 
 <script>
     var alumnos = [];
-
-    @foreach ($grupo as $alumno)
+@foreach ($grupo as $alumno)
         alumnos.push({
             id: "{{ $alumno->idAlumno }}",
             nombre: "{{ $alumno->nombreAlumno }} {{ $alumno->segundoNombreAlumno }} {{ $alumno->apellidoPaternoAlumno }} {{ $alumno->apellidoMaternoAlumno }}"

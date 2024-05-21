@@ -1,4 +1,9 @@
 <title>Grupos</title>
+<style>
+    .fixed-width-select {
+        width: 300px;
+    }
+</style>
 @extends('layouts.app')
 
 @section('content')
@@ -38,9 +43,9 @@
         </div><br>
 
         <!--se incluye el modal con formulario-->
-        <div class="modal fade" id="formularioModal" tabindex="-1" role="dialog" aria-labelledby="formularioModalLabel"
+        <div class="modal fade " id="formularioModal"  tabindex="-1" role="dialog" aria-labelledby="formularioModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document" >
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="formularioModalLabel">Registrar Grupo</h5>
@@ -54,14 +59,14 @@
                             <center>
                                 <h4>- DATOS DE LA ASIGNATURA -</h4><br>
                             </center>
-                            <div class="row mb-6">
+                            <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label for="id_Asignatura" class="form-label">Asignatura*:</label>
                                 </div>
 
                                 <div class="col-md-6">
                                     <select
-                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline fixed-width-select"
                                         id="id_Asignatura" name="id_Asignatura" required>
                                         @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->id }}">{{ $asignatura->nombre }}</option>
@@ -71,14 +76,14 @@
                             </div>
 
 
-                            <div class="row mb-6">
+                            <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label for="id_Docente" class="form-label">Docente*:</label>
                                 </div>
 
                                 <div class="col-md-6">
                                     <select
-                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline fixed-width-select"
                                         id="id_Docente" name="id_Docente" required>
                                         @foreach ($docentes as $docente)
                                             <option value="{{ $docente->id }}">{{ $docente->primerNombre }}
@@ -89,14 +94,14 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-6">
+                            <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label for="id_Periodo" class="form-label">Periodo*:</label>
                                 </div>
 
                                 <div class="col-md-6">
                                     <select
-                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline fixed-width-select"
                                         id="id_Periodo" name="id_Periodo" required>
                                         @foreach ($periodos as $periodo)
                                             <option value="{{ $periodo->id }}">{{ $periodo->fechaInicio }} /
@@ -107,14 +112,14 @@
                             </div>
 
 
-                            <div class="row mb-6">
+                            <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label for="semestre" class="form-label">Semestre*:</label>
                                 </div>
 
                                 <div class="col-md-6">
                                     <select
-                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                        class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline fixed-width-select"
                                         id="semestre" name="semestre" required>
                                         <option value="Primero">Primero</option>
                                         <option value="Segundo">Segundo</option>
@@ -138,7 +143,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
                                                     value="{{ $alumno->id }}" id="alumno{{ $alumno->id }}"
-                                                    name="alumnos[]" required>
+                                                    name="alumnos[]">
                                                 <label class="form-check-label" for="alumno{{ $alumno->id }}">
                                                     {{ $alumno->primerNombre }} {{ $alumno->segundoNombre }}
                                                     {{ $alumno->apellidoPaterno }} {{ $alumno->apellidoMaterno }}

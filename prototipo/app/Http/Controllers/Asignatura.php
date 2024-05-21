@@ -25,11 +25,11 @@ class Asignatura extends Controller
                 
             } elseif ($rol === 'Docente') {
                 $asignaturas = DB::table('asignatura_docente')
-                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente', 'asignatura_docente.id as id_AsignaturaDocente')
+                ->select('asignatura.id as idAsignatura','asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente', 'asignatura_docente.id as id_AsignaturaDocente')
                     ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
                     ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
                     ->join('users', 'docente.id_Usuario', '=', 'users.id')
-                    ->where('users.id',8)
+                    ->where('docente.id_Usuario',$userData['id'])
                     ->get();
                 return view('docente/asignatura/index', compact('asignaturas'));
 
@@ -100,6 +100,7 @@ class Asignatura extends Controller
             'imagen' => 'required',
         ]);
 
+
         $asignatura = new AsignaturaModel();
         $asignatura->nombre = ucwords(strtolower($request->nombre));
         $asignatura->objetivo = ucwords(strtolower($request->objetivo));
@@ -168,6 +169,9 @@ class Asignatura extends Controller
             'imagen' => 'required',
         ]);
 
+
+        
+
         $asignatura = AsignaturaModel::findOrFail($idAsignatura);
         $asignatura->nombre = ucwords(strtolower($request->nombre));
         $asignatura->objetivo = ucwords(strtolower($request->objetivo));
@@ -179,11 +183,11 @@ class Asignatura extends Controller
         $asignatura->horasDocente = $request->horasDocente;
         $asignatura->horasEstudioIndependiente = $request->horasEstudioIndependiente;
         $asignatura->calificacionAprobatoria = $request->calificacionAprobatoria;
-
+        
         if ($request->hasFile('imagen')) {
             $asignatura->imagen = Storage::disk('public')->put('/asignatura/imagenes', $request->file('imagen'));
         }
-
+        
         $asignatura->updated_at = now();
         $asignatura->save();
         return redirect('/asignatura/index');

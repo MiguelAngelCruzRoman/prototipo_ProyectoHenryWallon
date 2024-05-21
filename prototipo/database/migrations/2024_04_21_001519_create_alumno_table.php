@@ -19,7 +19,7 @@ return new class extends Migration
             $table->dateTime('fechaIngreso');
             $table->dateTime('fechaEgreso')->nullable();
             $table->boolean('estatus');
-            $table->unsignedBigInteger('id_UsuarioTutor'); 
+            $table->unsignedBigInteger('id_UsuarioTutor')->nullable(); 
             $table->foreign('id_UsuarioTutor')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

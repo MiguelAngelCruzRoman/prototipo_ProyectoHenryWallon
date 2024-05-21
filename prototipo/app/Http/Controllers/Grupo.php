@@ -166,7 +166,7 @@ class Grupo extends Controller
             'alumnos' => 'required'
         ]);
 
-        $alumnos = $request->input('alumnos');
+       $alumnos = $request->input('alumnos');
 
         $asignaturaDocente = new Asignatura_DocenteModel();
         $asignaturaDocente->id_Asignatura = $validatedData['id_Asignatura'];
@@ -223,12 +223,12 @@ class Grupo extends Controller
                 'periodo.id as idPeriodo',
                 'periodo.fechaInicio as fechaInicioPeriodo',
                 'periodo.fechaFin as fechaFinPeriodo',
-                'users.id as idAlumno',
+                'alumno.id as idAlumno',
                 'users.primerNombre as nombreAlumno',
                 'users.segundoNombre as segundoNombreAlumno',
                 'users.apellidoPaterno as apellidoPaternoAlumno',
                 'users.apellidoMaterno as apellidoMaternoAlumno',
-                'users2.id as idDocente',
+                'docente.id as idDocente',
                 'users2.primerNombre as nombreDocente',
                 'users2.segundoNombre as segundoNombreDocente',
                 'users2.apellidoPaterno as apellidoPaternoDocente',
@@ -246,8 +246,7 @@ class Grupo extends Controller
             ->join('docente', 'asignatura_docente.id_Docente', '=', 'docente.id')
             ->join('users as users2', 'docente.id_Usuario', '=', 'users2.id')
             ->join('asignatura', 'asignatura_docente.id_Asignatura', '=', 'asignatura.id')
-            ->where('grupo.id', $idGrupo)
-            ->paginate(10);
+            ->where('grupo.id', $idGrupo) ->get();
 
         return view('administrador/grupo/editar', compact('asignaturas', 'docentes', 'alumnos', 'periodos', 'grupo'));
     }
@@ -259,9 +258,11 @@ class Grupo extends Controller
             return redirect()->route('login');
         } 
 
+        
+    
         $asignaturaDocente = Asignatura_DocenteModel::findOrFail($request->input('id_asignatura_docente_anterior'));
-        $asignaturaDocente->id_Docente = $request->input('id_Docente');
         $asignaturaDocente->id_Asignatura = $request->input('id_Asignatura');
+        $asignaturaDocente->id_Docente = $request->input('id_Docente');
         $asignaturaDocente->save();
 
         $grupo = GrupoModel::findOrFail($idGrupo);
@@ -271,12 +272,8 @@ class Grupo extends Controller
 
         Grupo_AlumnoModel::where('id_Grupo', $idGrupo)->delete();
 
-
-        $validatedData = $request->validate([
-            'listaAlumnos' => 'required'
-        ]);
-
-        $listaAlumnos = json_decode($validatedData['listaAlumnos'], true);
+        $listaAlumnos = json_decode($request->input('listaAlumnos'), true);
+        
         foreach ($listaAlumnos as $alumno) {
             $grupoAlumno = new Grupo_AlumnoModel();
             $grupoAlumno->id_Grupo = $idGrupo;

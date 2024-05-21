@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <center>
-                                <img src="{{ $asignatura->imagen }}" alt="Imagen de Asignatura" height="200px" width="400px" style="border: 4px solid #000000">
+                                <img src="{{ Storage::url($asignatura->imagen) }}" alt="Imagen de Asignatura" height="200px" width="400px" style="border: 4px solid #000000">
                             </center>
                         </div>
                     </div>
