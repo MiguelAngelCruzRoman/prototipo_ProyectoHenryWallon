@@ -49,8 +49,16 @@ class Asignatura extends Controller
     }
 
 
-    public function busqueda()
-    {
+    public function busqueda(Request $request)
+    {     
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
+            'valorBusqueda' => 'required|string',
+        ]);
+
         $asignaturas = DB::table('asignatura')
             ->where('nombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
             ->orwhere('componente', 'like', '%' . $_GET['valorBusqueda'] . '%')
@@ -64,12 +72,34 @@ class Asignatura extends Controller
 
     public function agregarDatosAsignatura()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         return view('administrador/asignatura/agregar');
     }
 
 
     public function insertDatosAsignatura(Request $request)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
+            'nombre' => 'required|string|min:3|max:255',
+            'turno' => 'required|string|min:7|max:11',
+            'semestre' => 'required|string|min:4|max:10',
+            'objetivo' => 'required|string|min:3|max:50',
+            'intencionDidactica' => 'required|string|min:3|max:50',
+            'componente' => 'required|string|min:3|max:50',
+            'calificacionAprobatoria' => 'required|integer',
+            'horasDocente' => 'required|integer',
+            'horasEstudioIndependiente' => 'required|integer',
+            'creditos' => 'required|integer',
+            'imagen' => 'required',
+        ]);
+
         $asignatura = new AsignaturaModel();
         $asignatura->nombre = ucwords(strtolower($request->nombre));
         $asignatura->objetivo = ucwords(strtolower($request->objetivo));
@@ -97,6 +127,10 @@ class Asignatura extends Controller
 
     public function verAsignatura(string $idAsignatura)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $asignatura = DB::table('asignatura')->where('id', $idAsignatura)->get();
 
         return view('administrador/asignatura/ver', compact('asignatura'));
@@ -104,6 +138,10 @@ class Asignatura extends Controller
 
     public function editarDatosAsignatura(string $idAsignatura)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $asignatura = DB::table('asignatura')->where('id', $idAsignatura)->get();
 
         return view('administrador/asignatura/editar', compact('asignatura'));
@@ -112,6 +150,24 @@ class Asignatura extends Controller
 
     public function updateDatosAsignatura(Request $request, string $idAsignatura)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
+            'nombre' => 'required|string|min:3|max:255',
+            'turno' => 'required|string|min:7|max:11',
+            'semestre' => 'required|string|min:4|max:10',
+            'objetivo' => 'required|string|min:3|max:50',
+            'intencionDidactica' => 'required|string|min:3|max:50',
+            'componente' => 'required|string|min:3|max:50',
+            'calificacionAprobatoria' => 'required|integer',
+            'horasDocente' => 'required|integer',
+            'horasEstudioIndependiente' => 'required|integer',
+            'creditos' => 'required|integer',
+            'imagen' => 'required',
+        ]);
+
         $asignatura = AsignaturaModel::findOrFail($idAsignatura);
 
         $asignatura->nombre = ucwords(strtolower($request->nombre));
@@ -140,6 +196,10 @@ class Asignatura extends Controller
 
     public function eliminarAsignatura(string $idAsignatura)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $asignatura = AsignaturaModel::findOrFail($idAsignatura);
         $asignatura->delete();
         return redirect()->back();
@@ -148,6 +208,10 @@ class Asignatura extends Controller
 
     public function verPlaneacionAsignatura(string $idAsignatura, string $idDocente)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $asignatura = DB::table('asignatura_docente')
             ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
             ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
@@ -184,6 +248,10 @@ class Asignatura extends Controller
 
     public function agregarDatosBloque(string $numeroBloque)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         if ($_POST['bloques'] >= $numeroBloque) {
             $numeroBloque = $numeroBloque + 1;
             return view('administrador/asignatura/agregar/datosBloque', compact('numeroBloque'));
@@ -248,6 +316,10 @@ class Asignatura extends Controller
 
     public function insertDatos()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+        
         print_r($_POST);
     }
 }

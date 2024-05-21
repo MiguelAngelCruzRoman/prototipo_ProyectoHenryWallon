@@ -20,12 +20,12 @@
                     <div class="row mb-3">
                         <div class="col-md-7">
                             <label for="nombre" class="form-label">Nombre de asignatura:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+">
                         </div>
 
                         <div class="col-md-2">
                             <label for="turno" class="form-label">Turno:</label>
-                            <select class="form-select" id="turno" name="turno" required>
+                            <select class="form-select" id="turno" name="turno" required >
                                 <option value="Matutino">Matutino</option>
                                 <option value="Vespertino">Vespertino</option>
                             </select>
@@ -48,14 +48,14 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="objetivo" class="form-label">Objetivo:</label>
-                            <input type="text" class="form-control" id="objetivo" name="objetivo" required>
+                            <input type="text" class="form-control" id="objetivo" name="objetivo" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="intencionDidactica" class="form-label">Intención Didáctica:</label>
-                            <input type="text" class="form-control" id="intencionDidactica" name="intencionDidactica" required>
+                            <input type="text" class="form-control" id="intencionDidactica" name="intencionDidactica" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+">
                         </div>
                     </div>
 

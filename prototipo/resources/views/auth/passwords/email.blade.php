@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-6">
                 <center>
-                    <h1><strong>RECUPERAR CONTRASEÑA</strong></h1>
+                    <h1 style="color:black"><strong>RECUPERAR CONTRASEÑA</strong></h1>
                 </center>
             </div>
         </div>

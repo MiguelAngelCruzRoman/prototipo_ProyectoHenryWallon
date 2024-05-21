@@ -29,12 +29,12 @@
                     <div class="row mb-3">
                         <div class="col-md-7">
                             <label for="nombre" class="form-label">Nombre de asignatura:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$asignatura[0]->nombre}}" >
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$asignatura[0]->nombre}}" required>
                         </div>
 
                         <div class="col-md-2">
                             <label for="turno" class="form-label">Turno:</label>
-                            <select class="form-select" id="turno" name="turno">
+                            <select class="form-select" id="turno" name="turno" required>
                                 <option value="{{$asignatura[0]->turno}}">{{$asignatura[0]->turno}}</option>
                                 <option value="Matutino">Matutino</option>
                                 <option value="Vespertino">Vespertino</option>
@@ -43,7 +43,7 @@
 
                         <div class="col-md-3">
                             <label for="semestre" class="form-label">Semestre:</label>
-                            <select class="form-select" id="semestre" name="semestre">
+                            <select class="form-select" id="semestre" name="semestre" required>
                                 <option value="{{$asignatura[0]->semestre}}">{{$asignatura[0]->semestre}}</option>
                                 <option value="Primero">Primero</option>
                                 <option value="Segundo">Segundo</option>
@@ -59,7 +59,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="objetivo" class="form-label">Objetivo:</label>
-                            <input type="text" class="form-control" id="objetivo" name="objetivo" value="{{$asignatura[0]->objetivo}}" >
+                            <input type="text" class="form-control" id="objetivo" name="objetivo" value="{{$asignatura[0]->objetivo}}" required>
                         </div>
                     </div>
 
@@ -67,7 +67,7 @@
                         <div class="col-md-12">
                             <label for="intencionDidactica" class="form-label">Intención Didáctica:</label>
                             <input type="text" class="form-control" id="intencionDidactica" name="intencionDidactica"
-                            value="{{$asignatura[0]->intencionDidactica}}" >
+                            value="{{$asignatura[0]->intencionDidactica}}" required>
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="componente" class="form-label">Componente de formación:</label>
-                            <select class="form-select" id="componente" name="componente">
+                            <select class="form-select" id="componente" name="componente" required>
                                 <option value="{{$asignatura[0]->componente}}">{{$asignatura[0]->componente}}</option>
                                 <option value="Fundamental">Fundamental</option>
                                 <option value="Fundamental Extendido">Fundamental extendido</option>
@@ -88,17 +88,17 @@
                         <div class="col-md-3">
                             <label for="calificacionAprobatoria" class="form-label">Calificación aprobatoria:</label>
                             <input type="number" class="form-control" id="calificacionAprobatoria"
-                                name="calificacionAprobatoria" value="{{$asignatura[0]->calificacionAprobatoria}}" >
+                                name="calificacionAprobatoria" value="{{$asignatura[0]->calificacionAprobatoria}}" required>
                         </div>
 
                         <div class="col-md-2">
                             <label for="horasDocente" class="form-label">Horas con docente:</label>
-                            <input type="number" class="form-control" id="horasDocente" name="horasDocente" value="{{$asignatura[0]->horasDocente}}" >
+                            <input type="number" class="form-control" id="horasDocente" name="horasDocente" value="{{$asignatura[0]->horasDocente}}" required>
                         </div>
                         <div class="col-md-3">
                             <label for="horasEstudioIndependiente" class="form-label">Horas autodidactas:</label>
                             <input type="number" class="form-control" id="horasEstudioIndependiente"
-                                name="horasEstudioIndependiente" value="{{$asignatura[0]->horasEstudioIndependiente}}" >
+                                name="horasEstudioIndependiente" value="{{$asignatura[0]->horasEstudioIndependiente}}" required>
                         </div>
                     </div>
 
@@ -106,12 +106,12 @@
                         <div class="col-md-3">
                             <label for="creditos" class="form-label">Créditos:</label>
                             <input type="number" class="form-control" id="creditos"
-                                name="creditos" value="{{$asignatura[0]->creditos}}">
+                                name="creditos" value="{{$asignatura[0]->creditos}}" required>
                         </div>
 
                         <div class="col-md-9">
                             <label for="imagen" class="form-label">Imagen alusiva a la asignatura:</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" value="{{$asignatura[0]->imagen}}">
+                            <input type="file" class="form-control" id="imagen" name="imagen" value="{{$asignatura[0]->imagen}}" required>
                         </div>
                     </div>
 

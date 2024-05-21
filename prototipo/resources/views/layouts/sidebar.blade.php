@@ -7,7 +7,7 @@
             <a class="nav-link" href="{{ route('administrador.perfil') }}">
                 <div class="flex">
                     <center>
-                        <img src="https://img.freepik.com/fotos-premium/alumno-leyendo-libro-escolar_13339-163126.jpg   " alt="ImagenUsuario"
+                        <img src="{{ Storage::url(session('user.foto')) }}" alt="ImagenUsuario"
                             class="rounded-circle border border-dark" style="width: 80px; height: 80px;">
                         {{ session('user.primerNombre') }} {{ session('user.apellidoPaterno') }}
                     </center>
@@ -91,7 +91,7 @@
     <!-- Opciones solo para Administrador y Docente-->
     @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente')
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('grupo.index') }}">
+            <a class="nav-link" href="{{ route('reportes.index') }}">
                 <i class="fas fa-fw fa-chart-bar"></i>
                 <span >REPORTES</span>
             </a>

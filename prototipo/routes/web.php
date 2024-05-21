@@ -6,6 +6,7 @@ use App\Http\Controllers\Asistencia;
 use App\Http\Controllers\Grupo;
 use App\Http\Controllers\Periodo;
 use App\Http\Controllers\Evaluacion;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Horario;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 //-----------------------------------Rutas en común -------------------------------------//
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/reportes', [Asistencia::class, 'indexReportes'])->name('reportes.index');
 
 
 

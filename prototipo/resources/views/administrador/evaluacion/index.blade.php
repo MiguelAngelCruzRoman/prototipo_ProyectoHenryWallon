@@ -20,7 +20,7 @@
                     <form action="{{ route('evaluacion.busqueda') }}" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control flex-1 mr-2"
-                                placeholder="Buscar evaluación por actividad o tipo" name="valorBusqueda">
+                                placeholder="Buscar evaluación por actividad o tipo" name="valorBusqueda" required>
                             <button class="btn btn-primary" type="submit">Buscar</button>
                         </div>
                     </form>

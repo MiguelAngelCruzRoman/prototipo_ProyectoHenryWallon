@@ -15,6 +15,10 @@ class Users extends Controller
 
     public function perfil()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $user = User::find(session('user.id'));
 
         // Generar el token de restablecimiento de contraseña
@@ -25,6 +29,10 @@ class Users extends Controller
 
     public function index()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $user = DB::table('users')
             ->where('id', session('user.id'));
 
@@ -33,6 +41,10 @@ class Users extends Controller
 
     public function inicio()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $users = DB::table('users')->paginate(10);
 
         return view('administrador/users/index', compact('users'));
@@ -41,6 +53,10 @@ class Users extends Controller
 
     public function busqueda()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $users = DB::table('users')
             ->where('primerNombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
             ->orwhere('segundoNombre', 'like', '%' . $_GET['valorBusqueda'] . '%')
@@ -57,6 +73,9 @@ class Users extends Controller
 
     public function verUsuario(string $idUser)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
 
         $user = DB::table('users')->where('id', $idUser)->get();
 
@@ -67,6 +86,10 @@ class Users extends Controller
 
     public function eliminarUsuario($id)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $user = User::findOrFail($id);
 
         $user->delete();
@@ -77,12 +100,20 @@ class Users extends Controller
 
     public function editarUsuario($id)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $user = User::findOrFail($id);
         return view('administrador/users/editar', compact('user'));
     }
 
     public function updateUsuario(Request $request, $id)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $user = User::findOrFail($id);
 
         $request->validate([

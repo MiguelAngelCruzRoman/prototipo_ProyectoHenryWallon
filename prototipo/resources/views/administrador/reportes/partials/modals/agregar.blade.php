@@ -18,7 +18,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="fechaInicio">
                             Fecha de Inicio <span class="text-red-500">*</span>:
                         </label>
-                        <input required 
+                        <input required
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="fechaInicio" type="date" name="fechaInicio">
                     </div>
@@ -43,7 +43,8 @@
                         </select>
                     </div>
                     <div class="flex justify-end">
-                        <button class="btn" data-dismiss="modal" style="background-color: #21182F;color: white">
+                        <button class="btn" data-dismiss="modal"
+                            style="background-color: #21182F;color: white">
                             <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
                                 width="20px" style="filter: invert(100%);">
                             Regresar
@@ -51,7 +52,7 @@
                         <button type="submit" class="btn btn-success">
                             <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
                                 height="20px">
-                            Registrar
+                          Registrar
                         </button>
                     </div>
                 </form>

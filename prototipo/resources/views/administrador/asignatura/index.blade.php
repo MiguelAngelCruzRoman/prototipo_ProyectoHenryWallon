@@ -23,7 +23,7 @@
                 <form action="{{ route('asignatura.busqueda') }}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control flex-1 mr-2"
-                            placeholder="Buscar asignatura por nombre, componente o semestre" name="valorBusqueda">
+                            placeholder="Buscar asignatura por nombre, componente o semestre" name="valorBusqueda" required>
                         <button class="btn btn-primary" type="submit">Buscar</button>
                     </div>
                 </form>

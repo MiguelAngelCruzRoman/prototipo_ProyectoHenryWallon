@@ -69,19 +69,19 @@
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label for="fechaInicio" class="form-label">Fecha de Inicio:</label>
-                                                <input required type="date" class="form-control" id="fechaInicio"
+                                                <input type="date" class="form-control" id="fechaInicio"
                                                     name="fechaInicio" value="{{ $periodo->fechaInicio }}">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="fechaFin" class="form-label">Fecha de Fin:</label>
-                                                <input required type="date" class="form-control" id="fechaFin"
+                                                <input type="date" class="form-control" id="fechaFin"
                                                     name="fechaFin" value="{{ $periodo->fechaFin }}">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <label for="tipo" class="form-label">Tipo:</label>
-                                                <select required class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" id="tipo" name="tipo">
+                                                <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" id="tipo" name="tipo">
                                                     <option value="{{ $periodo->tipo }}">{{ $periodo->tipo }}</option>
                                                     <option value="CicloEscolar">Ciclo Escolar</option>
                                                     <option value="Semanal">Semanal</option>

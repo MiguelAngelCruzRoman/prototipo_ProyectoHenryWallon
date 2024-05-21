@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="col-md-8">
-                            <input required
+                            <input required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 class="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="nombre" type="text" name="nombre">
                         </div>
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="col-md-8">
-                            <input required
+                            <input required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                             class="shadow appearance-none border rounded w-full py-2 px-4 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="objetivo" type="text" name="objetivo">
                         </div>
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="col-md-8">
-                            <input required
+                            <input required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                             class="shadow appearance-none border rounded w-full py-2 px-4 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="intencionDidactica" type="text" name="intencionDidactica">
                         </div>
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="col-md-7">
-                            <select required
+                            <select required 
                             class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                             id="componente" name="componente">
                             <option value="">Selecciona un componente</option>

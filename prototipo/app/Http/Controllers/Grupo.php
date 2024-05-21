@@ -17,6 +17,10 @@ class Grupo extends Controller
 
     public function index()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
         $grupos = DB::table('grupo')
             ->select(
                 'grupo.id',
@@ -60,8 +64,16 @@ class Grupo extends Controller
     }
 
 
-    public function busqueda()
+    public function busqueda(Request $request)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
+        $request->validate([
+            'valorBusqueda' => 'required|string',
+        ]);
+
         $grupos = DB::table('grupo')
             ->select(
                 'grupo.id',
@@ -113,6 +125,10 @@ class Grupo extends Controller
 
     public function agregar()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
         $asignaturas = DB::table('asignatura')
             ->select('id', 'nombre')
             ->get();
@@ -138,6 +154,10 @@ class Grupo extends Controller
 
     public function insert(Request $request)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
         $validatedData = $request->validate([
             'id_Asignatura' => 'required',
             'id_Docente' => 'required',
@@ -173,6 +193,10 @@ class Grupo extends Controller
 
     public function editar(string $idGrupo)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
         $asignaturas = DB::table('asignatura')
             ->select('id', 'nombre')
             ->get();
@@ -231,6 +255,10 @@ class Grupo extends Controller
 
     public function update(Request $request, string $idGrupo)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
         $asignaturaDocente = Asignatura_DocenteModel::findOrFail($request->input('id_asignatura_docente_anterior'));
         $asignaturaDocente->id_Docente = $request->input('id_Docente');
         $asignaturaDocente->id_Asignatura = $request->input('id_Asignatura');
@@ -262,6 +290,10 @@ class Grupo extends Controller
 
     public function eliminar(string $idGrupo)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+
         Grupo_AlumnoModel::where('id_Grupo', $idGrupo)->delete();
         GrupoModel::where('id', $idGrupo)->delete();
         return redirect()->route('grupo.index');
@@ -270,6 +302,10 @@ class Grupo extends Controller
 
     public function ver(string $idGrupo)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        } 
+        
         $grupo = DB::table('grupo')
             ->select(
                 'grupo.id',

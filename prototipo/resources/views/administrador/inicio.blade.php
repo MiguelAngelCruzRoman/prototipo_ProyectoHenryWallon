@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="col-md-4 ">
-                        <a href="{{ route('evaluacion.index') }}">
+                        <a href="{{ route('reportes.index') }}">
                             <div class="card card-style" style="background-color: #21182F">
                                 <div class="card-body">
                                     <center>
