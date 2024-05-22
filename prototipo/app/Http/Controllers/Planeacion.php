@@ -156,14 +156,16 @@ class Planeacion extends Controller
             // Limpiar sesión
             session()->forget(['bloque', 'progresion']);
 
-            return redirect()->route('docente.bloques')->with('success', 'Planeación completada correctamente');
+            return redirect()->route('docente.bloques',compact('idAsignatura','idDocente'))->with('success', 'Planeación completada correctamente');
         } else {
             return redirect()->route('docente.agregar.progresion',compact('idAsignatura','idDocente'))->with('error', 'Debe completar todos los pasos.');
         }
     }
 
     public function ver_planeaciones(){
-        return view('/docente/asignatura/planeacion/verPlaneacion');
+        $resultados =  $resultados = BloqueModel::all();
+
+        return view('/docente/asignatura/planeacion/verPlaneacion', ['resultados' => $resultados]);
     }
 
 }

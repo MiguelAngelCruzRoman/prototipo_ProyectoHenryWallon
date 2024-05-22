@@ -49,15 +49,6 @@
         </li>
     @endif
 
-    @if (session('user.rol') === 'Administrador' || session('user.rol') === 'Docente' || session('user.rol') === 'Alumno')
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="far fa-fw fa-calendar"></i>
-                <span>HORARIOS</span>
-            </a>
-        </li>
-    @endif
-
 
     @if (session('user.rol') === 'Administrador')
         <li class="nav-item">

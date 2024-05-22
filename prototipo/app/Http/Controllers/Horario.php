@@ -13,8 +13,7 @@ use App\Models\DocenteModel;
 
 class Horario extends Controller
 {
-    //tcpdf, dompdf, fpdf, html2pdf, xhtml
-    public function horario_alumno($id_alumno)
+    public function horario_alumno()
     {
         if (!session()->has('user')) {
             return redirect()->route('login');
@@ -41,7 +40,7 @@ class Horario extends Controller
             ->join('horario_asignatura as ha', 'a.id', '=', 'ha.id_asignatura')
             ->join('horario as h', 'ha.id_horario', '=', 'h.id')
             ->join('periodo as pe', 'g.id_Periodo', '=', 'pe.id')
-            ->where('al.id', $id_alumno)
+            ->where('al.id', session('user.id'))
             ->get();
 
         $ids_asignaturas = DB::table('alumno as al')
@@ -55,7 +54,7 @@ class Horario extends Controller
             ->join('horario_asignatura as ha', 'a.id', '=', 'ha.id_asignatura')
             ->join('horario as h', 'ha.id_horario', '=', 'h.id')
             ->join('periodo as pe', 'g.id_Periodo', '=', 'pe.id')
-            ->where('al.id', $id_alumno)
+            ->where('al.id',session('user.id'))
             ->distinct()
             ->pluck('id_asignatura');
 
@@ -70,13 +69,13 @@ class Horario extends Controller
             ->join('horario_asignatura as ha', 'a.id', '=', 'ha.id_asignatura')
             ->join('horario as h', 'ha.id_horario', '=', 'h.id')
             ->join('periodo as pe', 'g.id_Periodo', '=', 'pe.id')
-            ->where('al.id', $id_alumno)
+            ->where('al.id', session('user.id'))
             ->distinct()
             ->pluck('id_docente');
 
         $alumno = AlumnoModel::select('u.primerNombre', 'u.segundoNombre', 'u.apellidoPaterno', 'u.apellidoMaterno')
             ->join('Users as u', 'alumno.id_Usuario', '=', 'u.id')
-            ->where('alumno.id', $id_alumno)
+            ->where('alumno.id', session('user.id'))
             ->first();
 
 
@@ -98,7 +97,7 @@ class Horario extends Controller
         return view('alumno/horario/ver_horario_alumno', compact('horario', 'datos_maestros', 'alumno'));
     }
 
-    public function horario_docente($id_docente)
+    public function horario_docente()
     {
         if (!session()->has('user')) {
             return redirect()->route('login');
@@ -107,7 +106,7 @@ class Horario extends Controller
         // retorna el nombre del docente
         $docente = DocenteModel::select('u.primerNombre', 'u.segundoNombre', 'u.apellidoPaterno', 'u.apellidoMaterno')
             ->join('Users as u', 'docente.id_Usuario', '=', 'u.id')
-            ->where('docente.id', $id_docente)
+            ->where('docente.id', session('user.id'))
             ->first();
 
         //Retorna todas las materias que imparte un docente especifico
@@ -117,7 +116,7 @@ class Horario extends Controller
             ->join('asignatura as a', 'ad.id_Asignatura', '=', 'a.id')
             ->join('horario_asignatura as ha', 'a.id', '=', 'ha.id_Asignatura')
             ->join('horario as h', 'ha.id_Horario', '=', 'h.id')
-            ->where('ad.id_Docente', $id_docente)
+            ->where('ad.id_Docente', session('user.id'))
             ->get();
 
         return view('docente/horario/ver_horario_docente', compact('docente', 'materias'));

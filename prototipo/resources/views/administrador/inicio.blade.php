@@ -42,25 +42,8 @@
                         </a>
                     </div>
 
-                    <div class="col-md-4">
-                        <a href="">
-                            <div class="card card-style" style="background-color: #21182F">
-                                <div class="card-body">
-                                    <center>
-                                        <h5 class="card-title" style="color:white">HORARIOS</h5>
-                                        <i class=" fas fa-calendar fa-6x" style="color: white"></i>
-                                    </center>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-
-                <div style="height: 30px;"></div>
-
-
-                <div class="row">
+                
+        
                     <div class="col-md-4">
                         <a href="{{ route('evaluacion.index') }}">
                             <div class="card card-style" style="background-color: #21182F">
@@ -74,6 +57,12 @@
                             </div>
                         </a>
                     </div>
+
+
+
+                <div style="height: 30px;"></div>
+
+
 
 
                     <div class="col-md-4">
@@ -104,15 +93,6 @@
                             </div>
                         </a>
                     </div>
-                </div>
-
-                <div style="height: 30px;"></div>
-
-                <div class="row">
-
-                    <div class="col-md-4">
-                    </div>
-
                     <div class="col-md-4 ">
                         <a href="{{ route('reportes.index') }}">
                             <div class="card card-style" style="background-color: #21182F">
@@ -125,6 +105,16 @@
                             </div>
                         </a>
                     </div>
+                </div>
+
+                <div style="height: 30px;"></div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                    </div>
+
+
                 </div>
 
             </center>

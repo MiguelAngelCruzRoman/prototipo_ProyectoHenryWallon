@@ -96,7 +96,7 @@ Route::get('/docente/asignatura/index',[Asignatura::class, 'index'])->name('doce
 Route::get('/docente/asignatura/asistencia/{idAsignatura}/{idDocente}/{nombreAsignatura}',[Asistencia::class, 'index'])->name('docente.asignatura.asistencia');
 Route::post('/docente/asignatura/asistencia/insert',[Asistencia::class, 'insert'])->name('docente.asignatura.asistencia.insert');
 Route::get('/docente/asignatura/asistencia/historial/{idAsignatura}/{idDocente}/{nombreAsignatura}',[Asistencia::class, 'historial'])->name('docente.asignatura.asistencia.historial');
-Route::get('/docente/horario/{idDocente}',[Horario::class,'horario_docente'])->name('docente.horario');
+Route::get('/docente/horario/',[Horario::class,'horario_docente'])->name('docente.horario');
 
 
 
@@ -105,7 +105,7 @@ Route::get('/docente/horario/{idDocente}',[Horario::class,'horario_docente'])->n
 //-----------------------------------Rutas de Alumno-------------------------------------//
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'index'])->name('homeE');
 Route::get('/alumno/asignatura/index',[Asignatura::class, 'index'])->name('alumno.asignatura.index');
-Route::get('/alumno/horario/{idAlumno}',[Horario::class,'horario_alumno'])->name('alumno.horario');
+Route::get('/alumno/horario/',[Horario::class,'horario_alumno'])->name('alumno.horario');
 
 //Rutas pendientes para darle funcionaldiad
 Route::get('/alumno/asignatura/planeacion/ver/{idAsignatura}/{idDocente}', [Asignatura::class, 'verPlaneacionAsignatura'])->name('alumno.asignatura.planeacion.ver');

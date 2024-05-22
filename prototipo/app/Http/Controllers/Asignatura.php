@@ -34,12 +34,15 @@ class Asignatura extends Controller
                 return view('docente/asignatura/index', compact('asignaturas'));
 
             } elseif ($rol === 'Alumno') {
-                $asignaturas = DB::table('asignatura_docente')
-                ->select('asignatura.*', 'docente.*','users.*','asignatura.id as id_asignatura', 'docente.id as id_docente')
+                $asignaturas = DB::table('grupo_alumno')
+                    ->select('asignatura.id AS idAsignatura', 'asignatura.*', 'docente.*', 'users.*', 'alumno.*', 'asignatura.id AS id_asignatura', 'docente.id AS id_docente', 'asignatura_docente.id AS id_AsignaturaDocente', 'grupo.id AS id_grupo', 'grupo_alumno.id AS id_grupo_alumno', 'asignatura.imagen')
+                    ->join('grupo', 'grupo_alumno.id_Grupo', '=', 'grupo.id')
+                    ->join('asignatura_docente', 'grupo.id_Asignatura_Docente', '=', 'asignatura_docente.id')
                     ->join('asignatura', 'asignatura_docente.id_asignatura', '=', 'asignatura.id')
                     ->join('docente', 'asignatura_docente.id_docente', '=', 'docente.id')
                     ->join('users', 'docente.id_Usuario', '=', 'users.id')
-                    ->where('users.id',8)
+                    ->join('alumno', 'grupo_alumno.id_alumno', '=', 'alumno.id')
+                    ->where ('alumno.id_Usuario', $userData['id'])
                     ->get();
                 return view('alumno/asignatura/index', compact('asignaturas'));
             }else{

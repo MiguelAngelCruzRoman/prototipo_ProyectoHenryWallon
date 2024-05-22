@@ -39,7 +39,7 @@
                 <tr>
                 <th scope="col" class="px-6 py-3 text-center" style="color:black">Asignatura</th>
                 <th scope="col" class="px-6 py-3 text-center" style="color:black">Semana</th>
-                <th scope="col" class="px-6 py-3 text-center" style="color:black">Descargar PDF</th>
+                <th scope="col" class="px-6 py-3 text-center" style="color:black">PDF</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +56,7 @@
                                     <td>{{ $asignatura }}</td>
                                     <td>{{ Carbon\Carbon::parse($semana)->format('d/m/Y') }} - {{ Carbon\Carbon::parse($semana)->endOfWeek()->format('d/m/Y') }}</td>
                                     <td>
-                                        <a href="{{ route('descargarPDF', ['asignatura' => $asignatura, 'semana' => $semana]) }}" class="btn btn-primary">Descargar PDF</a>
+                                        <a href="{{ route('descargarPDF', ['asignatura' => $asignatura, 'semana' => $semana]) }}" class="btn" style="background-color:#21182F; color:#ffffff">Descargar</a>
                                     </td>
                                 </tr>
                             @endforeach

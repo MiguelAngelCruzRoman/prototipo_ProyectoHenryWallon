@@ -1,38 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid rgb(123, 117, 117);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid rgb(123, 117, 117);
+        padding: 8px;
+    }
+    thead{
+        background-color: rgb(224, 223, 223);
+    }
+</style>
+
   <title>Tabla de Progresiones</title>
   <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+  @extends('layouts.app')
+
+@section('content')
 <div class="container mt-5">
   <div class="row">
     <div class="col text-right">
-      <a href="{{ route('docente.finalizar') }}" class="btn btn-success">Finalizar</a>
+      <a href="{{ route('docente.finalizar') }}" class="btn" style="background-color: #21182F;color: white">Finalizar</a>
     </div>
   </div>
-  <h1>Progresiones</h1>
-  <table class="table table-bordered">
+
+  <div class="text-center">
+  <h1 class="text-3xl font-bold my-8" style="color:black"><strong>REGISTRAR PLANEACIÓN</strong></h1>
+            <h4 class="text-3xl font-bold my-8" style="color:black">- Progresiones -</h4>            </div>
+<br>
+        <table class="w-full border-collapse border border-gray-400">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Tipo</th>
-        <th>Inicio</th>
-        <th>Fin</th>
-        <th>Agregar</th>
+        <th scope="col" class="px-6 py-3 text-center" style="color:black">ID</th>
+        <th scope="col" class="px-6 py-3 text-center" style="color:black">Tipo</th>
+        <th scope="col" class="px-6 py-3 text-center" style="color:black">Inicio</th>
+        <th scope="col" class="px-6 py-3 text-center" style="color:black">Fin</th>
+        <th scope="col" class="px-6 py-3 text-center" style="color:black">Agregar</th>
       </tr>
     </thead>
     <tbody>
       @foreach($periodos as $periodo)
-      <tr>
-        <td>{{ $periodo->id }}</td>
-        <td>{{ $periodo->tipo }}</td>
-        <td>{{ $periodo->fechaInicio }}</td>
-        <td>{{ $periodo->fechaFin }}</td>
-        <td><button class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-id="{{ $periodo->id }}">Agregar</button></td>
+      <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->id }}</td>
+        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->tipo }}</td>
+        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->fechaInicio }}</td>
+        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $periodo->fechaFin }}</td>
+        <td scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white"><button class="btn btn-success" data-toggle="modal" data-target="#addModal" data-id="{{ $periodo->id }}">                     <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt="" height="20px">
+Agregar</button></td>
       </tr>
       @endforeach
     </tbody>
@@ -53,28 +71,31 @@
           </button>
         </div>
         <div class="modal-body">
+        <h5>-Datos generales-</h5>
+
           <input type="hidden" name="id_periodo" id="id_periodo">
           <div class="form-group">
-            <label for="tema">Tema</label>
+            <label for="tema">Tema*:</label>
             <input type="text" class="form-control" id="tema" name="tema" required>
           </div>
           <div class="form-group">
-            <label for="aprendizajeEsperado">Aprendizaje Esperado</label>
+            <label for="aprendizajeEsperado">Aprendizaje Esperado*: </label>
             <input type="text" class="form-control" id="aprendizajeEsperado" name="aprendizajeEsperado" required>
           </div>
           <div class="form-group">
-            <label for="materiales">Materiales</label>
+            <label for="materiales">Materiales*:</label>
             <input type="text" class="form-control" id="materiales" name="materiales" required>
           </div>
+          <br><br>
           <div class="form-group">
-            <h5>Agregar Evaluación</h5>
+            <h5>-Agregar Evaluación-</h5>
           </div>
           <div class="form-group">
-            <label for="actividadAprendizaje">Actividad de Aprendizaje</label>
+            <label for="actividadAprendizaje">Actividad de Aprendizaje*:</label>
             <input type="text" class="form-control" id="actividadAprendizaje" name="actividadAprendizaje" required>
           </div>
           <div class="form-group">
-            <label for="tipoEvaluacion">Tipo de Evaluación</label>
+            <label for="tipoEvaluacion">Tipo de Evaluación*: </label>
             <select class="form-control" id="tipoEvaluacion" name="tipoEvaluacion" required>
               <option value="Rúbrica">Rúbrica</option>
               <option value="Lista de cotejo">Lista de cotejo</option>
@@ -82,10 +103,23 @@
             </select>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
+      
+
+        <div class="flex justify-end">
+
+                                <button class="btn" data-dismiss="modal"
+                                    style="background-color: #21182F;color: white">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/8591/8591477.png" alt="flechaRegresar"
+                                        width="20px" style="filter: invert(100%);">
+                                    Regresar
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/4885/4885419.png" alt=""
+                                        height="20px">
+                                    Registrar
+                            </div>
+                            </div>
+
       </form>
     </div>
   </div>
@@ -104,5 +138,5 @@
     modal.find('#id_periodo').val(id);
   });
 </script>
-</body>
-</html>
+
+@endsection

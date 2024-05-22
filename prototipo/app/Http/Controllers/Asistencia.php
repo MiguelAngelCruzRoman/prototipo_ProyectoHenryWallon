@@ -172,7 +172,7 @@ class Asistencia extends Controller
         $html .= '.footer { position: fixed; bottom: 10px; left: 0px; right: 0px; height: 30px; font-size: 10px; }';
         $html .= '</style></head><body>';
         $html .= '<div class="header">';
-        $html .= '<div class="logo"><img src="' . public_path('logoHenryWallon.jpg') . '" alt="Logo" height="75" width="75"></div>'; // Aquí se utiliza public_path() para obtener la ruta absoluta al archivo
+        $html .= '<div class="logo"><img src="' . public_path('logoHenryWallon.png') . '" alt="Logo" height="75" width="75"></div>'; // Aquí se utiliza public_path() para obtener la ruta absoluta al archivo
         $html .= '<div class="school-info"><strong>Instituto Henry Wallon</strong><br>Nivel Preparatoria<br>C.C.T 21PBH0062R<br>Calle Vicente Guerrero #506 C.P. 73870 Teziutlán, Pue.</div>';
         $html .= '</div>';
         $html .= '<h1 style="text-align: center; font-size: 20px; margin-bottom: 10px;">Reporte de Asistencias</h1>';
